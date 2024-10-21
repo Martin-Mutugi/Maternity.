@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maternal Health Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        /* Sidebar Styling */
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Updated font family */
+    
+}
+
+#sidebar .nav-link {
+    color: #ffffff;
+    font-size: 20px; /* Increased font size */
+    font-weight: 500; /* Updated font weight */
+    margin: 15px 0; /* Increased margin between links */
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#sidebar .nav-link:hover {
+    background-color: #2c8f2a; /* Hover background color */
+    color: #ffffff; /* Hover text color */
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.sidebar-header h3 {
+    color: #ffffff;
+    font-size: 24px; /* Larger font for header */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Sidebar Icon Adjustments */
+#sidebar .fas {
+    margin-right: 10px; /* Spacing between icons and text */
+}
+
+/* Sidebar Sections (Settings, Support) */
+.sidebar-menu .menu-header {
+    font-size: 18px; /* Increased font size */
+    font-weight: bold;
+    color: #adb5bd; /* Lighter color for section headers */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Sidebar Link Active State */
+.sidebar-menu .nav-link.active {
+    background-color: #2c8f2a;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+/* Hover state for sidebar sections */
+.sidebar-menu .nav-link:hover {
+    background-color: #495057;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+        /* Admin Icon at top-right */
+        #adminIcon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        #adminIcon img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        /* Content Area */
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            overflow-y: auto;
+        }
+        /* Horizontal Top Navigation Bar for Services */
+        #otherServicesNav {
+            display: none;
+            background-color: #e9ecef;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #28a745;
+        }
+        #otherServicesNav ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+        }
+        #otherServicesNav ul li {
+            margin-right: 20px;
+        }
+        #otherServicesNav ul li a {
+            color: hsl(214, 26%, 95%);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        #otherServicesNav ul li a:hover {
+            text-decoration: underline;
+        }
+        /* Forms Styling */
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        /* Form styling */
+        form {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            border: 2px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+   <!-- Sidebar -->
+<div id="sidebar">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+        <img src="images/Prime.png" class="sidebar-image">
+        <h3>Maternal Portal</h3> <br>
+        <p>Maternal Healthcare</p>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+        <li><a href="#" class="menu-link" onclick="showHome()"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#" class="menu-link" onclick="showRegisterPatient()"><i class="fas fa-user-plus"></i> Register Patients</a></li>
+        <li><a href="#" class="menu-link" onclick="showOtherServices()"><i class="fas fa-clinic-medical"></i> Other Services</a></li>
+        <li class="menu-header">Settings</li>
+        <li><a href="#" class="menu-link"><i class="fas fa-user-cog"></i> Account Settings</a></li>
+        <li><a href="#" class="menu-link"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+        <li><a href="#" class="menu-link"><i class="fas fa-bell"></i> Notifications</a></li>
+        <li class="menu-header">Support</li>
+        <li><a href="#" class="menu-link"><i class="fas fa-comments"></i> Chat</a></li>
+        <li><a href="#" class="menu-link"><i class="fas fa-headset"></i> Customer Support</a></li>
+    </ul>
+</div>
+
+<!-- Content Area -->
+<div id="content">
+    <!-- Top Bar with Admin Profile -->
+    <div id="topBar" class="d-flex justify-content-between align-items-center">
+        <h2>Maternal Health Portal</h2>
+        <div class="d-flex align-items-center">
+            <div id="notificationIcon" class="mr-3">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div id="userInfo" class="mr-3">
+                <p>Martin Mutugi</p>
+                <small>Mid Wife</small>
+            </div>
+            <div id="adminIcon">
+                <img src="https://via.placeholder.com/50" alt="Admin Profile" class="rounded-circle">
+            </div>
+        </div>
+    </div>
+
+    <!-- Horizontal Navigation for Other Services -->
+    <div id="otherServicesNav">
+        <ul class="services-list" style="border: #28a745;">
+            <li><a href="#" onclick="showService('healthcareFacility')">Healthcare Facility</a></li>
+            <li><a href="#" onclick="showService('medicalHistoryRiskFactors')">Medical History and Risk Factors</a></li>
+            <li><a href="#" onclick="showService('currentPregnancyDetails')">Current Pregnancy Details</a></li>
+            <li><a href="#" onclick="showService('socialLivingConditions')">Social and Living Conditions</a></li>
+            <li><a href="#" onclick="showService('healthExamination')">Health Examination</a></li>
+            <li><a href="#" onclick="showService('lifestyleHabits')">Lifestyle and Habits</a></li>
+            <li><a href="#" onclick="showService('mentalHealthSupport')">Mental Health and Support</a></li>
+            <li><a href="#" onclick="showService('previousPregnancies')">Previous Pregnancies</a></li>
+            <li><a href="#" onclick="showService('medicationsSupplements')">Medications and Supplements</a></li>
+            <li><a href="#" onclick="showService('laboratoryResults')">Laboratory Results</a></li>
+            <li><a href="#" onclick="showService('carePlan')">Care Plan</a></li>
+            <li><a href="#" onclick="showService('midwifeNotes')">Midwife Notes</a></li>
+            <li><a href="#" onclick="showService('laborDelivery')">Labor and Delivery</a></li>
+            <li><a href="#" onclick="showService('partograph')">Partograph</a></li>
+        </ul>
+    </div>
+
+    <!-- Home Section (Search Bar and Registered Patients) -->
+    <div id="homeSection" class="tab-pane active">
+        <!-- Header Section with Buttons -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Registered Patients</h2>
+            <div>
+                <button id="showFiltersBtn" class="btn btn-primary mr-2"><i class="fas fa-filter"></i> Show Filters</button>
+                <button id="refreshBtn" class="btn btn-success"><i class="fas fa-sync-alt"></i> Refresh</button>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="searchPatient" placeholder="Search patient by name or ID">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+        </div>
+
+        <!-- Registered Patients Table -->
+        <table class="table table-striped" id="registeredPatientsTable">
+            <thead>
+                <tr>
+                    <th>Personal Number</th>
+                    <th>Full Name</th>
+                    <th>Date of Birth</th>
+                    <th>Mobile Phone</th>
+                    <th>Emergency Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>123456</td>
+                    <td>Carren Sofia</td>
+                    <td>2024-10-20</td>
+                    <td>+2547623456789</td>
+                    <td>Risper Nkatha</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning">Edit</button> 
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>156383</td>
+                    <td>Jane Ngeno</td>
+                    <td>2024-09-16</td>
+                    <td>+255783456789</td>
+                    <td>Chistene Mukami</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning">Edit</button> 
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>985327</td>
+                    <td>Mercy Vyone</td>
+                    <td>2024-08-02</td>
+                    <td>+254789064327</td>
+                    <td>Hellen Stecy</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning">Edit</button> 
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Patient Registration Section -->
+<div id="patientRegistration" class="tab-pane">
+  <h3>Patient Registration</h3>
+  <form id="patientRegistrationForm" novalidate>
+      <!-- Personal Details -->
+      <div class="mb-3">
+          <label for="personalNumber" class="form-label">Personal Number</label>
+          <input type="text" class="form-control" id="personalNumber" required>
+          <div class="invalid-feedback">Please enter a personal number.</div>
+      </div>
+      <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" required>
+          <div class="invalid-feedback">Please enter the full name.</div>
+      </div>
+      <div class="mb-3">
+          <label for="birthDate" class="form-label">Date of Birth (yy/mm/dd)</label>
+          <input type="date" class="form-control" id="birthDate" required>
+          <div class="invalid-feedback">Please enter the date of birth.</div>
+      </div>
+      
+      <!-- Registration Information -->
+      <h5>Registration Information</h5>
+      
+      <!-- Inscription Date -->
+      <div class="mb-3">
+          <label for="inscriptionDate" class="form-label">Inscription Date (yy/mm/dd)</label>
+          <input type="date" class="form-control" id="inscriptionDate" required pattern="\d{2}/\d{2}/\d{2}">
+          <div class="invalid-feedback">Please enter the inscription date in the format yy/mm/dd.</div>
+      </div>
+      
+      <!-- MVC Number -->
+      <div class="mb-3">
+          <label for="mvcNumber" class="form-label">MVC Number</label>
+          <input type="text" class="form-control" id="mvcNumber" required>
+          <div class="invalid-feedback">Please enter the MVC number.</div>
+      </div>
+
+      <!-- Doctor or Nurse -->
+      <div class="mb-3">
+          <label for="doctorNurse" class="form-label">Doctor or Nurse</label>
+          <input type="text" class="form-control" id="doctorNurse" required>
+          <div class="invalid-feedback">Please enter the name of the doctor or nurse.</div>
+      </div>
+      
+      <!-- Insurance Number -->
+      <div class="mb-3">
+          <label for="insuranceNumber" class="form-label">Insurance Number</label>
+          <input type="text" class="form-control" id="insuranceNumber" required>
+          <div class="invalid-feedback">Please enter the insurance number.</div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Register Patient</button>
+  </form>
+</div>
+
+
+   <!-- Healthcare Facility Section -->
+<div id="healthcareFacility" class="tab-pane">
+  <h3>Healthcare Facility and Registration Details</h3>
+  <form id="healthcareFacilityForm" novalidate>
+
+      <!-- Registration Date -->
+      <div class="mb-3">
+          <label for="registrationDate" class="form-label">Registration Date</label>
+          <input type="date" class="form-control" id="registrationDate" required>
+          <div class="invalid-feedback">Please enter the registration date.</div>
+      </div>
+
+      <!-- MVC Number -->
+      <div class="mb-3">
+          <label for="mvcNumber" class="form-label">MVC Number</label>
+          <input type="text" class="form-control" id="mvcNumber" required>
+          <div class="invalid-feedback">Please enter the MVC number.</div>
+      </div>
+
+      <!-- Doctor/Nurse -->
+      <div class="mb-3">
+          <label for="doctorNurse" class="form-label">Doctor/Nurse</label>
+          <input type="text" class="form-control" id="doctorNurse" required>
+          <div class="invalid-feedback">Please enter the name of the doctor or nurse.</div>
+      </div>
+
+      <!-- Insurance Number -->
+      <div class="mb-3">
+          <label for="insuranceNumber" class="form-label">Insurance Number</label>
+          <input type="text" class="form-control" id="insuranceNumber" required>
+          <div class="invalid-feedback">Please enter the insurance number.</div>
+      </div>
+
+      <!-- Healthcare Facility Information -->
+      <h5>Healthcare Facility Information</h5>
+
+      <!-- Facility Name -->
+      <div class="mb-3">
+          <label for="facilityName" class="form-label">Facility Name</label>
+          <input type="text" class="form-control" id="facilityName" required>
+          <div class="invalid-feedback">Please enter the facility name.</div>
+      </div>
+
+      <!-- Facility Branch -->
+      <div class="mb-3">
+          <label for="facilityBranch" class="form-label">Facility Branch</label>
+          <input type="text" class="form-control" id="facilityBranch" required>
+          <div class="invalid-feedback">Please enter the facility branch.</div>
+      </div>
+
+      <!-- Facility Street Address -->
+      <div class="mb-3">
+          <label for="facilityStreet" class="form-label">Street</label>
+          <input type="text" class="form-control" id="facilityStreet" required>
+          <div class="invalid-feedback">Please enter the street address of the facility.</div>
+      </div>
+
+      <!-- Facility Postal Code -->
+      <div class="mb-3">
+          <label for="facilityPostalCode" class="form-label">Postal Code</label>
+          <input type="text" class="form-control" id="facilityPostalCode" required>
+          <div class="invalid-feedback">Please enter the postal code of the facility.</div>
+      </div>
+
+      <!-- Facility City -->
+      <div class="mb-3">
+          <label for="facilityCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="facilityCity" required>
+          <div class="invalid-feedback">Please enter the city of the facility.</div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Save Healthcare Facility</button>
+  </form>
+</div>
+
+
+    <!-- Medical History and Risk Factors Section -->
+<div id="medicalHistoryRiskFactors" class="tab-pane hide">
+    <h3>Medical History and Risk Factors</h3>
+    <form id="medicalHistoryForm">
+        <!-- Medical History -->
+        <h5>Medical History</h5>
+        <div class="mb-3">
+            <label for="heartDisease" class="form-label">Heart Disease</label>
+            <div>
+                <input type="checkbox" id="heartDiseaseYes" name="heartDisease" value="true"> Yes
+                <input type="checkbox" id="heartDiseaseNo" name="heartDisease" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="thrombosis" class="form-label">Thrombosis</label>
+            <div>
+                <input type="checkbox" id="thrombosisYes" name="thrombosis" value="true"> Yes
+                <input type="checkbox" id="thrombosisNo" name="thrombosis" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="thyroidDisease" class="form-label">Thyroid Disease</label>
+            <div>
+                <input type="checkbox" id="thyroidDiseaseYes" name="thyroidDisease" value="true"> Yes
+                <input type="checkbox" id="thyroidDiseaseNo" name="thyroidDisease" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="lupusSle" class="form-label">Lupus SLE</label>
+            <div>
+                <input type="checkbox" id="lupusSleYes" name="lupusSle" value="true"> Yes
+                <input type="checkbox" id="lupusSleNo" name="lupusSle" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="diabetes" class="form-label">Diabetes</label>
+            <div>
+                <input type="checkbox" id="diabetesYes" name="diabetes" value="true"> Yes
+                <input type="checkbox" id="diabetesNo" name="diabetes" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="epilepsy" class="form-label">Epilepsy</label>
+            <div>
+                <input type="checkbox" id="epilepsyYes" name="epilepsy" value="true"> Yes
+                <input type="checkbox" id="epilepsyNo" name="epilepsy" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="psychiatricDisease" class="form-label">Psychiatric Disease</label>
+            <div>
+                <input type="checkbox" id="psychiatricDiseaseYes" name="psychiatricDisease" value="true"> Yes
+                <input type="checkbox" id="psychiatricDiseaseNo" name="psychiatricDisease" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="urinaryTractInfections" class="form-label">Urinary Tract Infections</label>
+            <div>
+                <input type="checkbox" id="urinaryTractInfectionsYes" name="urinaryTractInfections" value="true"> Yes
+                <input type="checkbox" id="urinaryTractInfectionsNo" name="urinaryTractInfections" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="kidneyDisease" class="form-label">Kidney Disease</label>
+            <div>
+                <input type="checkbox" id="kidneyDiseaseYes" name="kidneyDisease" value="true"> Yes
+                <input type="checkbox" id="kidneyDiseaseNo" name="kidneyDisease" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="gonorrhea" class="form-label">Gonorrhea</label>
+            <div>
+                <input type="checkbox" id="gonorrheaYes" name="gonorrhea" value="true"> Yes
+                <input type="checkbox" id="gonorrheaNo" name="gonorrhea" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="syphilis" class="form-label">Syphilis</label>
+            <div>
+                <input type="checkbox" id="syphilisYes" name="syphilis" value="true"> Yes
+                <input type="checkbox" id="syphilisNo" name="syphilis" value="false"> No
+            </div>
+        </div>
+
+        <!-- Family Hereditary Diseases -->
+        <div class="mb-3">
+            <label for="familyHereditaryDiseases" class="form-label">Family Hereditary Diseases</label>
+            <textarea class="form-control" id="familyHereditaryDiseases" placeholder="Enter any family hereditary diseases" rows="3" required></textarea>
+        </div>
+
+        <!-- Allergies -->
+        <h5>Allergies</h5>
+        <div class="mb-3">
+            <label for="medicationAllergies" class="form-label">Medication Allergies</label>
+            <div>
+                <input type="checkbox" id="medicationAllergiesYes" name="medicationAllergies" value="true"> Yes
+                <input type="checkbox" id="medicationAllergiesNo" name="medicationAllergies" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="otherAllergies" class="form-label">Other Allergies</label>
+            <textarea class="form-control" id="otherAllergies" placeholder="Specify other allergies" rows="3" required></textarea>
+        </div>
+
+        <!-- Risk Factors -->
+        <h5>Risk Factors</h5>
+        <div class="mb-3">
+            <label for="smoking" class="form-label">Smoking</label>
+            <div>
+                <input type="checkbox" id="smokingYes" name="smoking" value="true"> Yes
+                <input type="checkbox" id="smokingNo" name="smoking" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="alcoholUse" class="form-label">Alcohol Use</label>
+            <div>
+                <input type="checkbox" id="alcoholUseYes" name="alcoholUse" value="true"> Yes
+                <input type="checkbox" id="alcoholUseNo" name="alcoholUse" value="false"> No
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="drugUse" class="form-label">Drug Use</label>
+            <div>
+                <input type="checkbox" id="drugUseYes" name="drugUse" value="true"> Yes
+                <input type="checkbox" id="drugUseNo" name="drugUse" value="false"> No
+            </div>
+        </div>
+    </form>
+
+   <!-- Button Row for Navigation -->
+<div class="button-row">
+    <!-- Back Button: Navigates to the previous service -->
+    <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+    <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+    <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+</div>
+
+</div>
+
+    <!-- Current Pregnancy Details Section -->
+<div id="currentPregnancyDetails" class="tab-pane hide">
+  <h3>Current Pregnancy Details</h3>
+  <form id="currentPregnancyForm" novalidate>
+
+      <!-- Last Menstruation -->
+      <div class="mb-3">
+          <label for="lastMenstruation" class="form-label">Last Menstruation Date</label>
+          <input type="date" class="form-control" id="lastMenstruation" required>
+          <div class="invalid-feedback">Please enter the last menstruation date.</div>
+      </div>
+
+      <!-- Positive Pregnancy Test -->
+      <div class="mb-3">
+          <label for="positivePregnancyTest" class="form-label">Positive Pregnancy Test</label>
+          <div>
+              <input type="checkbox" id="positivePregnancyTestYes" name="positivePregnancyTest" value="true"> Yes
+              <input type="checkbox" id="positivePregnancyTestNo" name="positivePregnancyTest" value="false"> No
+          </div>
+      </div>
+
+      <!-- Stopped Contraceptive -->
+      <div class="mb-3">
+          <label for="stoppedContraceptive" class="form-label">Stopped Contraceptive</label>
+          <div>
+              <input type="checkbox" id="stoppedContraceptiveYes" name="stoppedContraceptive" value="true"> Yes
+              <input type="checkbox" id="stoppedContraceptiveNo" name="stoppedContraceptive" value="false"> No
+          </div>
+      </div>
+
+      <!-- IUD Removed -->
+      <div class="mb-3">
+          <label for="iudRemoved" class="form-label">IUD Removed</label>
+          <div>
+              <input type="checkbox" id="iudRemovedYes" name="iudRemoved" value="true"> Yes
+              <input type="checkbox" id="iudRemovedNo" name="iudRemoved" value="false"> No
+          </div>
+      </div>
+
+      <!-- Estimated Due Date -->
+      <h5>Estimated Due Date</h5>
+      <div class="mb-3">
+          <label for="dueDateLastMenstrualPeriod" class="form-label">Based on Last Menstrual Period</label>
+          <input type="date" class="form-control" id="dueDateLastMenstrualPeriod" required>
+          <div class="invalid-feedback">Please enter the due date based on last menstrual period.</div>
+      </div>
+
+      <!-- Ultrasound-Based Estimated Due Date -->
+      <div class="mb-3">
+          <label for="ultrasoundDueDate" class="form-label">Ultrasound-Based Due Date</label>
+          <input type="date" class="form-control" id="ultrasoundDueDate" required>
+          <div class="invalid-feedback">Please enter the ultrasound-based due date.</div>
+      </div>
+
+      <!-- Weeks Pregnant Based on Ultrasound -->
+      <div class="mb-3">
+          <label for="weeksPregnant" class="form-label">Weeks Pregnant (Based on Ultrasound)</label>
+          <input type="number" class="form-control" id="weeksPregnant" required>
+          <div class="invalid-feedback">Please enter the number of weeks pregnant based on ultrasound.</div>
+      </div>
+
+      <!-- Ultrasound Scheduled -->
+      <div class="mb-3">
+          <label for="ultrasoundScheduled" class="form-label">Ultrasound Scheduled</label>
+          <div>
+              <input type="checkbox" id="ultrasoundScheduledYes" name="ultrasoundScheduled" value="true"> Yes
+              <input type="checkbox" id="ultrasoundScheduledNo" name="ultrasoundScheduled" value="false"> No
+          </div>
+      </div>
+
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Social and Living Conditions Section -->
+<div id="socialLivingConditions" class="tab-pane hide">
+  <h3>Social and Living Conditions</h3>
+  <form id="socialLivingConditionsForm" novalidate>
+
+      <!-- Family Situation (Dropdown) -->
+      <div class="mb-3">
+          <label for="familySituation" class="form-label">Family Situation</label>
+          <select class="form-control" id="familySituation" required>
+              <option value="">Select Family Situation</option>
+              <option value="married">Married</option>
+              <option value="single">Single</option>
+              <option value="divorced">Divorced</option>
+              <option value="widowed">Widowed</option>
+              <option value="singleParent">Single Parent</option>
+          </select>
+          <div class="invalid-feedback">Please select a family situation.</div>
+      </div>
+
+      <!-- Profession (Dropdown) -->
+      <div class="mb-3">
+          <label for="profession" class="form-label">Profession</label>
+          <select class="form-control" id="profession" required>
+              <option value="">Select Profession</option>
+              <option value="doctor">Doctor</option>
+              <option value="nurse">Nurse</option>
+              <option value="teacher">Teacher</option>
+              <option value="engineer">Engineer</option>
+              <option value="lawyer">Lawyer</option>
+              <option value="student">Student</option>
+              <option value="unemployed">Unemployed</option>
+              <option value="other">Other</option>
+          </select>
+          <div class="invalid-feedback">Please select a profession.</div>
+      </div>
+
+      <!-- Working Type (Dropdown) -->
+      <div class="mb-3">
+          <label for="workingType" class="form-label">Working Type</label>
+          <select class="form-control" id="workingType" required>
+              <option value="">Select Working Type</option>
+              <option value="fullTime">Full-time</option>
+              <option value="partTime">Part-time</option>
+              <option value="selfEmployed">Self-employed</option>
+              <option value="freelancer">Freelancer</option>
+              <option value="notWorking">Not Working</option>
+          </select>
+          <div class="invalid-feedback">Please select a working type.</div>
+      </div>
+
+      <!-- Job (Dropdown) -->
+      <div class="mb-3">
+          <label for="job" class="form-label">Job</label>
+          <select class="form-control" id="job" required>
+              <option value="">Select Job</option>
+              <option value="manager">Manager</option>
+              <option value="staff">Staff</option>
+              <option value="technician">Technician</option>
+              <option value="clerical">Clerical</option>
+              <option value="supportStaff">Support Staff</option>
+              <option value="other">Other</option>
+          </select>
+          <div class="invalid-feedback">Please select a job.</div>
+      </div>
+
+      <!-- Education Level (Dropdown) -->
+      <div class="mb-3">
+          <label for="educationLevel" class="form-label">Education Level</label>
+          <select class="form-control" id="educationLevel" required>
+              <option value="">Select Education Level</option>
+              <option value="primary">Primary School</option>
+              <option value="secondary">Secondary School</option>
+              <option value="diploma">Diploma</option>
+              <option value="undergraduate">Undergraduate</option>
+              <option value="postgraduate">Postgraduate</option>
+              <option value="other">Other</option>
+          </select>
+          <div class="invalid-feedback">Please select an education level.</div>
+      </div>
+
+      <!-- Mode of Transport (Dropdown) -->
+      <div class="mb-3">
+          <label for="modeOfTransport" class="form-label">Mode of Transport</label>
+          <select class="form-control" id="modeOfTransport" required>
+              <option value="">Select Mode of Transport</option>
+              <option value="car">Car</option>
+              <option value="publicTransport">Public Transport</option>
+              <option value="bicycle">Bicycle</option>
+              <option value="motorbike">Motorbike</option>
+              <option value="walking">Walking</option>
+              <option value="other">Other</option>
+          </select>
+          <div class="invalid-feedback">Please select a mode of transport.</div>
+      </div>
+
+      <!-- Smoking (Dropdown) -->
+      <div class="mb-3">
+          <label for="smoking" class="form-label">Smoking</label>
+          <select class="form-control" id="smoking" required>
+              <option value="">Select Smoking Status</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="quit">Quit</option>
+          </select>
+          <div class="invalid-feedback">Please select a smoking status.</div>
+      </div>
+
+      <!-- Snus (Checkbox) -->
+      <div class="mb-3">
+          <label for="snus" class="form-label">Use of Snus (Snuff)</label>
+          <div>
+              <input type="checkbox" id="snusYes" name="snus" value="true"> Yes
+              <input type="checkbox" id="snusNo" name="snus" value="false"> No
+          </div>
+      </div>
+
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Health Examination Section -->
+<div id="healthExamination" class="tab-pane hide">
+  <h3>Health Examination</h3>
+  <form id="healthExaminationForm" novalidate>
+
+      <!-- Height (cm) -->
+      <div class="mb-3">
+          <label for="heightCm" class="form-label">Height (cm)</label>
+          <input type="number" class="form-control" id="heightCm" placeholder="Enter height in cm" required>
+          <div class="invalid-feedback">Please enter height in cm.</div>
+      </div>
+
+      <!-- Weight (kg) -->
+      <div class="mb-3">
+          <label for="weightKg" class="form-label">Weight (kg)</label>
+          <input type="number" class="form-control" id="weightKg" placeholder="Enter weight in kg" required>
+          <div class="invalid-feedback">Please enter weight in kg.</div>
+      </div>
+
+      <!-- BMI -->
+      <div class="mb-3">
+          <label for="bmi" class="form-label">Body Mass Index (BMI)</label>
+          <input type="number" class="form-control" id="bmi" placeholder="Enter BMI" required>
+          <div class="invalid-feedback">Please enter BMI.</div>
+      </div>
+
+      <!-- Blood Pressure -->
+      <div class="mb-3">
+          <label for="bloodPressure" class="form-label">Blood Pressure</label>
+          <div class="row">
+              <div class="col">
+                  <input type="number" class="form-control" id="systolic" placeholder="Systolic" required>
+                  <div class="invalid-feedback">Please enter systolic blood pressure.</div>
+              </div>
+              <div class="col">
+                  <input type="number" class="form-control" id="diastolic" placeholder="Diastolic" required>
+                  <div class="invalid-feedback">Please enter diastolic blood pressure.</div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Fundal Height (cm) -->
+      <div class="mb-3">
+          <label for="fundalHeightCm" class="form-label">Fundal Height (cm)</label>
+          <input type="number" class="form-control" id="fundalHeightCm" placeholder="Enter fundal height in cm" required>
+          <div class="invalid-feedback">Please enter fundal height in cm.</div>
+      </div>
+
+      <!-- Fetal Heartbeat (bpm) -->
+      <div class="mb-3">
+          <label for="fetalHeartbeat" class="form-label">Fetal Heartbeat (bpm)</label>
+          <input type="number" class="form-control" id="fetalHeartbeat" placeholder="Enter fetal heartbeat in bpm" required>
+          <div class="invalid-feedback">Please enter fetal heartbeat in bpm.</div>
+      </div>
+
+      <!-- Blood Glucose (mmol/L) -->
+      <div class="mb-3">
+          <label for="bloodGlucose" class="form-label">Blood Glucose (mmol/L)</label>
+          <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="Enter blood glucose in mmol/L" required>
+          <div class="invalid-feedback">Please enter blood glucose in mmol/L.</div>
+      </div>
+
+      <!-- Urine Protein -->
+      <div class="mb-3">
+          <label for="urineProtein" class="form-label">Urine Protein</label>
+          <input type="text" class="form-control" id="urineProtein" placeholder="e.g., Negative, Trace, +1" required>
+          <div class="invalid-feedback">Please enter urine protein result.</div>
+      </div>
+
+      <!-- Urine Glucose -->
+      <div class="mb-3">
+          <label for="urineGlucose" class="form-label">Urine Glucose</label>
+          <input type="text" class="form-control" id="urineGlucose" placeholder="e.g., Negative, Trace, +1" required>
+          <div class="invalid-feedback">Please enter urine glucose result.</div>
+      </div>
+
+  </form>
+
+   <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Lifestyle and Habits Section -->
+<div id="lifestyleHabits" class="tab-pane hide">
+  <h3>Lifestyle and Habits</h3>
+  <form id="lifestyleHabitsForm" novalidate>
+
+      <!-- Smoking Habits Before Pregnancy -->
+      <div class="mb-3">
+          <label class="form-label">Smoking Habits Before Pregnancy</label>
+          <div class="mb-3">
+              <label for="cigarettesPerDay" class="form-label">Cigarettes per Day</label>
+              <input type="text" class="form-control" id="cigarettesPerDay" placeholder="e.g., 5, 10, none" required>
+              <div class="invalid-feedback">Please enter the number of cigarettes per day.</div>
+          </div>
+          <div class="mb-3">
+              <label for="snusBeforePregnancy" class="form-label">Use of Snus Before Pregnancy</label>
+              <div>
+                  <input type="checkbox" id="snusBeforePregnancyYes" name="snusBeforePregnancy" value="true"> Yes
+                  <input type="checkbox" id="snusBeforePregnancyNo" name="snusBeforePregnancy" value="false"> No
+              </div>
+          </div>
+      </div>
+
+      <!-- Smoking Habits at Registration -->
+      <div class="mb-3">
+          <label class="form-label">Smoking Habits at Registration</label>
+          <div class="mb-3">
+              <label for="quitSmokingDays" class="form-label">Days Since Quitting Smoking</label>
+              <input type="text" class="form-control" id="quitSmokingDays" placeholder="e.g., 10, 30, never quit" required>
+              <div class="invalid-feedback">Please enter the number of days since quitting smoking.</div>
+          </div>
+          <div class="mb-3">
+              <label for="snusAtRegistration" class="form-label">Use of Snus at Registration</label>
+              <div>
+                  <input type="checkbox" id="snusAtRegistrationYes" name="snusAtRegistration" value="true"> Yes
+                  <input type="checkbox" id="snusAtRegistrationNo" name="snusAtRegistration" value="false"> No
+              </div>
+          </div>
+      </div>
+
+      <!-- Alcohol Use -->
+      <div class="mb-3">
+          <label class="form-label">Alcohol Use</label>
+          <div class="mb-3">
+              <label for="alcoholBeforePregnancy" class="form-label">Alcohol Use Before Pregnancy</label>
+              <input type="text" class="form-control" id="alcoholBeforePregnancy" placeholder="e.g., occasional, none" required>
+              <div class="invalid-feedback">Please enter the alcohol use before pregnancy.</div>
+          </div>
+          <div class="mb-3">
+              <label for="alcoholDuringPregnancy" class="form-label">Alcohol Use During Pregnancy</label>
+              <input type="text" class="form-control" id="alcoholDuringPregnancy" placeholder="e.g., occasional, none" required>
+              <div class="invalid-feedback">Please enter the alcohol use during pregnancy.</div>
+          </div>
+          <div class="mb-3">
+              <label for="auditScore" class="form-label">AUDIT Score</label>
+              <input type="text" class="form-control" id="auditScore" placeholder="Enter AUDIT score if available" required>
+              <div class="invalid-feedback">Please enter the AUDIT score.</div>
+          </div>
+      </div>
+
+      <!-- Physical Activity -->
+      <div class="mb-3">
+          <label class="form-label">Physical Activity</label>
+          <div class="mb-3">
+              <label for="physicalActivityBeforePregnancy" class="form-label">Minutes per Week Before Pregnancy</label>
+              <input type="number" class="form-control" id="physicalActivityBeforePregnancy" placeholder="e.g., 150, 0" required>
+              <div class="invalid-feedback">Please enter the minutes of physical activity per week before pregnancy.</div>
+          </div>
+          <div class="mb-3">
+              <label for="physicalActivityDuringPregnancy" class="form-label">Current Minutes per Week</label>
+              <input type="number" class="form-control" id="physicalActivityDuringPregnancy" placeholder="e.g., 30, 60" required>
+              <div class="invalid-feedback">Please enter the current minutes of physical activity per week.</div>
+          </div>
+      </div>
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Mental Health and Support Section -->
+<div id="mentalHealthSupport" class="tab-pane hide">
+  <h3>Mental Health and Support</h3>
+  <form id="mentalHealthSupportForm" novalidate>
+
+      <!-- Mental Health Screening -->
+      <h5>Mental Health Screening</h5>
+      <div class="mb-3">
+          <label class="form-label">Anxiety or Depression</label>
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="previousEpisodes" name="mentalHealth" value="previous">
+              <label class="form-check-label" for="previousEpisodes">Previous Episodes</label>
+          </div>
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="currentEpisodes" name="mentalHealth" value="current">
+              <label class="form-check-label" for="currentEpisodes">Current Episodes</label>
+          </div>
+      </div>
+
+      <!-- Stress Levels -->
+      <div class="mb-3">
+          <label for="stressLevelBefore" class="form-label">Stress Level Before Pregnancy</label>
+          <input type="text" class="form-control" id="stressLevelBefore" placeholder="e.g., low, moderate, high" required>
+          <div class="invalid-feedback">Please enter the stress level before pregnancy.</div>
+      </div>
+
+      <div class="mb-3">
+          <label for="currentStressLevel" class="form-label">Current Stress Level</label>
+          <input type="text" class="form-control" id="currentStressLevel" placeholder="e.g., low, moderate, high" required>
+          <div class="invalid-feedback">Please enter the current stress level.</div>
+      </div>
+
+      <!-- Support from Relatives -->
+      <h5>Support from Relatives</h5>
+      <div class="mb-3">
+          <label for="supportAvailable" class="form-label">Is Support Available?</label>
+          <div>
+              <input type="checkbox" id="supportAvailableYes" name="supportAvailable" value="true"> Yes
+              <input type="checkbox" id="supportAvailableNo" name="supportAvailable" value="false"> No
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="livingSituationSupport" class="form-label">Living Situation</label>
+          <input type="text" class="form-control" id="livingSituationSupport" placeholder="e.g., living with relatives, alone" required>
+          <div class="invalid-feedback">Please enter the living situation.</div>
+      </div>
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Previous Pregnancies Section -->
+<div id="previousPregnancies" class="tab-pane hide">
+  <h3>Previous Pregnancies</h3>
+  <form id="previousPregnanciesForm" novalidate>
+      
+      <!-- Number of Deliveries -->
+      <div class="mb-3">
+          <label for="numberOfDeliveries" class="form-label">Number of Deliveries</label>
+          <input type="number" class="form-control" id="numberOfDeliveries" placeholder="Enter the number of deliveries" required>
+          <div class="invalid-feedback">Please enter the number of deliveries.</div>
+      </div>
+
+      <!-- Year of Pregnancy -->
+      <div class="mb-3">
+          <label for="pregnancyYear" class="form-label">Year of Pregnancy</label>
+          <input type="date" class="form-control" id="pregnancyYear" required>
+          <div class="invalid-feedback">Please enter the year of pregnancy.</div>
+      </div>
+
+      <!-- Abortion -->
+      <div class="mb-3">
+          <label for="abortion" class="form-label">Abortion</label>
+          <div>
+              <input type="checkbox" id="abortionYes" name="abortion" value="true"> Yes
+              <input type="checkbox" id="abortionNo" name="abortion" value="false"> No
+          </div>
+      </div>
+
+      <!-- Miscarriage -->
+      <div class="mb-3">
+          <label for="miscarriage" class="form-label">Miscarriage</label>
+          <div>
+              <input type="checkbox" id="miscarriageYes" name="miscarriage" value="true"> Yes
+              <input type="checkbox" id="miscarriageNo" name="miscarriage" value="false"> No
+          </div>
+      </div>
+
+      <!-- Children Born Alive -->
+      <div class="mb-3">
+          <label for="childrenBornAlive" class="form-label">Children Born Alive</label>
+          <div>
+              <input type="checkbox" id="childrenBornAliveYes" name="childrenBornAlive" value="true"> Yes
+              <input type="checkbox" id="childrenBornAliveNo" name="childrenBornAlive" value="false"> No
+          </div>
+      </div>
+
+      <!-- Delivery Type -->
+      <div class="mb-3">
+          <label for="deliveryType" class="form-label">Delivery Type</label>
+          <select class="form-control" id="deliveryType" required>
+              <option value="">Select Delivery Type</option>
+              <option value="vaginal">Vaginal</option>
+              <option value="c-section">C-section</option>
+              <option value="assisted">Assisted Delivery</option>
+              <option value="waterBirth">Water Birth</option>
+              <option value="natural">Natural Delivery</option>
+              <option value="forceps">Forceps Delivery</option>
+              <option value="vacuum">Vacuum Extraction</option>
+              <option value="breech">Breech Birth</option>
+              <option value="other">Other</option>
+          </select>
+          <div class="invalid-feedback">Please select a delivery type.</div>
+      </div>
+
+      <!-- Child Birth Details -->
+      <h5>Child Birth Details</h5>
+
+      <!-- Date of Birth -->
+      <div class="mb-3">
+          <label for="birthDate" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" id="birthDate" required>
+          <div class="invalid-feedback">Please enter the child's date of birth.</div>
+      </div>
+
+      <!-- Child's Gender -->
+      <div class="mb-3">
+          <label for="gender" class="form-label">Child's Gender</label>
+          <select class="form-control" id="gender" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+          </select>
+          <div class="invalid-feedback">Please select the child's gender.</div>
+      </div>
+
+      <!-- Birth Weight -->
+      <div class="mb-3">
+          <label for="birthWeight" class="form-label">Birth Weight (grams)</label>
+          <input type="number" class="form-control" id="birthWeight" required>
+          <div class="invalid-feedback">Please enter the child's birth weight.</div>
+      </div>
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Medications and Supplements Section -->
+<div id="medicationsSupplements" class="tab-pane hide">
+  <h3>Medications and Supplements</h3>
+  <form id="medicationsSupplementsForm" novalidate>
+      
+      <!-- Medications Section -->
+      <h5>Medications</h5>
+      <div class="mb-3">
+          <label for="medicationName" class="form-label">Medication Name</label>
+          <input type="text" class="form-control" id="medicationName" placeholder="e.g., Paracetamol" required>
+          <div class="invalid-feedback">Please enter the medication name.</div>
+      </div>
+      <div class="mb-3">
+          <label for="medicationDosage" class="form-label">Dosage</label>
+          <input type="text" class="form-control" id="medicationDosage" placeholder="e.g., 500 mg, 3 times a day" required>
+          <div class="invalid-feedback">Please enter the dosage.</div>
+      </div>
+      <div class="mb-3">
+          <label for="medicationStartDate" class="form-label">Start Date</label>
+          <input type="date" class="form-control" id="medicationStartDate" required>
+          <div class="invalid-feedback">Please enter the start date.</div>
+      </div>
+      <div class="mb-3">
+          <label for="indication" class="form-label">Indication</label>
+          <input type="text" class="form-control" id="indication" placeholder="e.g., Pain relief" required>
+          <div class="invalid-feedback">Please enter the indication.</div>
+      </div>
+
+      <!-- Supplements Section -->
+      <h5>Supplements</h5>
+      <div class="mb-3">
+          <label for="supplementName" class="form-label">Supplement Name</label>
+          <input type="text" class="form-control" id="supplementName" placeholder="e.g., Folic Acid" required>
+          <div class="invalid-feedback">Please enter the supplement name.</div>
+      </div>
+      <div class="mb-3">
+          <label for="supplementDosage" class="form-label">Dosage</label>
+          <input type="text" class="form-control" id="supplementDosage" placeholder="e.g., 400 mcg, once a day" required>
+          <div class="invalid-feedback">Please enter the dosage.</div>
+      </div>
+      <div class="mb-3">
+          <label for="supplementStartDate" class="form-label">Start Date</label>
+          <input type="date" class="form-control" id="supplementStartDate" required>
+          <div class="invalid-feedback">Please enter the start date.</div>
+      </div>
+
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Laboratory Results Section -->
+<div id="laboratoryResults" class="tab-pane hide">
+  <h3>Laboratory Results</h3>
+  <form id="laboratoryResultsForm" novalidate>
+      
+      <!-- Blood Tests Section -->
+      <h5>Blood Tests</h5>
+      <div class="mb-3">
+          <label for="hemoglobin" class="form-label">Hemoglobin (g/dL)</label>
+          <input type="number" step="0.1" class="form-control" id="hemoglobin" placeholder="e.g., 13.5" required>
+          <div class="invalid-feedback">Please enter the hemoglobin level.</div>
+      </div>
+      <div class="mb-3">
+          <label for="bloodType" class="form-label">Blood Type</label>
+          <input type="text" class="form-control" id="bloodType" placeholder="e.g., O+" required>
+          <div class="invalid-feedback">Please enter the blood type.</div>
+      </div>
+      <div class="mb-3">
+          <label for="hivStatus" class="form-label">HIV Status</label>
+          <input type="text" class="form-control" id="hivStatus" placeholder="e.g., Negative" required>
+          <div class="invalid-feedback">Please enter the HIV status.</div>
+      </div>
+      <div class="mb-3">
+          <label for="syphilisStatus" class="form-label">Syphilis Status</label>
+          <input type="text" class="form-control" id="syphilisStatus" placeholder="e.g., Negative" required>
+          <div class="invalid-feedback">Please enter the syphilis status.</div>
+      </div>
+
+      <!-- Urinalysis Section -->
+      <h5>Urinalysis</h5>
+      <div class="mb-3">
+          <label for="proteinLevel" class="form-label">Protein Level</label>
+          <input type="text" class="form-control" id="proteinLevel" placeholder="e.g., Negative" required>
+          <div class="invalid-feedback">Please enter the protein level.</div>
+      </div>
+      <div class="mb-3">
+          <label for="glucoseLevel" class="form-label">Glucose Level</label>
+          <input type="text" class="form-control" id="glucoseLevel" placeholder="e.g., Normal" required>
+          <div class="invalid-feedback">Please enter the glucose level.</div>
+      </div>
+
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Care Plan Section -->
+<div id="carePlan" class="tab-pane hide">
+  <h3>Care Plan</h3>
+  <form id="carePlanForm" novalidate>
+
+      <!-- Upcoming Appointments -->
+      <h5>Upcoming Appointments</h5>
+      <div class="mb-3">
+          <label for="appointmentDate" class="form-label">Appointment Date</label>
+          <input type="date" class="form-control" id="appointmentDate" required>
+          <div class="invalid-feedback">Please select the appointment date.</div>
+      </div>
+      <div class="mb-3">
+          <label for="appointmentReason" class="form-label">Reason for Appointment</label>
+          <input type="text" class="form-control" id="appointmentReason" placeholder="e.g., Routine Check-up" required>
+          <div class="invalid-feedback">Please enter the reason for the appointment.</div>
+      </div>
+
+      <!-- Fetal Activity Monitoring -->
+      <h5>Fetal Activity Monitoring</h5>
+      <div class="mb-3">
+          <label for="movementsFrequency" class="form-label">Movements Frequency</label>
+          <input type="text" class="form-control" id="movementsFrequency" placeholder="e.g., Active, Less Active" required>
+          <div class="invalid-feedback">Please enter the fetal movements frequency.</div>
+      </div>
+      <div class="mb-3">
+          <label for="fetalPosition" class="form-label">Fetal Position</label>
+          <input type="text" class="form-control" id="fetalPosition" placeholder="e.g., Cephalic, Breech" required>
+          <div class="invalid-feedback">Please enter the fetal position.</div>
+      </div>
+
+      <!-- Further Follow-Up Notes -->
+      <div class="mb-3">
+          <label for="followUpNotes" class="form-label">Further Follow-Up Notes</label>
+          <textarea class="form-control" id="followUpNotes" rows="3" placeholder="e.g., Follow up for lab tests or ultrasound" required></textarea>
+          <div class="invalid-feedback">Please enter further follow-up notes.</div>
+      </div>
+
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Midwife Notes Section -->
+<div id="midwifeNotes" class="tab-pane hide">
+  <h3>Midwife Notes</h3>
+  <form id="midwifeNotesForm" novalidate>
+
+      <!-- Date -->
+      <div class="mb-3">
+          <label for="noteDate" class="form-label">Date</label>
+          <input type="date" class="form-control" id="noteDate" required>
+          <div class="invalid-feedback">Please select the date.</div>
+      </div>
+
+      <!-- Time -->
+      <div class="mb-3">
+          <label for="noteTime" class="form-label">Time</label>
+          <input type="time" class="form-control" id="noteTime" required>
+          <div class="invalid-feedback">Please select the time.</div>
+      </div>
+
+      <!-- Note Type -->
+      <div class="mb-3">
+          <label for="noteType" class="form-label">Note Type</label>
+          <input type="text" class="form-control" id="noteType" placeholder="e.g., Routine Check-up, Emergency" required>
+          <div class="invalid-feedback">Please enter the note type.</div>
+      </div>
+
+      <!-- Summary Section -->
+      <h5>Summary</h5>
+      <div class="mb-3">
+          <label for="generalWellbeing" class="form-label">General Wellbeing</label>
+          <input type="text" class="form-control" id="generalWellbeing" placeholder="e.g., Stable, Good" required>
+          <div class="invalid-feedback">Please enter the general wellbeing.</div>
+      </div>
+      <div class="mb-3">
+          <label for="bloodPressureStatus" class="form-label">Blood Pressure Status</label>
+          <input type="text" class="form-control" id="bloodPressureStatus" placeholder="e.g., Normal, High" required>
+          <div class="invalid-feedback">Please enter the blood pressure status.</div>
+      </div>
+      <div class="mb-3">
+          <label for="fetalMovements" class="form-label">Fetal Movements</label>
+          <input type="text" class="form-control" id="fetalMovements" placeholder="e.g., Active, Decreased" required>
+          <div class="invalid-feedback">Please enter the fetal movements status.</div>
+      </div>
+      <div class="mb-3">
+          <label for="contractionsStatus" class="form-label">Contractions Status</label>
+          <input type="text" class="form-control" id="contractionsStatus" placeholder="e.g., Frequent, Mild" required>
+          <div class="invalid-feedback">Please enter the contractions status.</div>
+      </div>
+      <div class="mb-3">
+          <label for="medicationsGiven" class="form-label">Medications</label>
+          <input type="text" class="form-control" id="medicationsGiven" placeholder="e.g., Oxytocin, Antibiotics" required>
+          <div class="invalid-feedback">Please enter the medications given.</div>
+      </div>
+      <div class="mb-3">
+          <label for="activityStatus" class="form-label">Activity Status</label>
+          <input type="text" class="form-control" id="activityStatus" placeholder="e.g., Resting, Active" required>
+          <div class="invalid-feedback">Please enter the activity status.</div>
+      </div>
+
+      <!-- Plan Section -->
+      <h5>Plan</h5>
+      <div class="mb-3">
+          <label for="nextSteps" class="form-label">Next Steps</label>
+          <input type="text" class="form-control" id="nextSteps" placeholder="e.g., Continue monitoring, Increase medication" required>
+          <div class="invalid-feedback">Please enter the next steps.</div>
+      </div>
+      <div class="mb-3">
+          <label for="expectedDeliveryType" class="form-label">Expected Delivery Type</label>
+          <input type="text" class="form-control" id="expectedDeliveryType" placeholder="e.g., Vaginal, C-section" required>
+          <div class="invalid-feedback">Please enter the expected delivery type.</div>
+      </div>
+      <div class="mb-3">
+          <label for="deliveryLikelihood" class="form-label">Likelihood of Delivery</label>
+          <input type="text" class="form-control" id="deliveryLikelihood" placeholder="e.g., Imminent, Unlikely" required>
+          <div class="invalid-feedback">Please enter the likelihood of delivery.</div>
+      </div>
+      <div class="mb-3">
+          <label for="monitoringPlan" class="form-label">Monitoring Plan</label>
+          <textarea class="form-control" id="monitoringPlan" rows="3" placeholder="e.g., Monitor contractions every 30 minutes" required></textarea>
+          <div class="invalid-feedback">Please enter the monitoring plan.</div>
+      </div>
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Labor and Delivery Section -->
+<div id="laborDelivery" class="tab-pane hide">
+  <h3>Labor and Delivery</h3>
+  <form id="laborDeliveryForm" novalidate>
+
+      <!-- Delivery Details -->
+      <h5>Delivery Details</h5>
+      <div class="mb-3">
+          <label for="deliveryDate" class="form-label">Delivery Date</label>
+          <input type="date" class="form-control" id="deliveryDate" required>
+          <div class="invalid-feedback">Please enter the delivery date.</div>
+      </div>
+      <div class="mb-3">
+          <label for="deliveryType" class="form-label">Delivery Type</label>
+          <input type="text" class="form-control" id="deliveryType" placeholder="e.g., Vaginal, C-section" required>
+          <div class="invalid-feedback">Please enter the delivery type.</div>
+      </div>
+      <div class="mb-3">
+          <label for="babySex" class="form-label">Sex of Baby</label>
+          <input type="text" class="form-control" id="babySex" placeholder="e.g., Male, Female" required>
+          <div class="invalid-feedback">Please enter the sex of the baby.</div>
+      </div>
+      <div class="mb-3">
+          <label for="gestationalAge" class="form-label">Gestational Age</label>
+          <input type="text" class="form-control" id="gestationalAge" placeholder="e.g., 39 weeks" required>
+          <div class="invalid-feedback">Please enter the gestational age.</div>
+      </div>
+      <div class="mb-3">
+          <label for="birthWeight" class="form-label">Birth Weight (grams)</label>
+          <input type="number" class="form-control" id="birthWeight" required>
+          <div class="invalid-feedback">Please enter the birth weight.</div>
+      </div>
+      <div class="mb-3">
+          <label for="birthLength" class="form-label">Birth Length (cm)</label>
+          <input type="number" class="form-control" id="birthLength" required>
+          <div class="invalid-feedback">Please enter the birth length.</div>
+      </div>
+      <div class="mb-3">
+          <label for="headCircumference" class="form-label">Head Circumference (cm)</label>
+          <input type="number" class="form-control" id="headCircumference" required>
+          <div class="invalid-feedback">Please enter the head circumference.</div>
+      </div>
+
+      <!-- Apgar Score -->
+      <h5>Apgar Score</h5>
+      <div class="mb-3">
+          <label for="apgar1min" class="form-label">1 Minute</label>
+          <input type="number" class="form-control" id="apgar1min" required>
+          <div class="invalid-feedback">Please enter the 1-minute Apgar score.</div>
+      </div>
+      <div class="mb-3">
+          <label for="apgar5min" class="form-label">5 Minutes</label>
+          <input type="number" class="form-control" id="apgar5min" required>
+          <div class="invalid-feedback">Please enter the 5-minute Apgar score.</div>
+      </div>
+      <div class="mb-3">
+          <label for="apgar10min" class="form-label">10 Minutes</label>
+          <input type="number" class="form-control" id="apgar10min" required>
+          <div class="invalid-feedback">Please enter the 10-minute Apgar score.</div>
+      </div>
+
+      <!-- Postnatal Observation -->
+      <h5>Postnatal Observation</h5>
+      <div class="mb-3">
+          <label for="babyStatus" class="form-label">Baby Status</label>
+          <input type="text" class="form-control" id="babyStatus" placeholder="e.g., Healthy, Distressed" required>
+          <div class="invalid-feedback">Please enter the baby's status.</div>
+      </div>
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<!-- Partograph Section -->
+<div id="partograph" class="tab-pane hide">
+  <h3>Partograph</h3>
+  <form id="partographForm" novalidate>
+      
+      <!-- Labor Progression -->
+      <h5>Labor Progression</h5>
+      <div class="mb-3">
+          <label for="laborTime" class="form-label">Time Interval (hrs)</label>
+          <input type="number" class="form-control" id="laborTime" required>
+          <div class="invalid-feedback">Please enter the time interval.</div>
+      </div>
+      <div class="mb-3">
+          <label for="cervicalDilation" class="form-label">Cervical Dilation (cm)</label>
+          <input type="number" class="form-control" id="cervicalDilation" required>
+          <div class="invalid-feedback">Please enter the cervical dilation in cm.</div>
+      </div>
+      <div class="mb-3">
+          <label for="fetalDescent" class="form-label">Fetal Descent Station</label>
+          <input type="number" class="form-control" id="fetalDescent" required>
+          <div class="invalid-feedback">Please enter the fetal descent station.</div>
+      </div>
+
+      <!-- Contractions -->
+      <h5>Contractions</h5>
+      <div class="mb-3">
+          <label for="contractionFrequency" class="form-label">Contraction Frequency (per minute)</label>
+          <input type="number" class="form-control" id="contractionFrequency" required>
+          <div class="invalid-feedback">Please enter the contraction frequency.</div>
+      </div>
+      <div class="mb-3">
+          <label for="contractionIntensity" class="form-label">Contraction Intensity</label>
+          <input type="text" class="form-control" id="contractionIntensity" required>
+          <div class="invalid-feedback">Please enter the contraction intensity.</div>
+      </div>
+
+      <!-- Fetal Heart Rate -->
+      <h5>Fetal Heart Rate</h5>
+      <div class="mb-3">
+          <label for="heartRateTime" class="form-label">Time</label>
+          <input type="time" class="form-control" id="heartRateTime" required>
+          <div class="invalid-feedback">Please enter the fetal heart rate time.</div>
+      </div>
+      <div class="mb-3">
+          <label for="heartRateBPM" class="form-label">Heart Rate (BPM)</label>
+          <input type="number" class="form-control" id="heartRateBPM" required>
+          <div class="invalid-feedback">Please enter the heart rate in BPM.</div>
+      </div>
+
+      <!-- Maternal Pulse -->
+      <h5>Maternal Pulse</h5>
+      <div class="mb-3">
+          <label for="pulseTime" class="form-label">Pulse Time</label>
+          <input type="time" class="form-control" id="pulseTime" required>
+          <div class="invalid-feedback">Please enter the maternal pulse time.</div>
+      </div>
+      <div class="mb-3">
+          <label for="pulseBPM" class="form-label">Pulse (BPM)</label>
+          <input type="number" class="form-control" id="pulseBPM" required>
+          <div class="invalid-feedback">Please enter the pulse rate in BPM.</div>
+      </div>
+
+      <!-- Section for Drawing the Partograph -->
+      <h5>Partograph Chart</h5>
+      <div class="mb-3">
+          <canvas id="partographCanvas" width="800" height="400" style="border:1px solid #000000;"></canvas>
+      </div>
+      <div class="mb-3">
+          <button type="button" class="btn btn-secondary" onclick="drawPartograph()">Draw Partograph</button>
+      </div>
+  </form>
+
+  <!-- Button Row for Navigation -->
+  <div class="button-row">
+      <!-- Back Button: Navigates to the previous service -->
+      <button id="backButton" type="button" class="btn btn-secondary">Back</button>
+
+      <!-- Save & Continue Button: Saves current data and navigates to the next service -->
+      <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+<script>
+  function drawPartograph() {
+      const canvas = document.getElementById('partographCanvas');
+      const context = canvas.getContext('2d');
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = "#000";
+      context.fillText("Partograph Chart Drawing Placeholder", 300, 200); // Example text, can be replaced with actual drawing logic
+  }
+</script>
+
+    <!-- More sections for other services can be added similarly... -->
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FontAwesome Icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+<script>
+    function showHome() {
+        hideAllSections();
+        document.getElementById('homeSection').classList.add('active');
+        document.getElementById('otherServicesNav').style.display = 'none';  // Hide services nav
+    }
+
+    function showRegisterPatient() {
+        hideAllSections();
+        document.getElementById('patientRegistration').classList.add('active');
+        document.getElementById('otherServicesNav').style.display = 'none';  // Hide services nav
+    }
+
+    function showOtherServices() {
+        hideAllSections();
+        document.getElementById('otherServicesNav').style.display = 'block';  // Show services nav
+        document.getElementById('healthcareFacility').classList.add('active');  // Show the first service by default
+    }
+
+    function showService(serviceId) {
+        hideAllSections();
+        document.getElementById(serviceId).classList.add('active');  // Show the selected service
+        document.getElementById('otherServicesNav').style.display = 'block';  // Ensure top navigation remains visible
+    }
+
+    function hideAllSections() {
+        const sections = document.querySelectorAll('.tab-pane');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+    }
+
+    // Show Home section by default on load
+    document.addEventListener('DOMContentLoaded', () => {
+        showHome();
+    });
+</script>
+</body>
+</html>
