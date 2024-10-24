@@ -328,7 +328,7 @@ button[type="submit"]:hover, button[type="button"]:hover {
     <div id="sidebar">
         <!-- Sidebar Header -->
         <div class="sidebar-header">
-            <img src="images/Prime.png" class="sidebar-image">
+            <img src="Prime.jpeg" class="sidebar-image" width="100px" height="100px">
             <h3>Maternal Portal</h3>
             <p>Maternal Healthcare</p>
         </div>
@@ -378,12 +378,12 @@ button[type="submit"]:hover, button[type="button"]:hover {
         <!-- Patient Services Navigation (Initially Hidden) -->
 <div id="otherServicesNav">
     <ul class="services-list">
-        <li><a href="#" onclick="showService('medicalHistory')">HealthProfile</a></li>
-        <li><a href="#" onclick="showService('mentalHealthMedicalHistory')">HealthHistory</a></li>
-        <li><a href="#" onclick="showService('currentPregnancyDetails')">Pregnancy</a></li>
         <li><a href="#" onclick="showService('socialLivingConditionsAndLifestyleHabits')">SocialLifestyle</a></li>
-        <li><a href="#" onclick="showService('healthExamination')">Examination</a></li>
+        <li><a href="#" onclick="showService('medicalHistory')">risk profile</a></li>
+        <li><a href="#" onclick="showService('mentalHealthMedicalHistory')">medical info</a></li>
         <li><a href="#" onclick="showService('previousPregnancies')">PreviousPregnancies</a></li>
+        <li><a href="#" onclick="showService('currentPregnancyDetails')">Pregnancy</a></li>
+        <li><a href="#" onclick="showService('healthExamination')">Examination</a></li>
         <li><a href="#" onclick="showService('laboratoryResults')">LabResults</a></li>
         <li><a href="#" onclick="showService('carePlan')">Care Plan</a></li>
         <li><a href="#" onclick="showService('midwifeNotes')">Midwife Notes</a></li>
@@ -2335,7 +2335,7 @@ function handleContactTypeChange() {
     document.getElementById('otherServicesNav').style.display = 'block';
 
     // Automatically show the first service after viewing patient details (Medical History)
-    document.getElementById('medicalHistory').classList.add('active'); 
+    document.getElementById('socialLivingConditionsAndLifestyleHabits').classList.add('active'); 
 }
 
 function hideAllSections() {
