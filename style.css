@@ -4,8 +4,8 @@ body {
     height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #f4f6f9;
+    margin: 0;
 }
-
 
 /* Admin Icon at top-right */
 #adminIcon {
@@ -71,6 +71,7 @@ body {
 /* Buttons */
 button {
     border-radius: 5px;
+    padding: 10px 15px;
 }
 
 #showFiltersBtn {
@@ -163,10 +164,11 @@ button.btn-danger {
     text-decoration: underline;
 }
 
-/* Top Navigation Bar Styling (Updated) */
+/* Top Navigation Bar Styling (Updated for Wrapping) */
 .top-nav-bar {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap; /* Allow wrapping if the screen width is too narrow */
+    justify-content: flex-start;
     align-items: center;
     background-color: #E9F5EB; /* Light green background */
     border: 2px solid #34C759; /* Dark green border */
@@ -178,6 +180,7 @@ button.btn-danger {
 .top-nav-bar a {
     display: block;
     padding: 10px 20px;
+    margin: 5px;
     color: #000; /* Black text color */
     font-size: 16px;
     font-weight: bold;
@@ -200,3 +203,109 @@ button.btn-danger {
     color: white;
 }
 
+/* Make sure the top navigation bar wraps if necessary */
+@media (max-width: 768px) {
+    .top-nav-bar {
+        flex-direction: column;
+    }
+}
+
+/* Adjustments for Small Screens */
+@media (max-width: 576px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    button[type="submit"], button[type="button"] {
+        grid-column: 1;
+    }
+
+    .top-nav-bar a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    #content {
+        padding: 10px;
+    }
+}
+
+/* Sidebar Menu */
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+    background-color: #2c8f2a;
+    color: white;
+}
+
+.sidebar-menu a.active {
+    background-color: #2c8f2a;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Calendar and Notification Styles */
+#calendar, #notifications {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Journal Section */
+.journal-section {
+    margin-bottom: 20px;
+}
+
+.journal-section h3 {
+    color: #2c8f2a;
+    margin-bottom: 15px;
+}
+
+.journal-section .journal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.journal-section .journal-table th, 
+.journal-section .journal-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.journal-section .journal-table th {
+    background-color: #2c8f2a;
+    color: white;
+}
+
+/* Midwife Notes */
+.midwife-notes-section {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 2px solid #2c8f2a;
+    border-radius: 10px;
+}
+
+.midwife-notes-section h5 {
+    color: #2c8f2a;
+}
+
+.midwife-notes-section textarea {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
