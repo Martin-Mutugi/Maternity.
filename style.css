@@ -23,7 +23,7 @@ body {
 /* Content Area */
 #content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 15px; /* Reduced padding */
     background-color: #ffffff;
     overflow-y: auto;
 }
@@ -47,7 +47,7 @@ body {
 /* Home Section */
 #homeSection h2 {
     color: #2c8f2a; /* Green color to match the design */
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 /* Table Styling */
@@ -59,7 +59,7 @@ body {
 #registeredPatientsTable th, 
 #registeredPatientsTable td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 6px; /* Reduced padding for table cells */
     text-align: left;
 }
 
@@ -71,7 +71,8 @@ body {
 /* Buttons */
 button {
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 6px 10px; /* Reduced button padding */
+    font-size: 12px; /* Reduced button font size */
 }
 
 #showFiltersBtn {
@@ -94,7 +95,7 @@ button {
 .tab-pane.active {
     display: block;
     border: 2px solid #2c8f2a; /* Green border for forms */
-    padding: 20px;
+    padding: 10px; /* Further reduced padding */
     border-radius: 10px;
     background-color: #f9f9f9;
 }
@@ -102,28 +103,33 @@ button {
 /* Form Elements */
 .form-label {
     font-weight: bold;
+    font-size: 11px; /* Further reduced label font size */
+    margin-bottom: 3px; /* Further reduced space under labels */
 }
 
 .form-control {
     border-radius: 5px;
     border: 1px solid #ced4da;
-    padding: 10px;
+    padding: 3px; /* Further reduced padding inside inputs */
+    font-size: 11px; /* Further reduced input font size */
+    margin-bottom: 5px; /* Further reduced space between inputs */
 }
 
 /* Forms in Two Columns */
 form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr; /* Keep two columns */
+    gap: 8px; /* Further reduce gap between columns */
 }
 
+/* Buttons Styling */
 button[type="submit"], button[type="button"] {
     grid-column: span 2;
     background-color: #2c8f2a;
     color: white;
     border: none;
-    padding: 10px;
-    font-size: 16px;
+    padding: 6px 10px; /* Reduced button padding */
+    font-size: 12px; /* Further reduced button font size */
     cursor: pointer;
 }
 
@@ -131,12 +137,37 @@ button[type="submit"]:hover, button[type="button"]:hover {
     background-color: #237d23;
 }
 
+/* Warning and Danger Buttons */
 button.btn-warning {
     background-color: #ffc107;
+    font-size: 12px; /* Further reduced button font size */
+    padding: 6px 10px; /* Reduced padding */
 }
 
 button.btn-danger {
     background-color: #dc3545;
+    font-size: 12px; /* Reduced button font size */
+    padding: 6px 10px; /* Reduced padding */
+}
+
+/* Reduce spacing for grid layout */
+.grid-item {
+    margin-bottom: 3px; /* Further reduced space between grid items */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr; /* Switch to one column on small screens */
+    }
+
+    .form-control, .form-label {
+        font-size: 10px; /* Further reduce font size on mobile */
+    }
+
+    button {
+        font-size: 10px; /* Smaller button text on mobile */
+    }
 }
 
 /* Sidebar Link Active State */
@@ -150,13 +181,13 @@ button.btn-danger {
     display: flex;
     justify-content: space-around;
     background-color: #2c8f2a;
-    padding: 10px;
+    padding: 8px; /* Reduced padding */
     border-radius: 5px;
 }
 
 .services-nav a {
     color: white;
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size */
     text-decoration: none;
 }
 
@@ -173,16 +204,16 @@ button.btn-danger {
     background-color: #E9F5EB; /* Light green background */
     border: 2px solid #34C759; /* Dark green border */
     border-radius: 25px; /* Rounded edges */
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .top-nav-bar a {
     display: block;
-    padding: 10px 20px;
+    padding: 8px 15px; /* Further reduced padding */
     margin: 5px;
     color: #000; /* Black text color */
-    font-size: 16px;
+    font-size: 14px; /* Further reduced font size */
     font-weight: bold;
     text-decoration: none;
     text-align: center;
@@ -221,12 +252,12 @@ button.btn-danger {
     }
 
     .top-nav-bar a {
-        font-size: 14px;
-        padding: 8px 10px;
+        font-size: 12px;
+        padding: 6px 8px; /* Further reduced padding */
     }
 
     #content {
-        padding: 10px;
+        padding: 8px; /* Further reduced padding */
     }
 }
 
@@ -238,7 +269,7 @@ button.btn-danger {
 
 .sidebar-menu a {
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 15px; /* Reduced padding */
     display: block;
     color: #333;
     transition: background-color 0.3s ease;
@@ -260,17 +291,17 @@ button.btn-danger {
     padding: 10px;
     background-color: #f4f4f4;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 /* Journal Section */
 .journal-section {
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .journal-section h3 {
     color: #2c8f2a;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Reduced margin */
 }
 
 .journal-section .journal-table {
@@ -281,7 +312,7 @@ button.btn-danger {
 .journal-section .journal-table th, 
 .journal-section .journal-table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 6px; /* Reduced padding for table cells */
     text-align: left;
 }
 
@@ -292,7 +323,7 @@ button.btn-danger {
 
 /* Midwife Notes */
 .midwife-notes-section {
-    padding: 15px;
+    padding: 10px; /* Reduced padding */
     background-color: #f9f9f9;
     border: 2px solid #2c8f2a;
     border-radius: 10px;
@@ -304,8 +335,8 @@ button.btn-danger {
 
 .midwife-notes-section textarea {
     width: 100%;
-    height: 150px;
+    height: 120px; /* Reduced textarea height */
     border-radius: 5px;
     border: 1px solid #ced4da;
-    padding: 10px;
+    padding: 5px; /* Reduced padding */
 }
