@@ -155,7 +155,6 @@ body {
         font-size: 12px;
     }
 }
-
 /* Forms Styling */
 .tab-pane {
     display: none;
@@ -164,17 +163,27 @@ body {
 .tab-pane.active {
     display: block;
     animation: fadeIn 0.3s ease-in-out;
+    padding: 6px; /* Reduced padding inside the form */
+    border-radius: 6px; /* Smooth rounded corners */
+    border: 1px solid #28a745; /* Thinner green border */
+    margin: 8px auto; /* Less margin to make the form tighter */
+    max-width: 85%; /* Reduce max width to prevent the form from becoming too wide */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff; /* Clean white background */
 }
 
+/* Form container */
 form {
-    background-color: #f4f6f9;
-    padding: 12px; /* Reduced padding for less space */
-    border-radius: 8px;
+    background-color: #e5ecee;
+    padding: 4px; /* Reduced padding for less space */
+    border-radius: 5px;
     border: 2px solid #28a745;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    display: grid; /* Use grid layout for better alignment */
+    display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
-    gap: 10px; /* Space between grid items */
+    gap: 2px; /* Reduced space between grid items */
+    max-width: 800px; /* Limit the width of the form */
+    margin: auto; /* Center the form */
 }
 
 /* Input Fields */
@@ -182,9 +191,10 @@ form {
     background-color: #ffffff;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    padding: 6px; /* Reduced padding for compact input fields */
-    font-size: 12px; /* Slightly smaller font size */
+    padding: 2px; /* Reduced padding for compact input fields */
+    font-size: 12px; /* Smaller font size */
     transition: border-color 0.3s ease-in-out;
+    margin-bottom: 4px; /* Reduced margin between fields */
 }
 
 /* Custom Dropdown */
@@ -196,8 +206,8 @@ form {
 
 .custom-dropdown select {
     width: 100%;
-    padding: 6px; /* Reduced padding */
-    font-size: 12px; /* Slightly reduced font size */
+    padding: 4px; /* Reduced padding */
+    font-size: 12px; /* Smaller font size */
     border-radius: 4px;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -218,53 +228,78 @@ form {
 .form-label {
     font-weight: bold;
     color: #343a40;
-    margin-bottom: 3px; /* Reduced margin for compactness */
+    margin-bottom: 2px; /* Reduced margin for compactness */
     font-size: 12px; /* Reduced font size */
 }
 
-/* Submit and Other Buttons */
-button[type="submit"], button[type="button"] {
-    background-color: #28a745;
-    color: white;
-    padding: 8px 12px; /* Reduced padding */
-    border: none;
-    border-radius: 5px;
-    font-size: 12px; /* Slightly smaller font size */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 8px; /* Reduced margin */
+/* Reduced space between input fields */
+input, select {
+    margin-bottom: 4px; /* Reduced space between inputs */
 }
 
-button[type="submit"]:hover, button[type="button"]:hover {
-    background-color: #218838;
+/* Label styling */
+label {
+    font-size: 12px; /* Reduced font size */
+    font-weight: bold; /* Bold text for emphasis */
+    margin-bottom: 2px; /* Reduced space between label and input */
+    display: block; /* Ensures the label is on its own line */
 }
 
-/* Flexbox Layout for Compact Forms */
-.form-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+/* Additional Styling to prevent too much white space */
+input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%; /* Make input fields take full width of the container */
+    padding: 4px; /* Compact the space inside the input */
+    box-sizing: border-box; /* Ensures padding doesn’t affect width */
 }
 
-.form-group {
-    flex: 1 1 48%; /* Make form fields take 48% width, two columns per row */
-    margin-bottom: 8px; /* Reduced space between fields */
-}
-
-/* Responsive Design for small screens */
+/* Responsive Design for smaller screens */
 @media (max-width: 768px) {
     form {
         grid-template-columns: 1fr; /* Single column layout for smaller screens */
     }
 
-    .form-group {
-        flex: 1 1 100%; /* Full width on small screens */
+    .form-control, .form-label {
+        font-size: 10px; /* Smaller font size for small screens */
     }
 
     button {
-        font-size: 12px; /* Smaller button text on mobile */
+        font-size: 10px; /* Smaller button text on mobile */
+        padding: 5px 8px; /* Reduced button padding on mobile */
     }
+
+    .button-row {
+        flex-direction: column;
+        gap: 4px; /* Smaller gap between buttons on mobile */
+    }
+}
+
+/* Reduced space for smaller screens */
+@media (max-width: 576px) {
+    form {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .form-label, .form-control {
+        font-size: 9px; /* Smaller font size on mobile */
+    }
+
+    button[type="submit"], button[type="button"] {
+        grid-column: 1;
+        padding: 3px 6px; /* Reduced button padding */
+    }
+}
+
+/* Outer Frame Styling */
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+    padding: 6px; /* Reduced padding inside the frame */
+    border-radius: 5px; /* Slightly rounded corners */
+    border: 1px solid #28a745; /* Thinner green border */
+    margin: 8px auto; /* Further reduced margin */
+    max-width: 85%; /* Limit the width to prevent the form from becoming too wide */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    background-color: #ffffff; /* Clean white background */
 }
 
 /* Table Styling */
@@ -306,12 +341,14 @@ button[type="submit"]:hover, button[type="button"]:hover {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Flexbox for button-row to spread buttons evenly */
+/* Flexbox for button-row to spread buttons evenly at the bottom and center */
 .button-row {
     display: flex;
-    justify-content: space-between;
-    gap: 8px; /* Add space between buttons */
-    margin-top: 10px; /* Reduced margin */
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: flex-end; /* Align buttons to the bottom */
+    gap: 10px; /* Add space between buttons */
+    margin-top: auto; /* Ensure buttons stick to the bottom of the form */
+    padding: 10px 0; /* Add padding for better spacing */
 }
 
 /* Custom Save Button Color */
@@ -321,7 +358,10 @@ button[type="submit"]:hover, button[type="button"]:hover {
     border: none !important;
     flex-grow: 1;
     text-align: center;
-    padding: 8px; /* Reduced padding */
+    padding: 12px; /* Standardized padding for buttons */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    font-size: 14px; /* Slightly larger font size */
+    max-width: 150px; /* Limit button width for centered layout */
 }
 
 .custom-save:hover {
@@ -335,7 +375,10 @@ button[type="submit"]:hover, button[type="button"]:hover {
     border: none !important;
     flex-grow: 1;
     text-align: center;
-    padding: 8px; /* Reduced padding */
+    padding: 12px; /* Standardized padding for buttons */
+    border-radius: 5px;
+    font-size: 14px;
+    max-width: 150px; /* Limit button width for centered layout */
 }
 
 .custom-edit:hover {
@@ -349,17 +392,35 @@ button[type="submit"]:hover, button[type="button"]:hover {
     border: none !important;
     flex-grow: 1;
     text-align: center;
-    padding: 8px; /* Reduced padding */
+    padding: 12px; /* Standardized padding for buttons */
+    border-radius: 5px;
+    font-size: 14px;
+    max-width: 150px; /* Limit button width for centered layout */
 }
 
 .custom-delete:hover {
     background-color: #c82333 !important;
 }
 
-/* Reduce space around buttons for a more compact look */
+/* Ensure buttons are spaced and aligned */
 button {
-    padding: 8px 10px; /* Further reduced padding */
-    font-size: 13px;
+    padding: 12px; /* Standardized padding for uniform button size */
+    font-size: 14px; /* Professional font size */
+    margin-bottom: 10px; /* Margin at the bottom to create space */
+}
+
+/* Adjust button styles for smaller screens */
+@media (max-width: 768px) {
+    .button-row {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        gap: 10px; /* Maintain spacing between buttons */
+    }
+
+    button {
+        font-size: 12px; /* Slightly smaller font size for mobile screens */
+        padding: 10px; /* Reduced padding for smaller screens */
+        max-width: 100%; /* Full width for buttons on smaller screens */
+    }
 }
 
 /* Animation for smooth form transitions */
@@ -477,7 +538,7 @@ button {
     <ul class="services-list">
         <li><a href="#" onclick="showService('socialLivingConditionsAndLifestyleHabits')">SocialLifestyle</a></li>
         <li><a href="#" onclick="showService('medicalHistory')">risk profile</a></li>
-        <li><a href="#" onclick="showService('mentalHealthMedicalHistory')">medical info</a></li>
+        <li><a href="#" onclick="showService('mentalHealthTreatment')">medical info</a></li>
         <li><a href="#" onclick="showService('previousPregnancies')">PreviousPregnancies</a></li>
         <li><a href="#" onclick="showService('currentPregnancyDetails')">Pregnancy</a></li>
         <li><a href="#" onclick="showService('healthExamination')">Examination</a></li>
@@ -601,15 +662,16 @@ button {
 </div>
 
      
-        <div id="socialLivingConditionsAndLifestyleHabits" class="tab-pane hide">
+        <!-- Social, Living Conditions, and Lifestyle Habits Section -->
+<div id="socialLivingConditionsAndLifestyleHabits" class="tab-pane hide">
     <h3>Social, Living Conditions, and Lifestyle Habits</h3>
-    <form id="socialLivingConditionsAndLifestyleHabitsForm" novalidate>
+    <form id="socialLivingConditionsAndLifestyleHabitsForm" class="form-grid">
 
         <!-- Social and Living Conditions -->
-        <h5>Social and Living Conditions</h5>
+        
 
-        <!-- Family Situation (Dropdown) -->
-        <div class="mb-3">
+        <!-- Family Situation -->
+        <div class="form-group">
             <label for="familySituation" class="form-label">Family Situation</label>
             <select class="form-control" id="familySituation" required>
                 <option value="">Select Family Situation</option>
@@ -622,8 +684,24 @@ button {
             <div class="invalid-feedback">Please select a family situation.</div>
         </div>
 
-        <!-- Profession (Dropdown) -->
-        <div class="mb-3">
+        <!-- Support from Relatives -->
+        <div class="form-group">
+            <label for="supportAvailable" class="form-label">Is Support Available?</label>
+            <div>
+                <input type="checkbox" id="supportAvailableYes" name="supportAvailable" value="true"> Yes
+                <input type="checkbox" id="supportAvailableNo" name="supportAvailable" value="false"> No
+            </div>
+        </div>
+
+        <!-- Living Situation -->
+        <div class="form-group">
+            <label for="livingSituationSupport" class="form-label">Living Situation</label>
+            <input type="text" class="form-control" id="livingSituationSupport" placeholder="e.g., living with relatives, alone" required>
+            <div class="invalid-feedback">Please enter the living situation.</div>
+        </div>
+
+        <!-- Profession -->
+        <div class="form-group">
             <label for="profession" class="form-label">Profession</label>
             <select class="form-control" id="profession" required>
                 <option value="">Select Profession</option>
@@ -639,8 +717,8 @@ button {
             <div class="invalid-feedback">Please select a profession.</div>
         </div>
 
-        <!-- Working Type (Dropdown) -->
-        <div class="mb-3">
+        <!-- Working Type -->
+        <div class="form-group">
             <label for="workingType" class="form-label">Working Type</label>
             <select class="form-control" id="workingType" required>
                 <option value="">Select Working Type</option>
@@ -653,38 +731,8 @@ button {
             <div class="invalid-feedback">Please select a working type.</div>
         </div>
 
-        <!-- Job (Dropdown) -->
-        <div class="mb-3">
-            <label for="job" class="form-label">Job</label>
-            <select class="form-control" id="job" required>
-                <option value="">Select Job</option>
-                <option value="manager">Manager</option>
-                <option value="staff">Staff</option>
-                <option value="technician">Technician</option>
-                <option value="clerical">Clerical</option>
-                <option value="supportStaff">Support Staff</option>
-                <option value="other">Other</option>
-            </select>
-            <div class="invalid-feedback">Please select a job.</div>
-        </div>
-
-        <!-- Education Level (Dropdown) -->
-        <div class="mb-3">
-            <label for="educationLevel" class="form-label">Education Level</label>
-            <select class="form-control" id="educationLevel" required>
-                <option value="">Select Education Level</option>
-                <option value="primary">Primary School</option>
-                <option value="secondary">Secondary School</option>
-                <option value="diploma">Diploma</option>
-                <option value="undergraduate">Undergraduate</option>
-                <option value="postgraduate">Postgraduate</option>
-                <option value="other">Other</option>
-            </select>
-            <div class="invalid-feedback">Please select an education level.</div>
-        </div>
-
-        <!-- Mode of Transport (Dropdown) -->
-        <div class="mb-3">
+        <!-- Mode of Transport -->
+        <div class="form-group">
             <label for="modeOfTransport" class="form-label">Mode of Transport</label>
             <select class="form-control" id="modeOfTransport" required>
                 <option value="">Select Mode of Transport</option>
@@ -698,8 +746,11 @@ button {
             <div class="invalid-feedback">Please select a mode of transport.</div>
         </div>
 
-        <!-- Smoking (Dropdown) -->
-        <div class="mb-3">
+        <!-- Lifestyle and Habits -->
+        <h5>Lifestyle and Habits</h5>
+
+        <!-- Smoking Status -->
+        <div class="form-group">
             <label for="smoking" class="form-label">Smoking</label>
             <select class="form-control" id="smoking" required>
                 <option value="">Select Smoking Status</option>
@@ -710,103 +761,236 @@ button {
             <div class="invalid-feedback">Please select a smoking status.</div>
         </div>
 
-        <!-- Snus (Checkbox) -->
-        <div class="mb-3">
-            <label for="snus" class="form-label">Use of Snus (Snuff)</label>
-            <div>
-                <input type="checkbox" id="snusYes" name="snus" value="true"> Yes
-                <input type="checkbox" id="snusNo" name="snus" value="false"> No
-            </div>
-        </div>
-
-        <!-- Lifestyle and Habits -->
-        <h5>Lifestyle and Habits</h5>
-
-        <!-- Smoking Habits Before Pregnancy -->
-        <div class="mb-3">
-            <label class="form-label">Smoking Habits Before Pregnancy</label>
-            <div class="mb-3">
-                <label for="cigarettesPerDay" class="form-label">Cigarettes per Day</label>
-                <input type="text" class="form-control" id="cigarettesPerDay" placeholder="e.g., 5, 10, none" required>
-                <div class="invalid-feedback">Please enter the number of cigarettes per day.</div>
-            </div>
-            <div class="mb-3">
-                <label for="snusBeforePregnancy" class="form-label">Use of Snus Before Pregnancy</label>
-                <div>
-                    <input type="checkbox" id="snusBeforePregnancyYes" name="snusBeforePregnancy" value="true"> Yes
-                    <input type="checkbox" id="snusBeforePregnancyNo" name="snusBeforePregnancy" value="false"> No
-                </div>
-            </div>
-        </div>
-
-        <!-- Smoking Habits at Registration -->
-        <div class="mb-3">
-            <label class="form-label">Smoking Habits at Registration</label>
-            <div class="mb-3">
-                <label for="quitSmokingDays" class="form-label">Days Since Quitting Smoking</label>
-                <input type="text" class="form-control" id="quitSmokingDays" placeholder="e.g., 10, 30, never quit" required>
-                <div class="invalid-feedback">Please enter the number of days since quitting smoking.</div>
-            </div>
-            <div class="mb-3">
-                <label for="snusAtRegistration" class="form-label">Use of Snus at Registration</label>
-                <div>
-                    <input type="checkbox" id="snusAtRegistrationYes" name="snusAtRegistration" value="true"> Yes
-                    <input type="checkbox" id="snusAtRegistrationNo" name="snusAtRegistration" value="false"> No
-                </div>
-            </div>
-        </div>
-
         <!-- Alcohol Use -->
-        <div class="mb-3">
+        <div class="form-group">
             <label class="form-label">Alcohol Use</label>
-            <div class="mb-3">
-                <label for="alcoholBeforePregnancy" class="form-label">Alcohol Use Before Pregnancy</label>
+            <div>
+                <label for="alcoholBeforePregnancy" class="form-label">Before Pregnancy</label>
                 <input type="text" class="form-control" id="alcoholBeforePregnancy" placeholder="e.g., occasional, none" required>
-                <div class="invalid-feedback">Please enter the alcohol use before pregnancy.</div>
             </div>
-            <div class="mb-3">
-                <label for="alcoholDuringPregnancy" class="form-label">Alcohol Use During Pregnancy</label>
+            <div>
+                <label for="alcoholDuringPregnancy" class="form-label">During Pregnancy</label>
                 <input type="text" class="form-control" id="alcoholDuringPregnancy" placeholder="e.g., occasional, none" required>
-                <div class="invalid-feedback">Please enter the alcohol use during pregnancy.</div>
             </div>
-            <div class="mb-3">
-                <label for="auditScore" class="form-label">AUDIT Score</label>
-                <input type="text" class="form-control" id="auditScore" placeholder="Enter AUDIT score if available" required>
-                <div class="invalid-feedback">Please enter the AUDIT score.</div>
+        </div>
+
+        <!-- Drug Use -->
+        <div class="form-group">
+            <label for="drugUse" class="form-label">Drug Use</label>
+            <div>
+                <input type="checkbox" id="drugUseYes" name="drugUse" value="true"> Yes
+                <input type="checkbox" id="drugUseNo" name="drugUse" value="false"> No
             </div>
         </div>
 
         <!-- Physical Activity -->
-        <div class="mb-3">
+        <div class="form-group">
             <label class="form-label">Physical Activity</label>
-            <div class="mb-3">
+            <div>
                 <label for="physicalActivityBeforePregnancy" class="form-label">Minutes per Week Before Pregnancy</label>
                 <input type="number" class="form-control" id="physicalActivityBeforePregnancy" placeholder="e.g., 150, 0" required>
-                <div class="invalid-feedback">Please enter the minutes of physical activity per week before pregnancy.</div>
             </div>
-            <div class="mb-3">
+            <div>
                 <label for="physicalActivityDuringPregnancy" class="form-label">Current Minutes per Week</label>
                 <input type="number" class="form-control" id="physicalActivityDuringPregnancy" placeholder="e.g., 30, 60" required>
-                <div class="invalid-feedback">Please enter the current minutes of physical activity per week.</div>
             </div>
         </div>
+
+        <!-- Save/Edit/Delete Buttons -->
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
+
     </form>
 </div>
 
-<!-- Combined Mental Health, Support, Medical History, and Risk Factors Section -->
-<div id="mentalHealthMedicalHistory" class="tab-pane hide">
-    <h3>Mental Health, Support, Medical History, and Risk Factors</h3>
-    <form id="mentalHealthMedicalHistoryForm" novalidate>
+<style>
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .form-control, .form-check-input {
+        padding: 0.5rem;
+    }
+    .button-row {
+        grid-column: span 2;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+    .custom-save, .custom-edit, .custom-delete {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+</style>
+<!-- Medical History Section -->
+<div id="medicalHistory" class="tab-pane hide">
+    <h3>Medical History</h3>
+    <form id="medicalHistoryForm" novalidate>
+
+        <!-- Thyroid Disease -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="thyroidDisease" class="form-label">Thyroid Disease</label>
+                <div>
+                    <input type="radio" name="thyroidDisease" value="true" onclick="toggleDetails('thyroidDiseaseDetails', true)"> Yes
+                    <input type="radio" name="thyroidDisease" value="false" onclick="toggleDetails('thyroidDiseaseDetails', false)"> No
+                </div>
+                <div id="thyroidDiseaseDetails" class="mt-2" style="display:none;">
+                    <label for="thyroidDiseaseInfo" class="form-label">Details of Thyroid Disease</label>
+                    <textarea class="form-control" id="thyroidDiseaseInfo" placeholder="Enter details about thyroid disease"></textarea>
+                </div>
+            </div>
+
+            <!-- HIV -->
+            <div class="col">
+                <label for="hiv" class="form-label">HIV</label>
+                <div>
+                    <input type="radio" name="hiv" value="true" onclick="toggleDetails('hivDetails', true)"> Yes
+                    <input type="radio" name="hiv" value="false" onclick="toggleDetails('hivDetails', false)"> No
+                </div>
+                <div id="hivDetails" class="mt-2" style="display:none;">
+                    <label for="hivInfo" class="form-label">Details of HIV</label>
+                    <textarea class="form-control" id="hivInfo" placeholder="Enter details about HIV"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancer -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="cancer" class="form-label">Cancer</label>
+                <div>
+                    <input type="radio" name="cancer" value="true" onclick="toggleDetails('cancerDetails', true)"> Yes
+                    <input type="radio" name="cancer" value="false" onclick="toggleDetails('cancerDetails', false)"> No
+                </div>
+                <div id="cancerDetails" class="mt-2" style="display:none;">
+                    <label for="cancerInfo" class="form-label">Details of Cancer</label>
+                    <textarea class="form-control" id="cancerInfo" placeholder="Enter details about cancer"></textarea>
+                </div>
+            </div>
+
+            <!-- Kidney Disease -->
+            <div class="col">
+                <label for="kidneyDisease" class="form-label">Kidney Disease</label>
+                <div>
+                    <input type="radio" name="kidneyDisease" value="true" onclick="toggleDetails('kidneyDiseaseDetails', true)"> Yes
+                    <input type="radio" name="kidneyDisease" value="false" onclick="toggleDetails('kidneyDiseaseDetails', false)"> No
+                </div>
+                <div id="kidneyDiseaseDetails" class="mt-2" style="display:none;">
+                    <label for="kidneyDiseaseInfo" class="form-label">Details of Kidney Disease</label>
+                    <textarea class="form-control" id="kidneyDiseaseInfo" placeholder="Enter details about kidney disease"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Diseases -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="heartDisease" class="form-label">Heart Disease</label>
+                <div>
+                    <input type="radio" name="heartDisease" value="true" onclick="toggleDetails('heartDiseaseDetails', true)"> Yes
+                    <input type="radio" name="heartDisease" value="false" onclick="toggleDetails('heartDiseaseDetails', false)"> No
+                </div>
+                <div id="heartDiseaseDetails" class="mt-2" style="display:none;">
+                    <label for="heartDiseaseInfo" class="form-label">Details of Heart Disease</label>
+                    <textarea class="form-control" id="heartDiseaseInfo" placeholder="Enter details about heart disease"></textarea>
+                </div>
+            </div>
+
+            <div class="col">
+                <label for="diabetes" class="form-label">Diabetes</label>
+                <div>
+                    <input type="radio" name="diabetes" value="true" onclick="toggleDetails('diabetesDetails', true)"> Yes
+                    <input type="radio" name="diabetes" value="false" onclick="toggleDetails('diabetesDetails', false)"> No
+                </div>
+                <div id="diabetesDetails" class="mt-2" style="display:none;">
+                    <label for="diabetesInfo" class="form-label">Details of Diabetes</label>
+                    <textarea class="form-control" id="diabetesInfo" placeholder="Enter details about diabetes"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- High Blood Pressure and Pre-eclampsia -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="highBloodPressure" class="form-label">High Blood Pressure</label>
+                <div>
+                    <input type="radio" name="highBloodPressure" value="true" onclick="toggleDetails('highBloodPressureDetails', true)"> Yes
+                    <input type="radio" name="highBloodPressure" value="false" onclick="toggleDetails('highBloodPressureDetails', false)"> No
+                </div>
+                <div id="highBloodPressureDetails" class="mt-2" style="display:none;">
+                    <label for="highBloodPressureInfo" class="form-label">Details of High Blood Pressure</label>
+                    <textarea class="form-control" id="highBloodPressureInfo" placeholder="Enter details about high blood pressure"></textarea>
+                </div>
+            </div>
+
+            <div class="col">
+                <label for="preEclampsia" class="form-label">Pre-eclampsia</label>
+                <div>
+                    <input type="radio" name="preEclampsia" value="true" onclick="toggleDetails('preEclampsiaDetails', true)"> Yes
+                    <input type="radio" name="preEclampsia" value="false" onclick="toggleDetails('preEclampsiaDetails', false)"> No
+                </div>
+                <div id="preEclampsiaDetails" class="mt-2" style="display:none;">
+                    <label for="preEclampsiaInfo" class="form-label">Details of Pre-eclampsia</label>
+                    <textarea class="form-control" id="preEclampsiaInfo" placeholder="Enter details about pre-eclampsia"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-row">
+            <button type="button" class="btn custom-save">Save</button>
+            <button type="button" class="btn custom-edit">Edit</button>
+            <button type="button" class="btn custom-delete">Delete</button>
+        </div>
+    </form>
+</div>
+
+<!-- CSS Styling -->
+<style>
+    #medicalHistoryForm .row {
+        display: flex;
+        gap: 10px;
+    }
+
+    #medicalHistoryForm .col {
+        flex: 1 1 48%;
+    }
+
+    .button-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+</style>
+
+<!-- JavaScript to Display Additional Details Fields Based on Selection -->
+<script>
+    function toggleDetails(detailsId, show) {
+        document.getElementById(detailsId).style.display = show ? 'block' : 'none';
+    }
+</script>
+
+
+
+<!-- Combined Mental Health, Support, and Risk Factors Section -->
+<div id="mentalHealthSupportRiskFactors" class="tab-pane hide">
+    
+    <form id="mentalHealthSupportRiskFactorsForm" novalidate>
         
         <!-- Mental Health and Support -->
-        <h5>Mental Health Screening</h5>
         <div class="mb-3">
             <label class="form-label">Anxiety or Depression</label>
             <div class="form-check">
@@ -848,69 +1032,28 @@ button {
             <div class="invalid-feedback">Please enter the living situation.</div>
         </div>
 
-        <!-- Medical History and Risk Factors -->
-        <h5>Medical History</h5>
+        <!-- Risk Factors -->
+        <h5>Risk Factors</h5>
         <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="heartDisease" class="form-label">Heart Disease</label>
+            <label for="smoking" class="form-label">Smoking</label>
             <div>
-                <input type="checkbox" id="heartDiseaseYes" name="heartDisease" value="true"> Yes
-                <input type="checkbox" id="heartDiseaseNo" name="heartDisease" value="false"> No
+                <input type="checkbox" id="smokingYes" name="smoking" value="true"> Yes
+                <input type="checkbox" id="smokingNo" name="smoking" value="false"> No
             </div>
         </div>
         <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="thrombosis" class="form-label">Thrombosis</label>
+            <label for="alcoholUse" class="form-label">Alcohol Use</label>
             <div>
-                <input type="checkbox" id="thrombosisYes" name="thrombosis" value="true"> Yes
-                <input type="checkbox" id="thrombosisNo" name="thrombosis" value="false"> No
+                <input type="checkbox" id="alcoholUseYes" name="alcoholUse" value="true"> Yes
+                <input type="checkbox" id="alcoholUseNo" name="alcoholUse" value="false"> No
             </div>
         </div>
         <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="thyroidDisease" class="form-label">Thyroid Disease</label>
+            <label for="drugUse" class="form-label">Drug Use</label>
             <div>
-                <input type="checkbox" id="thyroidDiseaseYes" name="thyroidDisease" value="true"> Yes
-                <input type="checkbox" id="thyroidDiseaseNo" name="thyroidDisease" value="false"> No
+                <input type="checkbox" id="drugUseYes" name="drugUse" value="true"> Yes
+                <input type="checkbox" id="drugUseNo" name="drugUse" value="false"> No
             </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="lupusSle" class="form-label">Lupus SLE</label>
-            <div>
-                <input type="checkbox" id="lupusSleYes" name="lupusSle" value="true"> Yes
-                <input type="checkbox" id="lupusSleNo" name="lupusSle" value="false"> No
-            </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="diabetes" class="form-label">Diabetes</label>
-            <div>
-                <input type="checkbox" id="diabetesYes" name="diabetes" value="true"> Yes
-                <input type="checkbox" id="diabetesNo" name="diabetes" value="false"> No
-            </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="epilepsy" class="form-label">Epilepsy</label>
-            <div>
-                <input type="checkbox" id="epilepsyYes" name="epilepsy" value="true"> Yes
-                <input type="checkbox" id="epilepsyNo" name="epilepsy" value="false"> No
-            </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="psychiatricDisease" class="form-label">Psychiatric Disease</label>
-            <div>
-                <input type="checkbox" id="psychiatricDiseaseYes" name="psychiatricDisease" value="true"> Yes
-                <input type="checkbox" id="psychiatricDiseaseNo" name="psychiatricDisease" value="false"> No
-            </div>
-        </div>
-
-        <!-- Previous and Current Diagnoses -->
-        <h5>Previous and Current Diagnoses</h5>
-        <div class="mb-3">
-            <label for="previousDiagnoses" class="form-label">Previous Diagnoses</label>
-            <textarea class="form-control" id="previousDiagnoses" placeholder="Populated from Doctor's Portal" rows="3" readonly></textarea>
-            <a href="doctorPortalLink" class="btn btn-link">Access Doctor's Portal</a>
-        </div>
-        <div class="mb-3">
-            <label for="currentDiagnoses" class="form-label">Current Diagnoses</label>
-            <textarea class="form-control" id="currentDiagnoses" placeholder="Populated from Doctor's Portal" rows="3" readonly></textarea>
-            <a href="doctorPortalLink" class="btn btn-link">Access Doctor's Portal</a>
         </div>
 
         <!-- Ongoing Treatment Table -->
@@ -951,163 +1094,135 @@ button {
             <textarea class="form-control" id="otherAllergies" placeholder="Specify other allergies" rows="3" required></textarea>
         </div>
 
-        <!-- Risk Factors -->
-        <h5>Risk Factors</h5>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="smoking" class="form-label">Smoking</label>
-            <div>
-                <input type="checkbox" id="smokingYes" name="smoking" value="true"> Yes
-                <input type="checkbox" id="smokingNo" name="smoking" value="false"> No
-            </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="alcoholUse" class="form-label">Alcohol Use</label>
-            <div>
-                <input type="checkbox" id="alcoholUseYes" name="alcoholUse" value="true"> Yes
-                <input type="checkbox" id="alcoholUseNo" name="alcoholUse" value="false"> No
-            </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="drugUse" class="form-label">Drug Use</label>
-            <div>
-                <input type="checkbox" id="drugUseYes" name="drugUse" value="true"> Yes
-                <input type="checkbox" id="drugUseNo" name="drugUse" value="false"> No
-            </div>
-        </div>
+        <!-- Save/Edit/Delete Buttons -->
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
 
     </form>
 </div>
 
 
-
-<!-- Medical History Section -->
-<div id="medicalHistory" class="tab-pane hide">
-    <h3>Medical History</h3>
-    <form id="medicalHistoryForm">
-
-        <!-- Heart Disease -->
+<!-- Combined Mental Health and Treatment Section -->
+<div id="mentalHealthTreatment" class="tab-pane hide">
+    <h3>Mental Health and Treatment</h3>
+    <form id="mentalHealthTreatmentForm" novalidate>
+        
+        <!-- Ongoing Treatment -->
         <div class="mb-3">
-            <label for="heartDisease" class="form-label">Heart Disease</label>
+            <label for="ongoingTreatment" class="form-label">Ongoing Treatment</label>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Treatment Name</th>
+                        <th scope="col">Dosage</th>
+                        <th scope="col">Frequency</th>
+                        <th scope="col">Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" placeholder="Enter treatment name"></td>
+                        <td><input type="text" class="form-control" placeholder="Enter dosage"></td>
+                        <td><input type="text" class="form-control" placeholder="Enter frequency"></td>
+                        <td><input type="text" class="form-control" placeholder="Enter duration"></td>
+                    </tr>
+                    <!-- Add more rows as necessary -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Previous Ongoing Anxieties or Depression -->
+        <div class="mb-3">
+            <label for="previousAnxietyOrDepression" class="form-label">Previous Ongoing Anxieties or Depression</label>
             <div>
-                <input type="radio" id="heartDiseaseYes" name="heartDisease" value="true"> Yes
-                <input type="radio" id="heartDiseaseNo" name="heartDisease" value="false"> No
+                <input type="radio" id="previousAnxietyOrDepressionYes" name="previousAnxietyOrDepression" value="true"> Yes
+                <input type="radio" id="previousAnxietyOrDepressionNo" name="previousAnxietyOrDepression" value="false"> No
             </div>
-            <div id="heartDiseaseDetails" class="mt-2" style="display:none;">
-                <label for="heartDiseaseInfo" class="form-label">Details of Heart Disease</label>
-                <textarea class="form-control" id="heartDiseaseInfo" placeholder="Enter details about heart disease"></textarea>
-            </div>
-        </div>
-
-        <!-- Thyroid Disease -->
-        <div class="mb-3">
-            <label for="thyroidDisease" class="form-label">Thyroid Disease</label>
-            <div>
-                <input type="radio" id="thyroidDiseaseYes" name="thyroidDisease" value="true"> Yes
-                <input type="radio" id="thyroidDiseaseNo" name="thyroidDisease" value="false"> No
-            </div>
-            <div id="thyroidDiseaseDetails" class="mt-2" style="display:none;">
-                <label for="thyroidDiseaseInfo" class="form-label">Details of Thyroid Disease</label>
-                <textarea class="form-control" id="thyroidDiseaseInfo" placeholder="Enter details about thyroid disease"></textarea>
+            <div id="previousAnxietyOrDepressionDetails" class="mt-2" style="display:none;">
+                <label for="previousAnxietyOrDepressionInfo" class="form-label">Doctor's Notes on Previous Anxieties/Depression</label>
+                <textarea class="form-control" id="previousAnxietyOrDepressionInfo" placeholder="Enter details of previous anxieties or depression"></textarea>
             </div>
         </div>
 
-        <!-- Kidney Disease -->
+        <!-- Ongoing Diagnoses -->
         <div class="mb-3">
-            <label for="kidneyDisease" class="form-label">Kidney Disease</label>
-            <div>
-                <input type="radio" id="kidneyDiseaseYes" name="kidneyDisease" value="true"> Yes
-                <input type="radio" id="kidneyDiseaseNo" name="kidneyDisease" value="false"> No
+            <label for="ongoingDiagnoses" class="form-label">Ongoing Diagnoses</label>
+            <textarea class="form-control" id="ongoingDiagnoses" placeholder="Enter current ongoing diagnoses"></textarea>
+        </div>
+
+        <!-- Stress Level Before Pregnancy -->
+        <div class="mb-3">
+            <label for="stressLevelBefore" class="form-label">Stress Level Before Pregnancy</label>
+            <input type="text" class="form-control" id="stressLevelBefore" placeholder="e.g., low, moderate, high" required>
+            <div class="invalid-feedback">Please enter the stress level before pregnancy.</div>
+        </div>
+
+        <!-- Current Stress Level -->
+        <div class="mb-3">
+            <label for="currentStressLevel" class="form-label">Current Stress Level</label>
+            <input type="text" class="form-control" id="currentStressLevel" placeholder="e.g., low, moderate, high" required>
+            <div class="invalid-feedback">Please enter the current stress level.</div>
+        </div>
+
+        <!-- Anxiety or Depression -->
+        <div class="mb-3">
+            <label class="form-label">Anxiety or Depression</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="previousEpisodes" name="mentalHealth" value="previous">
+                <label class="form-check-label" for="previousEpisodes">Previous Episodes</label>
             </div>
-            <div id="kidneyDiseaseDetails" class="mt-2" style="display:none;">
-                <label for="kidneyDiseaseInfo" class="form-label">Details of Kidney Disease</label>
-                <textarea class="form-control" id="kidneyDiseaseInfo" placeholder="Enter details about kidney disease"></textarea>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="currentEpisodes" name="mentalHealth" value="current">
+                <label class="form-check-label" for="currentEpisodes">Current Episodes</label>
             </div>
         </div>
 
-        <!-- Bleeding Disorder -->
-        <div class="mb-3">
-            <label for="bleedingDisorder" class="form-label">Bleeding Disorder</label>
-            <div>
-                <input type="radio" id="bleedingDisorderYes" name="bleedingDisorder" value="true"> Yes
-                <input type="radio" id="bleedingDisorderNo" name="bleedingDisorder" value="false"> No
-            </div>
-            <div id="bleedingDisorderDetails" class="mt-2" style="display:none;">
-                <label for="bleedingDisorderInfo" class="form-label">Details of Bleeding Disorder</label>
-                <textarea class="form-control" id="bleedingDisorderInfo" placeholder="Enter details about bleeding disorder"></textarea>
-            </div>
-        </div>
-
-        <!-- Cancer -->
-        <div class="mb-3">
-            <label for="cancer" class="form-label">Cancer</label>
-            <div>
-                <input type="radio" id="cancerYes" name="cancer" value="true"> Yes
-                <input type="radio" id="cancerNo" name="cancer" value="false"> No
-            </div>
-            <div id="cancerDetails" class="mt-2" style="display:none;">
-                <label for="cancerType" class="form-label">Type of Cancer</label>
-                <textarea class="form-control" id="cancerType" placeholder="Enter type of cancer"></textarea>
-            </div>
-        </div>
-
-        <!-- HIV -->
-        <div class="mb-3">
-            <label for="hiv" class="form-label">HIV</label>
-            <div>
-                <input type="radio" id="hivYes" name="hiv" value="true"> Yes
-                <input type="radio" id="hivNo" name="hiv" value="false"> No
-            </div>
-            <div id="hivDetails" class="mt-2" style="display:none;">
-                <label for="hivInfo" class="form-label">Details of HIV Status</label>
-                <textarea class="form-control" id="hivInfo" placeholder="Enter HIV-related details"></textarea>
-            </div>
-        </div>
-
-        <!-- Allergies -->
-        <h5>Allergies</h5>
-        <div class="mb-3">
-            <label for="medicationAllergies" class="form-label">Medication Allergies</label>
-            <div>
-                <input type="radio" id="medicationAllergiesYes" name="medicationAllergies" value="true"> Yes
-                <input type="radio" id="medicationAllergiesNo" name="medicationAllergies" value="false"> No
-            </div>
-            <div id="medicationAllergiesDetails" class="mt-2" style="display:none;">
-                <label for="medicationAllergiesInfo" class="form-label">Details of Medication Allergies</label>
-                <textarea class="form-control" id="medicationAllergiesInfo" placeholder="Enter details of medication allergies"></textarea>
-            </div>
-        </div>
-
-        <!-- Family Hereditary Diseases (Moved Lower) -->
-        <div class="mb-3">
-            <label for="familyHereditaryDiseases" class="form-label">Family Hereditary Diseases</label>
-            <textarea class="form-control" id="familyHereditaryDiseases" placeholder="Enter any family hereditary diseases" rows="3"></textarea>
-        </div>
+        <!-- Buttons -->
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
-    </form>
 
-   
+    </form>
 </div>
 
-<!-- JavaScript to handle displaying additional input fields based on "Yes" selection -->
+<style>
+    /* CSS for two-column layout */
+    #mentalHealthTreatmentForm {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #mentalHealthTreatmentForm .mb-3 {
+        flex: 1 1 48%;
+        margin-right: 2%;
+        margin-bottom: 20px;
+    }
+    #mentalHealthTreatmentForm .mb-3:nth-child(2n) {
+        margin-right: 0;
+    }
+    .table {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .button-row {
+        display: flex;
+        justify-content: space-between;
+    }
+    /* Display conditional field */
+    #previousAnxietyOrDepressionDetails {
+        display: none;
+    }
+</style>
+
 <script>
-    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    // Show/hide doctor's notes based on selection
+    document.querySelectorAll('input[name="previousAnxietyOrDepression"]').forEach(radio => {
         radio.addEventListener('change', function() {
-            const id = this.id.replace('Yes', 'Details');
-            const detailsDiv = document.getElementById(id);
-
+            const detailsDiv = document.getElementById('previousAnxietyOrDepressionDetails');
             if (this.checked && this.value === 'true') {
                 detailsDiv.style.display = 'block';
             } else {
@@ -1119,11 +1234,11 @@ button {
 
 <!-- Current Pregnancy Details Section -->
 <div id="currentPregnancyDetails" class="tab-pane hide">
-    <h3>Current Pregnancy Details</h3>
-    <form id="currentPregnancyForm" novalidate>
-  
-        <!-- Type of Contact -->
-        <div class="mb-3">
+    <div class="header-row">
+        <h3>Current Pregnancy Details</h3>
+
+        <!-- Type of Contact and Date of Contact beside header -->
+        <div class="contact-info">
             <label for="typeOfContact" class="form-label">Type of Contact</label>
             <select class="form-control" id="typeOfContact" required onchange="handleContactTypeChange()">
                 <option value="">Select Contact Type</option>
@@ -1134,18 +1249,20 @@ button {
             <div class="invalid-feedback">Please select a type of contact.</div>
         </div>
 
+        <div class="contact-info">
+            <label for="dateOfContact" class="form-label">Date of Contact</label>
+            <input type="date" class="form-control" id="dateOfContact" required>
+            <div class="invalid-feedback">Please enter the date of contact.</div>
+        </div>
+    </div>
+
+    <form id="currentPregnancyForm" novalidate>
+
         <!-- Contact Link (Visible only for online calls) -->
         <div class="mb-3" id="contactLinkField" style="display: none;">
             <label for="contactLink" class="form-label" id="contactLinkLabel">Contact Link</label>
             <input type="url" class="form-control" id="contactLink" placeholder="Enter the call link">
             <div class="invalid-feedback">Please enter a valid link for the online call.</div>
-        </div>
-
-        <!-- Date of Contact -->
-        <div class="mb-3">
-            <label for="dateOfContact" class="form-label">Date of Contact</label>
-            <input type="date" class="form-control" id="dateOfContact" required>
-            <div class="invalid-feedback">Please enter the date of contact.</div>
         </div>
 
         <!-- Last Menstruation -->
@@ -1225,13 +1342,50 @@ button {
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
 
     </form>
-
-   
 </div>
+
+<!-- CSS Styling -->
+<style>
+    /* Header layout with contact info */
+    .header-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Two-column layout for form fields */
+    #currentPregnancyForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .button-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* Consistent spacing and alignment */
+    .form-label {
+        margin-bottom: 5px;
+    }
+
+    h5 {
+        grid-column: 1 / -1; /* Span full width for headings */
+        margin-top: 20px;
+    }
+</style>
 
 <!-- JavaScript to Handle Contact Type Change -->
 <script>
@@ -1255,13 +1409,13 @@ function handleContactTypeChange() {
        
   <!-- Health Examination Section -->
 <div id="healthExamination" class="tab-pane hide">
-    <h3>Health Examination</h3>
-    <form id="healthExaminationForm" novalidate>
+    <div class="header-row">
+        <h3>Health Examination</h3>
 
         <!-- Type of Contact -->
-        <div class="mb-3">
+        <div class="contact-info">
             <label for="typeOfContact" class="form-label">Type of Contact</label>
-            <select class="form-control" id="typeOfContact" required>
+            <select class="form-control" id="typeOfContact" required onchange="handleContactTypeChange()">
                 <option value="">Select Type of Contact</option>
                 <option value="physical">Physical</option>
                 <option value="voiceOnlineCall">Voice Online Call</option>
@@ -1271,187 +1425,203 @@ function handleContactTypeChange() {
         </div>
 
         <!-- Date of Contact -->
-        <div class="mb-3">
+        <div class="contact-info">
             <label for="contactDate" class="form-label">Date of Contact</label>
             <input type="date" class="form-control" id="contactDate" required>
             <div class="invalid-feedback">Please enter the date of contact.</div>
         </div>
+    </div>
 
-        <!-- Links for Voice or Video Online Call -->
+    <form id="healthExaminationForm" novalidate>
+        <!-- Online Call Link (Visible only for online calls) -->
         <div class="mb-3" id="onlineCallLinkSection" style="display: none;">
             <label for="onlineCallLink" class="form-label">Online Call Link</label>
             <input type="url" class="form-control" id="onlineCallLink" placeholder="Enter link for online call">
             <div class="invalid-feedback">Please provide a valid link for the online call.</div>
         </div>
 
-        <!-- Health Examination Fields -->
+        <!-- Height, Weight, and BMI Calculation Row -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="heightCm" class="form-label">Height (cm)</label>
+                <input type="number" class="form-control" id="heightCm" placeholder="Enter height in cm" required onchange="calculateBMI()">
+                <div class="invalid-feedback">Please enter height in cm.</div>
+            </div>
 
-        <!-- Height (cm) -->
-        <div class="mb-3">
-            <label for="heightCm" class="form-label">Height (cm)</label>
-            <input type="number" class="form-control" id="heightCm" placeholder="Enter height in cm" required>
-            <div class="invalid-feedback">Please enter height in cm.</div>
+            <div class="col">
+                <label for="weightKg" class="form-label">Weight (kg)</label>
+                <input type="number" class="form-control" id="weightKg" placeholder="Enter weight in kg" required onchange="calculateBMI()">
+                <div class="invalid-feedback">Please enter weight in kg.</div>
+            </div>
+
+            <div class="col">
+                <label for="bmi" class="form-label">Body Mass Index (BMI)</label>
+                <input type="number" class="form-control" id="bmi" placeholder="BMI will auto-calculate" readonly>
+            </div>
         </div>
 
-        <!-- Weight (kg) -->
-        <div class="mb-3">
-            <label for="weightKg" class="form-label">Weight (kg)</label>
-            <input type="number" class="form-control" id="weightKg" placeholder="Enter weight in kg" required>
-            <div class="invalid-feedback">Please enter weight in kg.</div>
-        </div>
+        <!-- Heart Rate, Breathing Rate, and Pulse Oximeter -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="heartbeat" class="form-label">Heart Rate (bpm)</label>
+                <input type="number" class="form-control" id="heartbeat" placeholder="Enter heart rate in bpm" required>
+                <div class="invalid-feedback">Please enter heart rate in bpm.</div>
+            </div>
 
-        <!-- BMI -->
-        <div class="mb-3">
-            <label for="bmi" class="form-label">Body Mass Index (BMI)</label>
-            <input type="number" class="form-control" id="bmi" placeholder="Enter BMI" required>
-            <div class="invalid-feedback">Please enter BMI.</div>
+            <div class="col">
+                <label for="breathingRate" class="form-label">Breathing Rate (breaths/min)</label>
+                <input type="number" class="form-control" id="breathingRate" placeholder="Enter breathing rate" required>
+                <div class="invalid-feedback">Please enter breathing rate.</div>
+            </div>
+
+            <div class="col">
+                <label for="pulseOximeter" class="form-label">Pulse Oximeter (%)</label>
+                <input type="number" class="form-control" id="pulseOximeter" placeholder="Enter pulse oximeter reading" required>
+                <div class="invalid-feedback">Please enter pulse oximeter reading.</div>
+            </div>
         </div>
 
         <!-- Blood Pressure -->
-        <div class="mb-3">
-            <label for="bloodPressure" class="form-label">Blood Pressure</label>
-            <div class="row">
-                <div class="col">
-                    <input type="number" class="form-control" id="systolic" placeholder="Systolic" required>
-                    <div class="invalid-feedback">Please enter systolic blood pressure.</div>
-                </div>
-                <div class="col">
-                    <input type="number" class="form-control" id="diastolic" placeholder="Diastolic" required>
-                    <div class="invalid-feedback">Please enter diastolic blood pressure.</div>
-                </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="systolic" class="form-label">Systolic BP</label>
+                <input type="number" class="form-control" id="systolic" placeholder="Systolic" required>
+                <div class="invalid-feedback">Please enter systolic blood pressure.</div>
+            </div>
+
+            <div class="col">
+                <label for="diastolic" class="form-label">Diastolic BP</label>
+                <input type="number" class="form-control" id="diastolic" placeholder="Diastolic" required>
+                <div class="invalid-feedback">Please enter diastolic blood pressure.</div>
             </div>
         </div>
 
-        <!-- Fundal Height (cm) -->
-        <div class="mb-3">
-            <label for="fundalHeightCm" class="form-label">Fundal Height (cm)</label>
-            <input type="number" class="form-control" id="fundalHeightCm" placeholder="Enter fundal height in cm" required>
-            <div class="invalid-feedback">Please enter fundal height in cm.</div>
+        <!-- Fetal Heartbeat and Fundal Height -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="fetalHeartbeat" class="form-label">Fetal Heartbeat (bpm)</label>
+                <input type="number" class="form-control" id="fetalHeartbeat" placeholder="Enter fetal heartbeat" required>
+                <div class="invalid-feedback">Please enter fetal heartbeat.</div>
+            </div>
+
+            <div class="col">
+                <label for="fundalHeightCm" class="form-label">Fundal Height (cm)</label>
+                <input type="number" class="form-control" id="fundalHeightCm" placeholder="Enter fundal height" required>
+                <div class="invalid-feedback">Please enter fundal height in cm.</div>
+            </div>
         </div>
 
-        <!-- Fetal Heartbeat (bpm) -->
-        <div class="mb-3">
-            <label for="fetalHeartbeat" class="form-label">Fetal Heartbeat (bpm)</label>
-            <input type="number" class="form-control" id="fetalHeartbeat" placeholder="Enter fetal heartbeat in bpm" required>
-            <div class="invalid-feedback">Please enter fetal heartbeat in bpm.</div>
-        </div>
-
-        <!-- Blood Glucose (mmol/L) -->
+        <!-- Blood Glucose -->
         <div class="mb-3">
             <label for="bloodGlucose" class="form-label">Blood Glucose (mmol/L)</label>
-            <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="Enter blood glucose in mmol/L" required>
-            <div class="invalid-feedback">Please enter blood glucose in mmol/L.</div>
+            <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="Enter blood glucose level" required>
+            <div class="invalid-feedback">Please enter blood glucose level in mmol/L.</div>
         </div>
 
-        <!-- Urine Protein -->
-        <div class="mb-3">
-            <label for="urineProtein" class="form-label">Urine Protein</label>
-            <input type="text" class="form-control" id="urineProtein" placeholder="e.g., Negative, Trace, +1" required>
-            <div class="invalid-feedback">Please enter urine protein result.</div>
-        </div>
+        <!-- Urine Protein and Urine Glucose -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="urineProtein" class="form-label">Urine Protein</label>
+                <input type="text" class="form-control" id="urineProtein" placeholder="e.g., Negative, Trace" required>
+                <div class="invalid-feedback">Please enter urine protein result.</div>
+            </div>
 
-        <!-- Urine Glucose -->
-        <div class="mb-3">
-            <label for="urineGlucose" class="form-label">Urine Glucose</label>
-            <input type="text" class="form-control" id="urineGlucose" placeholder="e.g., Negative, Trace, +1" required>
-            <div class="invalid-feedback">Please enter urine glucose result.</div>
-        </div>
-
-        <!-- Breathing Rate -->
-        <div class="mb-3">
-            <label for="breathingRate" class="form-label">Breathing Rate (breaths/min)</label>
-            <input type="number" class="form-control" id="breathingRate" placeholder="Enter breathing rate in breaths/min" required>
-            <div class="invalid-feedback">Please enter breathing rate.</div>
-        </div>
-
-        <!-- Aspometry -->
-        <div class="mb-3">
-            <label for="aspometry" class="form-label">Aspometry</label>
-            <input type="text" class="form-control" id="aspometry" placeholder="Enter aspometry results" required>
-            <div class="invalid-feedback">Please enter aspometry results.</div>
-        </div>
-
-        <!-- Heartbeat -->
-        <div class="mb-3">
-            <label for="heartbeat" class="form-label">Heartbeat (bpm)</label>
-            <input type="number" class="form-control" id="heartbeat" placeholder="Enter heartbeat" required>
-            <div class="invalid-feedback">Please enter heartbeat.</div>
-        </div>
-
-        <!-- Groucours -->
-        <div class="mb-3">
-            <label for="groucours" class="form-label">Groucours</label>
-            <input type="text" class="form-control" id="groucours" placeholder="Enter Groucours result" required>
-            <div class="invalid-feedback">Please enter Groucours result.</div>
-        </div>
-
-        <!-- Progress Notes -->
-        <div class="mb-3">
-            <label for="progressNotes" class="form-label">Progress Notes</label>
-            <textarea class="form-control" id="progressNotes" placeholder="Enter progress notes" rows="3" required></textarea>
-            <div class="invalid-feedback">Please enter progress notes.</div>
-        </div>
-
-        <!-- Tab 1: High Blood Pressure -->
-        <div class="mb-3">
-            <label for="highBloodPressure" class="form-label">High Blood Pressure</label>
-            <div>
-                <input type="checkbox" id="highBloodPressureYes" name="highBloodPressure" value="true"> Yes
-                <input type="checkbox" id="highBloodPressureNo" name="highBloodPressure" value="false"> No
+            <div class="col">
+                <label for="urineGlucose" class="form-label">Urine Glucose</label>
+                <input type="text" class="form-control" id="urineGlucose" placeholder="e.g., Negative, Trace" required>
+                <div class="invalid-feedback">Please enter urine glucose result.</div>
             </div>
         </div>
 
-        <!-- Tab 1: Pre-eclampsia -->
+        <!-- Expected Delivery Type -->
         <div class="mb-3">
-            <label for="preEclampsia" class="form-label">Pre-eclampsia</label>
-            <div>
-                <input type="checkbox" id="preEclampsiaYes" name="preEclampsia" value="true"> Yes
-                <input type="checkbox" id="preEclampsiaNo" name="preEclampsia" value="false"> No
+            <label for="expectedDeliveryType" class="form-label">Expected Delivery Type</label>
+            <input type="text" class="form-control" id="expectedDeliveryType" placeholder="e.g., Vaginal, C-section" required>
+            <div class="invalid-feedback">Please enter the expected delivery type.</div>
+        </div>
+
+        <!-- Progress Notes and Midwife Notes -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="progressNotes" class="form-label">Progress Notes</label>
+                <textarea class="form-control" id="progressNotes" placeholder="Enter progress notes" rows="3" required></textarea>
+            </div>
+            <div class="col">
+                <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
+                <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter midwife notes" rows="3"></textarea>
             </div>
         </div>
 
-        <!-- Midwife Notes (at the bottom of the section) -->
-        <div class="mb-3">
-            <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
-            <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter midwife notes" rows="3"></textarea>
-        </div>
+        <!-- Buttons -->
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
     </form>
-
-    
 </div>
 
-<script>
-    // JavaScript to handle showing and hiding the online call link input
-    document.getElementById('typeOfContact').addEventListener('change', function () {
-        const contactType = this.value;
-        const onlineCallLinkSection = document.getElementById('onlineCallLinkSection');
+<style>
+/* Layout for the header with contact information */
+.header-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
-        // Show the link section for online call types and hide for physical contact
-        if (contactType === 'voiceOnlineCall' || contactType === 'videoOnlineCall') {
-            onlineCallLinkSection.style.display = 'block'; // Show the link input
-            document.getElementById('onlineCallLink').required = true; // Make the field required
-        } else {
-            onlineCallLinkSection.style.display = 'none'; // Hide the link input
-            document.getElementById('onlineCallLink').required = false; // Remove required attribute
-        }
-    });
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Grid layout for form in two columns */
+#healthExaminationForm .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.button-row {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.invalid-feedback {
+    font-size: 12px;
+    color: #dc3545;
+}
+</style>
+
+<script>
+function calculateBMI() {
+    const height = parseFloat(document.getElementById("heightCm").value) || 0;
+    const weight = parseFloat(document.getElementById("weightKg").value) || 0;
+    const bmi = weight / ((height / 100) ** 2); // Formula for BMI
+    document.getElementById("bmi").value = bmi.toFixed(2);
+}
+
+document.getElementById('typeOfContact').addEventListener('change', function () {
+    const contactType = this.value;
+    const onlineCallLinkSection = document.getElementById('onlineCallLinkSection');
+
+    if (contactType === 'voiceOnlineCall' || contactType === 'videoOnlineCall') {
+        onlineCallLinkSection.style.display = 'block';
+        document.getElementById('onlineCallLink').required = true;
+    } else {
+        onlineCallLinkSection.style.display = 'none';
+        document.getElementById('onlineCallLink').required = false;
+    }
+});
 </script>
 
-  
-  
-
-<!-- Previous Pregnancies Section -->
-<div id="previousPregnancies" class="tab-pane hide">
+  <!-- Previous Pregnancies Section -->
+  <div id="previousPregnancies" class="tab-pane active">
     <h3>Previous Pregnancies</h3>
     <form id="previousPregnanciesForm" novalidate>
-
         <!-- Number of Pregnancies -->
         <div class="mb-3">
             <label for="numberOfPregnancies" class="form-label">Number of Pregnancies</label>
@@ -1459,47 +1629,33 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please enter the number of pregnancies.</div>
         </div>
 
-        <!-- Dynamic Forms for Pregnancy Details -->
+        <!-- Number of Miscarriages -->
+        <div class="mb-3">
+            <label for="numberOfMiscarriages" class="form-label">Number of Miscarriages</label>
+            <input type="number" class="form-control" id="numberOfMiscarriages" placeholder="Enter the number of miscarriages" required>
+            <div class="invalid-feedback">Please enter the number of miscarriages.</div>
+        </div>
+
+        <!-- Dynamic Form for Child Details -->
         <div id="pregnancyForms"></div>
 
-        <div class="button-row d-flex justify-content-between mb-3">
-            <!-- Save Button (Custom color) -->
-            <button type="button" class="btn custom-save" onclick="saveEntry()">Save</button>
-            <!-- Edit Button (Custom color) -->
-            <button type="button" class="btn custom-edit" onclick="editEntry()">Edit</button>
-            <!-- Update Button (Custom color, Initially hidden) -->
-            <button type="button" class="btn custom-update" id="updateButton" onclick="updateEntry()" style="display: none;">Update</button>
-            <!-- Delete Button (Custom color) -->
-            <button type="button" class="btn custom-delete" onclick="deleteEntry()">Delete</button>
+        <!-- Button to Add Child Details -->
+        <div id="addChildSection" class="hidden">
+            <button type="button" id="addChildButton" onclick="addChild()">Add Child Details</button>
         </div>
-        
+
+        <!-- Save and Edit Buttons -->
+        <div class="button-row d-flex justify-content-between mb-3">
+            <button type="button" class="btn custom-save" id="saveChildBtn" onclick="saveChildDetails()">Save Child</button>
+            <button type="button" class="btn custom-delete" onclick="deleteEntry()">Delete All</button>
+        </div>
     </form>
 </div>
 
-<!-- Template for Pregnancy Form -->
+<!-- Template for Child Details Form -->
 <script id="pregnancyFormTemplate" type="text/template">
-    <div class="pregnancy-form mb-4">
-        <h5>Pregnancy <%= index %> Details</h5>
-
-        <!-- Abortion -->
-        <div class="mb-3">
-            <label for="abortion_<%= index %>" class="form-label">Did you have an abortion for this pregnancy?</label>
-            <select class="form-select" id="abortion_<%= index %>" required>
-                <option value="">Select</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
-
-        <!-- Miscarriage -->
-        <div class="mb-3">
-            <label for="miscarriage_<%= index %>" class="form-label">Did you have a miscarriage for this pregnancy?</label>
-            <select class="form-select" id="miscarriage_<%= index %>" required>
-                <option value="">Select</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
+    <div class="pregnancy-form" id="child_<%= index %>">
+        <h5>Child <%= index %> Details</h5>
 
         <!-- Child's Gender -->
         <div class="mb-3">
@@ -1541,7 +1697,6 @@ function handleContactTypeChange() {
         <div class="mb-3">
             <label for="birthWeight_<%= index %>" class="form-label">Birth Weight (grams)</label>
             <input type="number" class="form-control" id="birthWeight_<%= index %>" placeholder="Enter birth weight" required>
-            <div class="invalid-feedback">Please enter the child's birth weight.</div>
         </div>
 
         <!-- Year of Delivery -->
@@ -1554,443 +1709,452 @@ function handleContactTypeChange() {
 
 <!-- JavaScript to Handle Dynamic Form Generation -->
 <script>
-    document.getElementById('numberOfPregnancies').addEventListener('input', function() {
-        const numberOfPregnancies = parseInt(this.value);
-        const pregnancyFormsDiv = document.getElementById('pregnancyForms');
-        pregnancyFormsDiv.innerHTML = ''; // Clear previous forms
+    let currentChild = 0; // Track current child being added
+    let numberOfChildDetailsForms = 0; // Total number of children to add
 
-        for (let i = 1; i <= numberOfPregnancies; i++) {
-            const template = document.getElementById('pregnancyFormTemplate').innerHTML;
-            const rendered = template.replace(/<%= index %>/g, i);
-            pregnancyFormsDiv.insertAdjacentHTML('beforeend', rendered);
+    document.getElementById('numberOfPregnancies').addEventListener('input', generateChildDetailsLogic);
+    document.getElementById('numberOfMiscarriages').addEventListener('input', generateChildDetailsLogic);
+
+    function generateChildDetailsLogic() {
+        const numberOfPregnancies = parseInt(document.getElementById('numberOfPregnancies').value) || 0;
+        const numberOfMiscarriages = parseInt(document.getElementById('numberOfMiscarriages').value) || 0;
+        const addChildSection = document.getElementById('addChildSection');
+        const pregnancyFormsDiv = document.getElementById('pregnancyForms');
+
+        // Clear previous child forms
+        pregnancyFormsDiv.innerHTML = '';
+        currentChild = 0; // Reset current child
+
+        if (numberOfPregnancies <= numberOfMiscarriages) {
+            addChildSection.classList.add('hidden'); // Hide add child button if no children to add
+        } else {
+            numberOfChildDetailsForms = numberOfPregnancies - numberOfMiscarriages;
+            addChildSection.classList.remove('hidden'); // Show add child button
         }
-    });
+    }
+
+    function addChild() {
+        if (currentChild < numberOfChildDetailsForms) {
+            currentChild++;
+            const template = document.getElementById('pregnancyFormTemplate').innerHTML;
+            const rendered = template.replace(/<%= index %>/g, currentChild);
+            document.getElementById('pregnancyForms').innerHTML = rendered; // Replace existing form with new one
+
+            if (currentChild === numberOfChildDetailsForms) {
+                document.getElementById('addChildButton').disabled = true; // Disable button after all children are added
+            }
+        }
+    }
+
+    function saveChildDetails() {
+        alert('Child details saved!');
+        document.getElementById('pregnancyForms').innerHTML = ''; // Clear the form for the next child
+        document.getElementById('addChildButton').disabled = false; // Enable add button after saving a child
+    }
+
+    function deleteEntry() {
+        if (confirm('Are you sure you want to delete all entries?')) {
+            document.getElementById('pregnancyForms').innerHTML = '';
+            document.getElementById('addChildButton').disabled = false;
+            currentChild = 0; // Reset the child count
+        }
+    }
 </script>
 <!-- Laboratory Results Section -->
 <div id="laboratoryResults" class="tab-pane hide">
     <h3>Laboratory Results</h3>
 
-    <!-- Cumulative Results Icon and Link -->
-    <div class="cumulative-section">
-        <a href="#cumulativeResultsModal" data-bs-toggle="modal">
-            <i class="fas fa-list-alt"></i> View Cumulative Results
+    <!-- Request Tests Link Centered -->
+    <div class="cumulative-section text-center mb-4">
+        <a href="doctorPortalLink" class="form-label">
+            <i class="fas fa-list-alt"></i> Request Lab Tests from Doctor's Portal
         </a>
     </div>
 
     <form id="laboratoryResultsForm" novalidate>
-        <!-- Chemistry Section -->
-        <h5>Chemistry</h5>
+        <div class="lab-grid">
+            <!-- Chemistry Section -->
+            <div class="chemistry-section">
+                <h5>Chemistry</h5>
+                
+                <div class="mb-3">
+                    <label for="hemoglobin" class="form-label">Hemoglobin (g/dL)</label>
+                    <input type="number" step="0.1" class="form-control" id="hemoglobin" placeholder="e.g., 13.5" required>
+                    <div class="invalid-feedback">Please enter the hemoglobin level.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="bloodType" class="form-label">Blood Type</label>
+                    <input type="text" class="form-control" id="bloodType" placeholder="e.g., O+" required>
+                    <div class="invalid-feedback">Please enter the blood type.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="rhFactor" class="form-label">RH Factor</label>
+                    <input type="text" class="form-control" id="rhFactor" placeholder="e.g., Positive" required>
+                    <div class="invalid-feedback">Please enter the RH factor.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="ferritin" class="form-label">Ferritin (µg/L)</label>
+                    <input type="number" step="0.1" class="form-control" id="ferritin" placeholder="e.g., 50" required>
+                    <div class="invalid-feedback">Please enter the ferritin level.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="bloodGlucose" class="form-label">Blood Glucose (mmol/L)</label>
+                    <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="e.g., 5.5" required>
+                    <div class="invalid-feedback">Please enter the blood glucose level.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="folicAcid" class="form-label">Folic Acid (E12)</label>
+                    <input type="number" step="0.1" class="form-control" id="folicAcid" placeholder="e.g., 10.2" required>
+                    <div class="invalid-feedback">Please enter the folic acid level.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="tsh" class="form-label">TSH</label>
+                    <input type="number" step="0.1" class="form-control" id="tsh" placeholder="e.g., 1.2" required>
+                    <div class="invalid-feedback">Please enter the TSH level.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="pT4" class="form-label">P-T4</label>
+                    <input type="number" step="0.1" class="form-control" id="pT4" placeholder="e.g., 12.0" required>
+                    <div class="invalid-feedback">Please enter the P-T4 level.</div>
+                </div>
+            </div>
 
-        <!-- Hemoglobin (g/dL) -->
-        <div class="mb-3">
-            <label for="hemoglobin" class="form-label">Hemoglobin (g/dL)</label>
-            <input type="number" step="0.1" class="form-control" id="hemoglobin" placeholder="e.g., 13.5" required>
-            <div class="invalid-feedback">Please enter the hemoglobin level.</div>
+            <!-- Microbiology Section -->
+            <div class="microbiology-section">
+                <h5>Microbiology</h5>
+
+                <div class="mb-3">
+                    <label for="hivStatus" class="form-label">HIV Status</label>
+                    <input type="text" class="form-control" id="hivStatus" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the HIV status.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="hepatitisBStatus" class="form-label">Hepatitis B Status</label>
+                    <input type="text" class="form-control" id="hepatitisBStatus" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the Hepatitis B status.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="hepatitisCStatus" class="form-label">Hepatitis C Status</label>
+                    <input type="text" class="form-control" id="hepatitisCStatus" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the Hepatitis C status.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="syphilisStatus" class="form-label">Syphilis Status</label>
+                    <input type="text" class="form-control" id="syphilisStatus" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the syphilis status.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="gonorrheaStatus" class="form-label">Gonorrhea Status</label>
+                    <input type="text" class="form-control" id="gonorrheaStatus" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the gonorrhea status.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="rubella" class="form-label">Rubella</label>
+                    <input type="text" class="form-control" id="rubella" placeholder="e.g., Immune" required>
+                    <div class="invalid-feedback">Please enter the rubella status.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="malariaTest" class="form-label">Malaria Test</label>
+                    <input type="text" class="form-control" id="malariaTest" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the malaria test result.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="mycoplasmaTest" class="form-label">Mycoplasma Test</label>
+                    <input type="text" class="form-control" id="mycoplasmaTest" placeholder="e.g., Negative" required>
+                    <div class="invalid-feedback">Please enter the mycoplasma test result.</div>
+                </div>
+            </div>
         </div>
 
-        <!-- Blood Type -->
-        <div class="mb-3">
-            <label for="bloodType" class="form-label">Blood Type</label>
-            <input type="text" class="form-control" id="bloodType" placeholder="e.g., O+" required>
-            <div class="invalid-feedback">Please enter the blood type.</div>
-        </div>
-
-        <!-- Ferritin (µg/L) -->
-        <div class="mb-3">
-            <label for="ferritin" class="form-label">Ferritin (µg/L)</label>
-            <input type="number" step="0.1" class="form-control" id="ferritin" placeholder="e.g., 50" required>
-            <div class="invalid-feedback">Please enter the ferritin level.</div>
-        </div>
-
-        <!-- Blood Glucose (mmol/L) -->
-        <div class="mb-3">
-            <label for="bloodGlucose" class="form-label">Blood Glucose (mmol/L)</label>
-            <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="e.g., 5.5" required>
-            <div class="invalid-feedback">Please enter the blood glucose level.</div>
-        </div>
-
-        <!-- Folic Acid (E12) -->
-        <div class="mb-3">
-            <label for="folicAcid" class="form-label">Folic Acid (E12)</label>
-            <input type="number" step="0.1" class="form-control" id="folicAcid" placeholder="e.g., 10.2" required>
-            <div class="invalid-feedback">Please enter the folic acid level.</div>
-        </div>
-
-        <!-- TSH/T4/S-A4 -->
-        <div class="mb-3">
-            <label for="tshT4" class="form-label">TSH/T4/S-A4</label>
-            <input type="number" step="0.1" class="form-control" id="tshT4" placeholder="e.g., 1.2" required>
-            <div class="invalid-feedback">Please enter the TSH/T4/S-A4 level.</div>
-        </div>
-
-        <!-- Plasma Glucose (P-Glucose) -->
-        <div class="mb-3">
-            <label for="plasmaGlucose" class="form-label">Plasma Glucose (P-Glucose)</label>
-            <input type="number" step="0.01" class="form-control" id="plasmaGlucose" placeholder="e.g., 5.1" required>
-            <div class="invalid-feedback">Please enter the plasma glucose level.</div>
-        </div>
-
-        <!-- Urine Protein -->
-        <div class="mb-3">
-            <label for="urineProtein" class="form-label">Urine Protein</label>
-            <input type="text" class="form-control" id="urineProtein" placeholder="e.g., Negative, Trace, +1" required>
-            <div class="invalid-feedback">Please enter the urine protein result.</div>
-        </div>
-
-        <!-- Urine Glucose -->
-        <div class="mb-3">
-            <label for="urineGlucose" class="form-label">Urine Glucose</label>
-            <input type="text" class="form-control" id="urineGlucose" placeholder="e.g., Negative, Trace, +1" required>
-            <div class="invalid-feedback">Please enter the urine glucose result.</div>
-        </div>
-
-        <!-- Rubella -->
-        <div class="mb-3">
-            <label for="rubella" class="form-label">Rubella</label>
-            <input type="text" class="form-control" id="rubella" placeholder="e.g., Positive, Negative" required>
-            <div class="invalid-feedback">Please enter the rubella status.</div>
-        </div>
-
-        <!-- Rh Factor -->
-        <div class="mb-3">
-            <label for="rhFactor" class="form-label">Rh Factor</label>
-            <input type="text" class="form-control" id="rhFactor" placeholder="e.g., Positive, Negative" required>
-            <div class="invalid-feedback">Please enter the Rh factor status.</div>
-        </div>
-
-        <!-- Microbiology Section -->
-        <h5>Microbiology</h5>
-
-        <!-- HIV Status -->
-        <div class="mb-3">
-            <label for="hivStatus" class="form-label">HIV Status</label>
-            <input type="text" class="form-control" id="hivStatus" placeholder="e.g., Negative" required>
-            <div class="invalid-feedback">Please enter the HIV status.</div>
-        </div>
-
-        <!-- Hepatitis B & C Status -->
-        <div class="mb-3">
-            <label for="hepatitisBC" class="form-label">Hepatitis B & C Status</label>
-            <input type="text" class="form-control" id="hepatitisBC" placeholder="e.g., Negative" required>
-            <div class="invalid-feedback">Please enter the Hepatitis B & C status.</div>
-        </div>
-
-        <!-- Syphilis Status -->
-        <div class="mb-3">
-            <label for="syphilisStatus" class="form-label">Syphilis Status</label>
-            <input type="text" class="form-control" id="syphilisStatus" placeholder="e.g., Negative" required>
-            <div class="invalid-feedback">Please enter the syphilis status.</div>
-        </div>
-
-        <!-- Gonorrhea Status -->
-        <div class="mb-3">
-            <label for="gonorrheaStatus" class="form-label">Gonorrhea Status</label>
-            <input type="text" class="form-control" id="gonorrheaStatus" placeholder="e.g., Negative" required>
-            <div class="invalid-feedback">Please enter the gonorrhea status.</div>
-        </div>
-
-        <!-- Malaria Test -->
-        <div class="mb-3">
-            <label for="malariaTest" class="form-label">Malaria Test</label>
-            <input type="text" class="form-control" id="malariaTest" placeholder="e.g., Negative" required>
-            <div class="invalid-feedback">Please enter the malaria test result.</div>
-        </div>
-
-        <!-- Mycoplasma Test -->
-        <div class="mb-3">
-            <label for="mycoplasmaTest" class="form-label">Mycoplasma Test</label>
-            <input type="text" class="form-control" id="mycoplasmaTest" placeholder="e.g., Negative" required>
-            <div class="invalid-feedback">Please enter the mycoplasma test result.</div>
-        </div>
-
-        <!-- Test Numbers -->
-        <div class="mb-3">
-            <label for="numberOfTests" class="form-label">Number of Tests</label>
-            <input type="number" class="form-control" id="numberOfTests" placeholder="Enter the number of tests performed" required>
-            <div class="invalid-feedback">Please enter the number of tests.</div>
-        </div>
-
-        <!-- Request Tests from Doctor's Portal -->
-        <div class="mb-3">
-            <a href="doctorPortalLink" class="form-label">Request Lab Tests from Doctor's Portal</a>
-        </div>
-        <div class="button-row">
+        <!-- Save and Edit Buttons -->
+        <div class="button-row d-flex justify-content-between mb-3">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
     </form>
-
-   
 </div>
+
+<style>
+/* Center the Request Lab Tests Link */
+.cumulative-section {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Two-Column Layout */
+.lab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Section Styling */
+.chemistry-section, .microbiology-section {
+    background-color: #f0f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Field and Label Styling */
+.mb-3 {
+    margin-bottom: 10px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+/* Button Row Styling */
+.button-row {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Button Styling */
+.custom-save, .custom-edit, .custom-delete {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.custom-save {
+    background-color: #28a745;
+    color: white;
+}
+
+.custom-edit {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 992px) {
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 
 <!-- Cumulative Results Section -->
 <div id="cumulativeResultsModal" class="modal fade" tabindex="-1" aria-labelledby="cumulativeResultsLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="cumulativeResultsLabel">Cumulative Laboratory Results</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-        <!-- Chemistry Section -->
-        <h5>Chemistry</h5>
-        <table class="table table-bordered" id="chemistryTable">
-          <thead>
-            <tr>
-              <th>Test Name</th>
-              <th>Week 1</th>
-              <th>Week 2</th>
-              <th>Week 3</th>
-              <th>Week 4</th>
-              <th>Week 5</th>
-              <th>Week 6</th>
-              <th>Reference Range</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Hemoglobin (g/dL)</td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td>12.0 - 16.0 g/dL</td>
-            </tr>
-            <tr>
-              <td>Blood Type</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <td>Ferritin (µg/L)</td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td>30 - 400 µg/L</td>
-            </tr>
-            <tr>
-              <td>Blood Glucose (mmol/L)</td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td><input type="number" class="form-control"></td>
-              <td>4.0 - 6.0 mmol/L</td>
-            </tr>
-            <tr>
-              <td>Rubella</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <td>Rh Factor</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>-</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Microbiology Section -->
-        <h5>Microbiology</h5>
-        <table class="table table-bordered" id="microbiologyTable">
-          <thead>
-            <tr>
-              <th>Test Name</th>
-              <th>Week 1</th>
-              <th>Week 2</th>
-              <th>Week 3</th>
-              <th>Week 4</th>
-              <th>Week 5</th>
-              <th>Week 6</th>
-              <th>Reference Range</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>HIV Status</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>Negative</td>
-            </tr>
-            <tr>
-              <td>Hepatitis B & C Status</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>Negative</td>
-            </tr>
-            <tr>
-              <td>Syphilis Status</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>Negative</td>
-            </tr>
-            <tr>
-              <td>Gonorrhea Status</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>Negative</td>
-            </tr>
-            <tr>
-              <td>Malaria Test</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>Negative</td>
-            </tr>
-            <tr>
-              <td>Mycoplasma Test</td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td><input type="text" class="form-control"></td>
-              <td>Negative</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-      <div class="button-row">
-        <button type="button" class="btn custom-save">Save</button>
-        <button type="button" class="btn custom-edit">Edit</button>
-        <button type="button" class="btn custom-delete">Delete</button>
-    </div>
-    
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cumulativeResultsLabel">Cumulative Laboratory Results</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+  
+          <!-- Chemistry Section -->
+          <h5>Chemistry</h5>
+          <table class="table table-bordered" id="chemistryTable">
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Date 1</th>
+                <th>Date 2</th>
+                <th>Date 3</th>
+                <th>Date 4</th>
+                <th>Date 5</th>
+                <th>Date 6</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hemoglobin (g/dL)</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>12.0 - 16.0 g/dL</td>
+              </tr>
+              <tr>
+                <td>Blood Type</td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Ferritin (µg/L)</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>30 - 400 µg/L</td>
+              </tr>
+              <tr>
+                <td>Blood Glucose (mmol/L)</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>4.0 - 6.0 mmol/L</td>
+              </tr>
+              <tr>
+                <td>Rubella</td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Rh Factor</td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <!-- Microbiology Section -->
+          <h5>Microbiology</h5>
+          <table class="table table-bordered" id="microbiologyTable">
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Date 1</th>
+                <th>Date 2</th>
+                <th>Date 3</th>
+                <th>Date 4</th>
+                <th>Date 5</th>
+                <th>Date 6</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HIV Status</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Hepatitis B Status</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Hepatitis C Status</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Syphilis Status</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Gonorrhea Status</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Malaria Test</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Mycoplasma Test</td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
+                <td>Negative</td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+        <div class="button-row">
+          <button type="button" class="btn custom-save">Save</button>
+          <button type="button" class="btn custom-edit">Edit</button>
+          <button type="button" class="btn custom-delete">Delete</button>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Script for Dynamic Weeks -->
-<script>
-  const maxWeeks = 8; // Set initial number of weeks
-  let currentWeek = maxWeeks;
-
-  // Add weeks dynamically as more tests are recorded
-  function addWeeks() {
-    const chemistryTable = document.getElementById('chemistryTable').querySelector('thead tr');
-    const microbiologyTable = document.getElementById('microbiologyTable').querySelector('thead tr');
-
-    for (let i = currentWeek + 1; i <= currentWeek + 4; i++) {
-      const thChem = document.createElement('th');
-      thChem.textContent = `Week ${i}`;
-      chemistryTable.appendChild(thChem);
-
-      const thMicro = document.createElement('th');
-      thMicro.textContent = `Week ${i}`;
-      microbiologyTable.appendChild(thMicro);
-    }
-
-    const chemistryRows = document.querySelectorAll('#chemistryTable tbody tr');
-    chemistryRows.forEach(row => {
-      for (let i = currentWeek + 1; i <= currentWeek + 4; i++) {
-        const td = document.createElement('td');
-        const input = document.createElement('input');
-        input.setAttribute('type', 'number');
-        input.setAttribute('class', 'form-control');
-        input.setAttribute('placeholder', `Week ${i}`);
-        td.appendChild(input);
-        row.appendChild(td);
-      }
-    });
-
-    const microbiologyRows = document.querySelectorAll('#microbiologyTable tbody tr');
-    microbiologyRows.forEach(row => {
-      for (let i = currentWeek + 1; i <= currentWeek + 4; i++) {
-        const td = document.createElement('td');
-        const input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('class', 'form-control');
-        input.setAttribute('placeholder', `Week ${i}`);
-        td.appendChild(input);
-        row.appendChild(td);
-      }
-    });
-
-    currentWeek += 4; // Update current week counter
-  }
-
-  // Add button to navigate through weeks
-  function addNavigationButtons() {
-    const modalFooter = document.querySelector('.modal-footer');
-    const previousButton = document.createElement('button');
-    previousButton.textContent = 'Previous Weeks';
-    previousButton.setAttribute('class', 'btn btn-primary');
-    previousButton.addEventListener('click', () => {
-      currentWeek = Math.max(8, currentWeek - 4); // Ensure week stays at least 8
-      addWeeks(); // Navigate back by 4 weeks
-    });
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Next Weeks';
-    nextButton.setAttribute('class', 'btn btn-primary');
-    nextButton.addEventListener('click', () => {
-      addWeeks(); // Navigate forward by 4 weeks
-    });
-
-    modalFooter.appendChild(previousButton);
-    modalFooter.appendChild(nextButton);
-  }
-
-  // Initialize buttons
-  addNavigationButtons();
-</script>
+  
 
 <!-- Care Plan Section -->
 <div id="carePlan" class="tab-pane hide">
-    <h3>Care Plan</h3>
-    <form id="carePlanForm" novalidate>
+    <div class="header-row">
+        <h3>Care Plan</h3>
 
-        <!-- Type of Contact Dropdown -->
-        <h5>Type of Contact</h5>
-        <div class="mb-3">
+        <!-- Type of Contact and Date of Contact beside header -->
+        <div class="contact-info">
             <label for="contactType" class="form-label">Type of Contact</label>
             <select class="form-select" id="contactType" required onchange="handleContactTypeChange()">
                 <option value="" disabled selected>Select contact type</option>
@@ -2001,87 +2165,129 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please select the type of contact.</div>
         </div>
 
-        <!-- Link for Online Calls (Shown only if Online Call is selected) -->
+        <div class="contact-info">
+            <label for="contactDate" class="form-label">Date of Contact</label>
+            <input type="date" class="form-control" id="contactDate" required>
+            <div class="invalid-feedback">Please enter the date of contact.</div>
+        </div>
+    </div>
+
+    <form id="carePlanForm" novalidate>
+
+        <!-- Online Call Link (Visible only if Online Call is selected) -->
         <div class="mb-3" id="onlineCallLink" style="display: none;">
             <label for="callLink" class="form-label">Online Call Link</label>
             <input type="url" class="form-control" id="callLink" placeholder="Enter the online call link">
             <div class="invalid-feedback">Please enter the online call link.</div>
         </div>
 
-        <!-- Date of Contact -->
-        <div class="mb-3">
-            <label for="contactDate" class="form-label">Date of Contact</label>
-            <input type="date" class="form-control" id="contactDate" required>
-            <div class="invalid-feedback">Please enter the date of contact.</div>
-        </div>
-
         <!-- Upcoming Appointments -->
         <h5>Upcoming Appointments</h5>
-        <div class="mb-3">
-            <label for="appointmentDate" class="form-label">Appointment Date</label>
-            <input type="date" class="form-control" id="appointmentDate" required>
-            <div class="invalid-feedback">Please select the appointment date.</div>
-        </div>
-        <div class="mb-3">
-            <label for="appointmentReason" class="form-label">Reason for Appointment</label>
-            <input type="text" class="form-control" id="appointmentReason" placeholder="e.g., Routine Check-up" required>
-            <div class="invalid-feedback">Please enter the reason for the appointment.</div>
-        </div>
-
-        <!-- Fetal Activity Monitoring -->
-        <h5>Fetal Activity Monitoring</h5>
-        <div class="mb-3">
-            <label for="movementsFrequency" class="form-label">Movements Frequency</label>
-            <input type="text" class="form-control" id="movementsFrequency" placeholder="e.g., Active, Less Active" required>
-            <div class="invalid-feedback">Please enter the fetal movements frequency.</div>
-        </div>
-        <div class="mb-3">
-            <label for="fetalPosition" class="form-label">Fetal Position</label>
-            <input type="text" class="form-control" id="fetalPosition" placeholder="e.g., Cephalic, Breech" required>
-            <div class="invalid-feedback">Please enter the fetal position.</div>
-        </div>
-
-        <!-- Contraction Monitoring -->
-        <h5>Contraction Monitoring</h5>
-        <div class="mb-3">
-            <label for="contractionDetails" class="form-label">Contractions</label>
-            <input type="text" class="form-control" id="contractionDetails" placeholder="e.g., Mild, Frequent" required>
-            <div class="invalid-feedback">Please enter contraction details.</div>
-        </div>
-
-        <!-- Progress Notes -->
-        <h5>Progress Notes</h5>
-        <div class="mb-3">
-            <label for="progressNotes" class="form-label">Progress Notes</label>
-            <textarea class="form-control" id="progressNotes" rows="3" placeholder="e.g., Monitoring progress of pregnancy, contractions" required></textarea>
-            <div class="invalid-feedback">Please enter the progress notes.</div>
-        </div>
-
-        <!-- Midwife Notes -->
-        <h5>Midwife Notes</h5>
-        <div class="mb-3">
-            <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
-            <textarea class="form-control" id="mmidwifeNotes" rows="3" placeholder="e.g., Observations, Instructions" required></textarea>
-            <div class="invalid-feedback">Please enter midwife notes.</div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="appointmentDate" class="form-label">Appointment Date</label>
+                <input type="date" class="form-control" id="appointmentDate" required>
+                <div class="invalid-feedback">Please select the appointment date.</div>
+            </div>
+            <div class="col">
+                <label for="appointmentReason" class="form-label">Reason for Appointment</label>
+                <input type="text" class="form-control" id="appointmentReason" placeholder="e.g., Routine Check-up" required>
+                <div class="invalid-feedback">Please enter the reason for the appointment.</div>
+            </div>
         </div>
 
         <!-- Fetal Movements and Well-Being -->
         <h5>Fetal Movements and Well-Being</h5>
-        <div class="mb-3">
-            <label for="fetalWellBeing" class="form-label">Fetal Movements</label>
-            <textarea class="form-control" id="fetalWellBeing" rows="2" placeholder="e.g., Observations of fetal movements and well-being" required></textarea>
-            <div class="invalid-feedback">Please enter details about fetal well-being.</div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="fetalWellBeing" class="form-label">Fetal Movements</label>
+                <textarea class="form-control" id="fetalWellBeing" rows="2" placeholder="e.g., Observations of fetal movements and well-being" required></textarea>
+                <div class="invalid-feedback">Please enter details about fetal well-being.</div>
+            </div>
+            <div class="col">
+                <label for="contractionsStatus" class="form-label">Contractions Status</label>
+                <input type="text" class="form-control" id="contractionsStatus" placeholder="e.g., Frequent, Mild" required>
+                <div class="invalid-feedback">Please enter the contractions status.</div>
+            </div>
         </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label for="medicationsGiven" class="form-label">Medications</label>
+                <input type="text" class="form-control" id="medicationsGiven" placeholder="e.g., Oxytocin, Antibiotics" required>
+                <div class="invalid-feedback">Please enter the medications given.</div>
+            </div>
+            <div class="col">
+                <label for="activityStatus" class="form-label">Activity Status</label>
+                <input type="text" class="form-control" id="activityStatus" placeholder="e.g., Resting, Active" required>
+                <div class="invalid-feedback">Please enter the activity status.</div>
+            </div>
+        </div>
+
+        <!-- Plan Section -->
+        <h5>Plan</h5>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="nextSteps" class="form-label">Next Steps</label>
+                <input type="text" class="form-control" id="nextSteps" placeholder="e.g., Continue monitoring, Increase medication" required>
+                <div class="invalid-feedback">Please enter the next steps.</div>
+            </div>
+            <div class="col">
+                <label for="deliveryLikelihood" class="form-label">Likelihood of Delivery</label>
+                <input type="text" class="form-control" id="deliveryLikelihood" placeholder="e.g., Imminent, Unlikely" required>
+                <div class="invalid-feedback">Please enter the likelihood of delivery.</div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="monitoringPlan" class="form-label">Monitoring Plan</label>
+            <textarea class="form-control" id="monitoringPlan" rows="3" placeholder="e.g., Monitor contractions every 30 minutes" required></textarea>
+            <div class="invalid-feedback">Please enter the monitoring plan.</div>
+        </div>
+
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
     </form>
-
-    
 </div>
+
+<!-- CSS Styling -->
+<style>
+    /* Header Layout with Contact Info */
+    .header-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Two-column layout for form fields */
+    #carePlanForm .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .button-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* Consistent spacing and alignment */
+    .form-label {
+        margin-bottom: 5px;
+    }
+</style>
 
 <!-- JavaScript to Show/Hide Online Call Link Based on Contact Type -->
 <script>
@@ -2099,21 +2305,13 @@ function handleContactTypeChange() {
 
 <!-- Midwife Notes Section -->
 <div id="midwifeNotes" class="tab-pane hide">
-    <h3>Midwife Notes</h3>
-    <form id="midwifeNotesForm" novalidate>
+    <div class="header-row">
+        <h3>Midwife Notes</h3>
 
-        <!-- Date of Contact -->
-        <div class="mb-3">
-            <label for="contactDate" class="form-label">Date of Contact</label>
-            <input type="date" class="form-control" id="contactDate" required>
-            <div class="invalid-feedback">Please select the date of contact.</div>
-        </div>
-
-        <!-- Type of Contact Dropdown -->
-        <h5>Type of Contact</h5>
-        <div class="mb-3">
+        <!-- Type of Contact and Date of Contact beside header -->
+        <div class="contact-info">
             <label for="contactType" class="form-label">Type of Contact</label>
-            <select class="form-select" id="contactType" required onchange="handleContactTypeChange()">
+            <select class="form-control" id="contactType" required onchange="handleContactTypeChange()">
                 <option value="" disabled selected>Select contact type</option>
                 <option value="physical">Physical Office Contact</option>
                 <option value="voice">Online Voice Call</option>
@@ -2122,29 +2320,38 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please select the type of contact.</div>
         </div>
 
+        <div class="contact-info">
+            <label for="contactDate" class="form-label">Date of Contact</label>
+            <input type="date" class="form-control" id="contactDate" required>
+            <div class="invalid-feedback">Please select the date of contact.</div>
+        </div>
+    </div>
+
+    <form id="midwifeNotesForm" novalidate>
+
         <!-- Link for Online Calls (Shown only if Online Call is selected) -->
-        <div class="mb-3" id="onlineCallLink" style="display: none;">
+        <div class="form-group" id="onlineCallLink" style="display: none;">
             <label for="callLink" class="form-label">Online Call Link</label>
             <input type="url" class="form-control" id="callLink" placeholder="Enter the online call link">
             <div class="invalid-feedback">Please enter the online call link.</div>
         </div>
 
         <!-- Date -->
-        <div class="mb-3">
+        <div class="form-group">
             <label for="noteDate" class="form-label">Date</label>
             <input type="date" class="form-control" id="noteDate" required>
             <div class="invalid-feedback">Please select the date.</div>
         </div>
 
         <!-- Time -->
-        <div class="mb-3">
+        <div class="form-group">
             <label for="noteTime" class="form-label">Time</label>
             <input type="time" class="form-control" id="noteTime" required>
             <div class="invalid-feedback">Please select the time.</div>
         </div>
 
         <!-- Note Type -->
-        <div class="mb-3">
+        <div class="form-group">
             <label for="noteType" class="form-label">Note Type</label>
             <input type="text" class="form-control" id="noteType" placeholder="e.g., Routine Check-up, Emergency" required>
             <div class="invalid-feedback">Please enter the note type.</div>
@@ -2152,70 +2359,104 @@ function handleContactTypeChange() {
 
         <!-- Summary Section -->
         <h5>Summary</h5>
-        <div class="mb-3">
+        <div class="form-group">
             <label for="generalWellbeing" class="form-label">General Wellbeing</label>
             <input type="text" class="form-control" id="generalWellbeing" placeholder="e.g., Stable, Good" required>
             <div class="invalid-feedback">Please enter the general wellbeing.</div>
         </div>
-        <div class="mb-3">
+        <div class="form-group">
             <label for="bloodPressureStatus" class="form-label">Blood Pressure Status</label>
             <input type="text" class="form-control" id="bloodPressureStatus" placeholder="e.g., Normal, High" required>
             <div class="invalid-feedback">Please enter the blood pressure status.</div>
         </div>
-        <div class="mb-3">
-            <label for="fetalMovements" class="form-label">Fetal Movements</label>
-            <input type="text" class="form-control" id="fetalMovements" placeholder="e.g., Active, Decreased" required>
-            <div class="invalid-feedback">Please enter the fetal movements status.</div>
+
+        <!-- Fetal Activity Monitoring -->
+        <h5>Fetal Activity Monitoring</h5>
+        <div class="form-group">
+            <label for="movementsFrequency" class="form-label">Movements Frequency</label>
+            <input type="text" class="form-control" id="movementsFrequency" placeholder="e.g., Active, Less Active" required>
+            <div class="invalid-feedback">Please enter the fetal movements frequency.</div>
         </div>
-        <div class="mb-3">
-            <label for="contractionsStatus" class="form-label">Contractions Status</label>
-            <input type="text" class="form-control" id="contractionsStatus" placeholder="e.g., Frequent, Mild" required>
-            <div class="invalid-feedback">Please enter the contractions status.</div>
-        </div>
-        <div class="mb-3">
-            <label for="medicationsGiven" class="form-label">Medications</label>
-            <input type="text" class="form-control" id="medicationsGiven" placeholder="e.g., Oxytocin, Antibiotics" required>
-            <div class="invalid-feedback">Please enter the medications given.</div>
-        </div>
-        <div class="mb-3">
-            <label for="activityStatus" class="form-label">Activity Status</label>
-            <input type="text" class="form-control" id="activityStatus" placeholder="e.g., Resting, Active" required>
-            <div class="invalid-feedback">Please enter the activity status.</div>
+        <div class="form-group">
+            <label for="fetalPosition" class="form-label">Fetal Position</label>
+            <input type="text" class="form-control" id="fetalPosition" placeholder="e.g., Cephalic, Breech" required>
+            <div class="invalid-feedback">Please enter the fetal position.</div>
         </div>
 
-        <!-- Plan Section -->
-        <h5>Plan</h5>
-        <div class="mb-3">
-            <label for="nextSteps" class="form-label">Next Steps</label>
-            <input type="text" class="form-control" id="nextSteps" placeholder="e.g., Continue monitoring, Increase medication" required>
-            <div class="invalid-feedback">Please enter the next steps.</div>
+        <!-- Contraction Monitoring -->
+        <h5>Contraction Monitoring</h5>
+        <div class="form-group">
+            <label for="contractionDetails" class="form-label">Contractions</label>
+            <input type="text" class="form-control" id="contractionDetails" placeholder="e.g., Mild, Frequent" required>
+            <div class="invalid-feedback">Please enter contraction details.</div>
         </div>
-        <div class="mb-3">
-            <label for="expectedDeliveryType" class="form-label">Expected Delivery Type</label>
-            <input type="text" class="form-control" id="expectedDeliveryType" placeholder="e.g., Vaginal, C-section" required>
-            <div class="invalid-feedback">Please enter the expected delivery type.</div>
+
+        <!-- Progress Notes -->
+        <h5>Progress Notes</h5>
+        <div class="form-group">
+            <label for="progressNotes" class="form-label">Progress Notes</label>
+            <textarea class="form-control" id="progressNotes" rows="3" placeholder="e.g., Monitoring progress of pregnancy, contractions" required></textarea>
+            <div class="invalid-feedback">Please enter the progress notes.</div>
         </div>
-        <div class="mb-3">
-            <label for="deliveryLikelihood" class="form-label">Likelihood of Delivery</label>
-            <input type="text" class="form-control" id="deliveryLikelihood" placeholder="e.g., Imminent, Unlikely" required>
-            <div class="invalid-feedback">Please enter the likelihood of delivery.</div>
+
+        <!-- Midwife Notes -->
+        <h5>Midwife Notes</h5>
+        <div class="form-group">
+            <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
+            <textarea class="form-control" id="mmidwifeNotes" rows="3" placeholder="e.g., Observations, Instructions" required></textarea>
+            <div class="invalid-feedback">Please enter midwife notes.</div>
         </div>
-        <div class="mb-3">
-            <label for="monitoringPlan" class="form-label">Monitoring Plan</label>
-            <textarea class="form-control" id="monitoringPlan" rows="3" placeholder="e.g., Monitor contractions every 30 minutes" required></textarea>
-            <div class="invalid-feedback">Please enter the monitoring plan.</div>
-        </div>
+
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-        
-        
     </form>
-
-    
 </div>
+
+<!-- CSS Styling -->
+<style>
+    /* Header layout with contact info */
+    .header-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Two-column layout for form fields */
+    #midwifeNotesForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .button-row {
+        display: flex;
+        justify-content: flex-end;
+        grid-column: span 2;
+        gap: 10px;
+    }
+
+    /* Consistent spacing and alignment */
+    .form-label {
+        margin-bottom: 5px;
+    }
+
+    h5 {
+        grid-column: span 2; /* Span full width for headings */
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+</style>
 
 <!-- JavaScript to Show/Hide Online Call Link Based on Contact Type -->
 <script>
