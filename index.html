@@ -661,14 +661,13 @@ button {
     </form>
 </div>
 
-     
-        <!-- Social, Living Conditions, and Lifestyle Habits Section -->
+     <!-- Social, Living Conditions, and Lifestyle Habits Section -->
 <div id="socialLivingConditionsAndLifestyleHabits" class="tab-pane hide">
     <h3>Social, Living Conditions, and Lifestyle Habits</h3>
     <form id="socialLivingConditionsAndLifestyleHabitsForm" class="form-grid">
 
         <!-- Social and Living Conditions -->
-        
+        <h5>Social and Living Conditions</h5>
 
         <!-- Family Situation -->
         <div class="form-group">
@@ -688,16 +687,29 @@ button {
         <div class="form-group">
             <label for="supportAvailable" class="form-label">Is Support Available?</label>
             <div>
-                <input type="checkbox" id="supportAvailableYes" name="supportAvailable" value="true"> Yes
-                <input type="checkbox" id="supportAvailableNo" name="supportAvailable" value="false"> No
+                <input type="checkbox" id="supportAvailableYes" name="supportAvailable" value="true" onclick="toggleSupportDetails()"> Yes
+                <input type="checkbox" id="supportAvailableNo" name="supportAvailable" value="false" onclick="toggleSupportDetails()"> No
             </div>
+        </div>
+
+        <!-- Support Details (Visible only if "Yes" is selected) -->
+        <div class="form-group" id="supportDetailsField" style="display: none;">
+            <label for="supportDetails" class="form-label">Support Details</label>
+            <input type="text" class="form-control" id="supportDetails" placeholder="Describe the available support">
         </div>
 
         <!-- Living Situation -->
         <div class="form-group">
-            <label for="livingSituationSupport" class="form-label">Living Situation</label>
-            <input type="text" class="form-control" id="livingSituationSupport" placeholder="e.g., living with relatives, alone" required>
-            <div class="invalid-feedback">Please enter the living situation.</div>
+            <label for="livingSituation" class="form-label">Living Situation</label>
+            <select class="form-control" id="livingSituation" required>
+                <option value="">Select Living Situation</option>
+                <option value="alone">Alone</option>
+                <option value="withFamily">With Family</option>
+                <option value="withRoommate">With Roommate</option>
+                <option value="institutionalized">Institutionalized</option>
+                <option value="other">Other</option>
+            </select>
+            <div class="invalid-feedback">Please select the living situation.</div>
         </div>
 
         <!-- Profession -->
@@ -802,38 +814,92 @@ button {
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-
     </form>
 </div>
 
+<!-- CSS Styling -->
 <style>
     .form-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
     }
+
     .form-group {
         display: flex;
         flex-direction: column;
-    }
-    .form-label {
-        font-weight: bold;
         margin-bottom: 0.5rem;
     }
+
+    h5 {
+        grid-column: span 2;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+
     .form-control, .form-check-input {
         padding: 0.5rem;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
     }
+
+    .form-control {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="gray" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1em;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    /* Button Row Styling */
     .button-row {
         grid-column: span 2;
         display: flex;
-        justify-content: space-between;
-        margin-top: 1rem;
+        justify-content: flex-end;
+        gap: 8px;
     }
+
     .custom-save, .custom-edit, .custom-delete {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
+        padding: 6px 14px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .custom-save {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .custom-edit {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .custom-delete {
+        background-color: #dc3545;
+        color: white;
     }
 </style>
+
+<!-- JavaScript for Conditional Display -->
+<script>
+function toggleSupportDetails() {
+    const supportAvailableYes = document.getElementById('supportAvailableYes').checked;
+    const supportDetailsField = document.getElementById('supportDetailsField');
+    supportDetailsField.style.display = supportAvailableYes ? 'block' : 'none';
+}
+</script>
+
 <!-- Medical History Section -->
 <div id="medicalHistory" class="tab-pane hide">
     <h3>Medical History</h3>
@@ -1858,6 +1924,7 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
                     <input type="text" class="form-control" id="malariaTest" placeholder="e.g., Negative" required>
                     <div class="invalid-feedback">Please enter the malaria test result.</div>
                 </div>
+                
                 <div class="mb-3">
                     <label for="mycoplasmaTest" class="form-label">Mycoplasma Test</label>
                     <input type="text" class="form-control" id="mycoplasmaTest" placeholder="e.g., Negative" required>
@@ -1887,7 +1954,7 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
 .lab-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 50px;
 }
 
 /* Section Styling */
