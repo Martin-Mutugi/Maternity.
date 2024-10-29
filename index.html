@@ -10,91 +10,35 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
     <style>
-       /* Body and General Styling */
+    /* Body Styling */
 body {
-    display: flex;
-    height: 100vh;
     font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #f4f7fa;
 }
 
-/* Sidebar Styling */
-#sidebar {
-    min-width: 230px; /* Reduced width */
-    background-color: #343a40;
-    color: white;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 15px; /* Reduced padding */
-    border-right: 2px solid #28a745;
-}
-
-#sidebar .nav-link {
-    color: white;
-    font-size: 16px; /* Reduced font size */
-    margin: 10px 0; /* Reduced margin between links */
-    padding: 8px 15px; /* Reduced padding */
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    border-radius: 5px;
-}
-
-#sidebar .nav-link.active {
-    background-color: #28a745;
-}
-
-#sidebar .nav-link:hover {
-    background-color: #2c8f2a;
-}
-
-.sidebar-header h3 {
-    font-size: 20px; /* Reduced header font size */
-    font-weight: bold;
-}
-
-.sidebar-header p {
-    font-size: 13px; /* Reduced font size */
-    color: #ced4da;
-}
-
-/* Responsive Sidebar for smaller screens */
-@media (max-width: 768px) {
-    #sidebar {
-        position: absolute;
-        z-index: 1;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-    }
-    #sidebar.active {
-        transform: translateX(0);
-    }
-}
-/* Content Area */
-#content {
-    flex-grow: 1;
-    padding: 15px; /* Reduced padding */
-    background-color: #f8f9fa;
-    overflow-y: auto;
-}
-
-/* Styling for the top navigation links */
+/* Styling for Top Horizontal Navigation Bar */
 #otherServicesNav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 8px; /* Reduced padding */
+    padding: 10px;
     background-color: #f4f4f4;
     border: 1px solid #28a745;
-    border-radius: 10px;
-    margin-bottom: 15px; /* Reduced margin */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #otherServicesNav ul {
@@ -103,331 +47,155 @@ body {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 8px; /* Reduced space between items */
+    gap: 8px;
+    justify-content: center;
 }
 
-#otherServicesNav li {
-    margin-bottom: 8px; /* Reduced margin */
+#otherServicesNav .services-list li {
+    margin: 0;
 }
 
 #otherServicesNav a {
     display: inline-block;
-    padding: 8px 12px; /* Reduced padding for compactness */
+    padding: 8px 15px;
     background-color: #28a745;
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 13px; /* Slightly reduced font size */
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#otherServicesNav a:hover {
-    background-color: #218838; /* Slightly darker green on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Active link styling */
+#otherServicesNav a:hover,
 #otherServicesNav a.active {
-    background-color: #2c21c0;
-    color: #ffffff;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #218838;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-#otherServicesNav a.active:hover {
-    background-color: #1a1919;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    #otherServicesNav ul {
-        justify-content: center; /* Center items on smaller screens */
-    }
-    #otherServicesNav a {
-        font-size: 12px; /* Slightly smaller text */
-    }
-}
-
-@media (max-width: 576px) {
-    #otherServicesNav a {
-        padding: 6px 10px; /* Further reduced padding */
-        font-size: 12px;
-    }
-}
-
-/* Forms Styling */
+/* Form Container Styling */
 .tab-pane {
     display: none;
+    max-width: 850px;
+    margin: 15px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #28a745;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .tab-pane.active {
     display: block;
-    animation: fadeIn 0.3s ease-in-out;
-    padding: 6px; /* Reduced padding inside the form */
-    border-radius: 6px; /* Smooth rounded corners */
-    border: 1px solid #28a745; /* Thinner green border */
-    margin: 8px auto; /* Less margin to make the form tighter */
-    max-width: 85%; /* Reduce max width to prevent the form from becoming too wide */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    background-color: #ffffff; /* Clean white background */
 }
 
-/* Form container */
-form {
-    background-color: #e5ecee;
-    padding: 4px; /* Reduced padding for less space */
-    border-radius: 5px;
-    border: 2px solid #28a745;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+/* Form Grid for Equal Columns */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
-    gap: 2px; /* Reduced space between grid items */
-    max-width: 800px; /* Limit the width of the form */
-    margin: auto; /* Center the form */
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Input Fields */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Input Field Styling */
 .form-control {
     background-color: #ffffff;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    padding: 2px; /* Reduced padding for compact input fields */
-    font-size: 12px; /* Smaller font size */
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
     transition: border-color 0.3s ease-in-out;
-    margin-bottom: 4px; /* Reduced margin between fields */
 }
 
-/* Custom Dropdown */
-.custom-dropdown {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.custom-dropdown select {
-    width: 100%;
-    padding: 4px; /* Reduced padding */
-    font-size: 12px; /* Smaller font size */
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
-.custom-dropdown select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Input focus state */
 .form-control:focus {
     border-color: #28a745;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.25);
 }
 
-/* Form Labels */
+/* Label Styling */
 .form-label {
     font-weight: bold;
     color: #343a40;
-    margin-bottom: 2px; /* Reduced margin for compactness */
-    font-size: 12px; /* Reduced font size */
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
-/* Reduced space between input fields */
-input, select {
-    margin-bottom: 4px; /* Reduced space between inputs */
-}
-
-/* Label styling */
-label {
-    font-size: 12px; /* Reduced font size */
-    font-weight: bold; /* Bold text for emphasis */
-    margin-bottom: 2px; /* Reduced space between label and input */
-    display: block; /* Ensures the label is on its own line */
-}
-
-/* Additional Styling to prevent too much white space */
-input[type="text"], input[type="email"], input[type="tel"], select {
-    width: 100%; /* Make input fields take full width of the container */
-    padding: 4px; /* Compact the space inside the input */
-    box-sizing: border-box; /* Ensures padding doesn’t affect width */
-}
-
-/* Responsive Design for smaller screens */
-@media (max-width: 768px) {
-    form {
-        grid-template-columns: 1fr; /* Single column layout for smaller screens */
-    }
-
-    .form-control, .form-label {
-        font-size: 10px; /* Smaller font size for small screens */
-    }
-
-    button {
-        font-size: 10px; /* Smaller button text on mobile */
-        padding: 5px 8px; /* Reduced button padding on mobile */
-    }
-
-    .button-row {
-        flex-direction: column;
-        gap: 4px; /* Smaller gap between buttons on mobile */
-    }
-}
-
-/* Reduced space for smaller screens */
-@media (max-width: 576px) {
-    form {
-        grid-template-columns: 1fr; /* Single column layout */
-    }
-
-    .form-label, .form-control {
-        font-size: 9px; /* Smaller font size on mobile */
-    }
-
-    button[type="submit"], button[type="button"] {
-        grid-column: 1;
-        padding: 3px 6px; /* Reduced button padding */
-    }
-}
-
-/* Outer Frame Styling */
-.tab-pane.active {
-    display: block;
-    animation: fadeIn 0.3s ease-in-out;
-    padding: 6px; /* Reduced padding inside the frame */
-    border-radius: 5px; /* Slightly rounded corners */
-    border: 1px solid #28a745; /* Thinner green border */
-    margin: 8px auto; /* Further reduced margin */
-    max-width: 85%; /* Limit the width to prevent the form from becoming too wide */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-    background-color: #ffffff; /* Clean white background */
-}
-
-
-/* Table Styling */
-.table {
+/* Button Row Styling */
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    margin-bottom: 15px;
-    border-collapse: collapse;
+    margin-top: 15px;
 }
 
-.table th, 
-.table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.table th {
-    background-color: #28a745;
-    color: white;
-}
-
-/* Button Row Flexbox for Alignment */
-.button-row {
-    display: flex;
-    justify-content: space-between; /* Distribute buttons evenly */
-    gap: 8px; /* Add space between buttons */
-}
-
+/* Button Styling */
 .button-row button {
-    flex-grow: 1; /* Make buttons fill the row equally */
-}
-
-
-.partograph {
-    border: 1px solid #ccc;
+    padding: 8px 16px;
+    font-size: 14px;
     border-radius: 5px;
-    padding: 8px; /* Reduced padding */
-    background-color: #f9f9f9;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Flexbox for button-row to spread buttons evenly at the bottom and center */
-.button-row {
-    display: flex;
-    justify-content: center; /* Center the buttons horizontally */
-    align-items: flex-end; /* Align buttons to the bottom */
-    gap: 10px; /* Add space between buttons */
-    margin-top: auto; /* Ensure buttons stick to the bottom of the form */
-    padding: 10px 0; /* Add padding for better spacing */
-}
-
-/* Custom Save Button Color */
 .custom-save {
-    background-color: #28a745 !important;
-    color: white !important;
-    border: none !important;
-    flex-grow: 1;
-    text-align: center;
-    padding: 12px; /* Standardized padding for buttons */
-    border-radius: 5px; /* Rounded corners for a modern look */
-    font-size: 14px; /* Slightly larger font size */
-    max-width: 150px; /* Limit button width for centered layout */
+    background-color: #28a745;
+}
+
+.custom-edit {
+    background-color: #007bff;
+}
+
+.custom-delete {
+    background-color: #dc3545;
 }
 
 .custom-save:hover {
-    background-color: #218838 !important;
-}
-
-/* Custom Edit Button Color */
-.custom-edit {
-    background-color: #007bff !important;
-    color: white !important;
-    border: none !important;
-    flex-grow: 1;
-    text-align: center;
-    padding: 12px; /* Standardized padding for buttons */
-    border-radius: 5px;
-    font-size: 14px;
-    max-width: 150px; /* Limit button width for centered layout */
+    background-color: #218838;
 }
 
 .custom-edit:hover {
-    background-color: #0056b3 !important;
-}
-
-/* Custom Delete Button Color */
-.custom-delete {
-    background-color: #dc3545 !important;
-    color: white !important;
-    border: none !important;
-    flex-grow: 1;
-    text-align: center;
-    padding: 12px; /* Standardized padding for buttons */
-    border-radius: 5px;
-    font-size: 14px;
-    max-width: 150px; /* Limit button width for centered layout */
+    background-color: #0056b3;
 }
 
 .custom-delete:hover {
-    background-color: #c82333 !important;
+    background-color: #c82333;
 }
 
-/* Ensure buttons are spaced and aligned */
-button {
-    padding: 12px; /* Standardized padding for uniform button size */
-    font-size: 14px; /* Professional font size */
-    margin-bottom: 10px; /* Margin at the bottom to create space */
-}
-
-/* Adjust button styles for smaller screens */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .button-row {
-        flex-direction: column; /* Stack buttons vertically on smaller screens */
-        gap: 10px; /* Maintain spacing between buttons */
+    .form-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
     }
 
-    button {
-        font-size: 12px; /* Slightly smaller font size for mobile screens */
-        padding: 10px; /* Reduced padding for smaller screens */
-        max-width: 100%; /* Full width for buttons on smaller screens */
+    #otherServicesNav a {
+        font-size: 13px;
+        padding: 6px 10px;
     }
 }
 
-/* Animation for smooth form transitions */
+/* Animation for Fade In Effect */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -438,81 +206,104 @@ button {
         transform: translateY(0);
     }
 }
+
+/* Table Styling */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th, 
+.table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #28a745;
+    color: white;
+}
+
+.table td button {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
 /* Patient Info Section Styling */
 #patientInfoSection {
     display: flex;
-    justify-content: flex-end; /* Align to the right */
-    align-items: right;
-    background-color: #343a40; /* Professional dark background */
+    justify-content: center;
+    align-items: center;
+    background-color: #343a40;
     padding: 10px;
     border-radius: 5px;
-    color: #ffffff; /* White text for better contrast */
+    color: #ffffff;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
 }
 
 #patientInfoSection h3 {
-    font-size: 18px; /* Adjusted font size for professional look */
-    margin: 0 15px 0 0; /* Spacing for the name */
+    font-size: 18px;
     font-weight: bold;
-    color: #34C759; /* Light green for patient name */
+    color: #34C759;
+    margin: 0 15px 0 0;
 }
 
 #patientInfoSection p {
-    font-size: 14px; /* Adjusted font size for age */
-    margin: 0;
-    color: #c0c0c0; /* Light grey for age text */
+    font-size: 14px;
+    color: #c0c0c0;
 }
 
-#patientInfoSection span {
-    font-weight: normal;
-}
-
-/* Responsive Design for Patient Info Section */
-@media (max-width: 768px) {
-    #patientInfoSection {
-        flex-direction: column; /* Align vertically on smaller screens */
-        align-items: flex-end;
-    }
-
-    #patientInfoSection h3, #patientInfoSection p {
-        font-size: 16px; /* Slightly smaller text on smaller screens */
-        margin: 5px 0;
-    }
-}
-
-
-        
     </style>
 </head>
 <body>
     <!-- Sidebar -->
-    <div id="sidebar">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header">
-            <img src="Prime.jpeg" class="sidebar-image" width="100px" height="100px">
-            <h3>Maternal Portal</h3>
-            <p>Maternal Healthcare</p>
-        </div>
-
-        <!-- Sidebar Menu -->
-<ul class="sidebar-menu">
-    <li><a href="#" class="nav-link active" onclick="showHome()"><i class="fas fa-home"></i> Home</a></li>
-    
-    <!-- Add Journal Reports Here -->
-    <li><a href="#" class="nav-link" onclick="showJournalReports()"><i class="fas fa-book"></i> Journal Reports</a></li>
-    
-    <li><a href="#" class="nav-link" onclick="showRegisterPatient()"><i class="fas fa-user-plus"></i> Register Patients</a></li>
-    <li class="menu-header">Settings</li>
-    <li><a href="#" class="nav-link"><i class="fas fa-user-cog"></i> Account Settings</a></li>
-    <li><a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
-    <li><a href="#" class="nav-link"><i class="fas fa-bell"></i> Notifications</a></li>
-    <li class="menu-header">Support</li>
-    <li><a href="#" class="nav-link"><i class="fas fa-comments"></i> Chat</a></li>
-    <li><a href="#" class="nav-link"><i class="fas fa-headset"></i> Customer Support</a></li>
-</ul>
+<div id="sidebar">
+    <!-- Sidebar Header with Image -->
+    <div class="sidebar-header">
+        <img src="Prime.jpeg" alt="Portal Logo" class="sidebar-image" width="100px" height="100px">
+        <h3>Maternal Portal</h3>
+        <p>Maternal Healthcare</p>
     </div>
 
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+        <!-- Home Link -->
+        <li><a href="#" class="nav-link active" onclick="showHome()"><i class="fas fa-home"></i> Home</a></li>
+
+        <!-- Journal Reports -->
+        <li><a href="#" class="nav-link" onclick="showJournalReports()"><i class="fas fa-book"></i> Journal Reports</a></li>
+
+        <!-- Patients Dropdown -->
+        <li class="dropdown">
+            <a href="#" class="nav-link" onclick="toggleDropdown('patientsDropdown')">
+                <i class="fas fa-users"></i> Patients
+            </a>
+            <ul class="dropdown-menu" id="patientsDropdown" style="display: none;">
+                <!-- Types of Patients Dropdown -->
+                <li class="dropdown">
+                    <a href="#" onclick="toggleDropdown('typesDropdown')"><i class="fas fa-hospital"></i> Types of Admissions</a>
+                    <ul class="dropdown-submenu" id="typesDropdown" style="display: none;">
+                        <li><a href="#" onclick="showCreatePatient('scheduled')"><i class="fas fa-calendar-check"></i> Scheduled Admission</a></li>
+                        <li><a href="#" onclick="showCreatePatient('early-labor')"><i class="fas fa-heartbeat"></i> Early Labor Admission</a></li>
+                        <li><a href="#" onclick="showCreatePatient('emergency')"><i class="fas fa-ambulance"></i> Emergency Admission</a></li>
+                        <li><a href="#" onclick="showCreatePatient('direct-delivery')"><i class="fas fa-baby"></i> Direct-to-Delivery</a></li>
+                    </ul>
+                </li>
+
+                <!-- Create Patient Option -->
+                <li><a href="#" class="nav-link" onclick="showRegisterPatientForm()"><i class="fas fa-user-plus"></i> Create Patient</a></li>
+            </ul>
+        </li>
+
+        <!-- Other Sidebar Options -->
+        <li><a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-headset"></i> Customer Support</a></li>
+    </ul>
+
+</div>
     <!-- Content Area -->
     <div id="content">
         <!-- Top Bar with Admin Profile and Patient Info -->
@@ -542,7 +333,7 @@ button {
     <ul class="services-list">
         <li><a href="#" onclick="showService('socialLivingConditionsAndLifestyleHabits')">SocialLifestyle</a></li>
         <li><a href="#" onclick="showService('medicalHistory')">risk profile</a></li>
-        <li><a href="#" onclick="showService('mentalHealthTreatment')">medical info</a></li>
+        <li><a href="#" onclick="showService('mentalHealthSupportRiskFactors')">medical info</a></li>
         <li><a href="#" onclick="showService('previousPregnancies')">PreviousPregnancies</a></li>
         <li><a href="#" onclick="showService('currentPregnancyDetails')">Pregnancy</a></li>
         <li><a href="#" onclick="showService('healthExamination')">Examination</a></li>
@@ -565,246 +356,196 @@ button {
         </div>
     </div>
 
-     <!-- Registered Patients Table -->
-     <div id="homeSection" class="tab-pane active">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2>Registered Patients</h2>
-        </div>
-
-        <table class="table table-striped" id="registeredPatientsTable">
-            <thead>
-                <tr>
-                    <th>Personal Number</th>
-                    <th>Full Name</th>
-                    <th>Date of Birth</th>
-                    <th>Mobile Phone</th>
-                    <th>Partner Contact</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>123456</td>
-                    <td>Carren Sofia</td>
-                    <td>1980-10-20</td>
-                    <td>+2547623456789</td>
-                    <td>Risper Nkatha</td>
-                    <td>
-                        <button class="btn btn-sm btn-warning">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                        <button class="btn btn-sm btn-info" onclick="viewPatient('Carren Sofia', '1980-10-20')">View Patient</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>156383</td>
-                    <td>Jane Ngeno</td>
-                    <td>1990-09-16</td>
-                    <td>+255783456789</td>
-                    <td>Christine Mukami</td>
-                    <td>
-                        <button class="btn btn-sm btn-warning">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                        <button class="btn btn-sm btn-info" onclick="viewPatient('Jane Ngeno', '1990-09-16')">View Patient</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>985327</td>
-                    <td>Mercy Vyone</td>
-                    <td>2000-08-02</td>
-                    <td>+254789064327</td>
-                    <td>Hellen Stecy</td>
-                    <td>
-                        <button class="btn btn-sm btn-warning">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                        <button class="btn btn-sm btn-info" onclick="viewPatient('Mercy Vyone', '2000-08-02')">View Patient</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <!-- Home Section: Patient List and Register Button -->
+<div id="homeSection" class="tab-pane active">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Registered Patients</h2>
+        <!-- Button to Show Register Patient Form -->
+        <button class="btn btn-primary" onclick="toggleRegistrationForm()">Register Patient</button>
     </div>
 
+    <!-- Admission Type Filter Dropdown -->
+    <div class="filter-controls mb-3">
+        <select id="admissionTypeFilter" class="form-select" onchange="filterPatientsByType()">
+            <option value="all">All Patients</option>
+            <option value="scheduled">Scheduled Admission</option>
+            <option value="early-labor">Early Labor Admission</option>
+            <option value="emergency">Emergency Admission</option>
+            <option value="direct-delivery">Direct-to-Delivery</option>
+        </select>
+    </div>
 
-      <!-- Patient Registration Form (When 'Register Patients' is clicked) -->
-<div id="patientRegistration" class="tab-pane">
-    <style>
-        /* Page Background */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(to bottom, #0d3d56, #0d853d);
-            font-family: Arial, sans-serif;
-        }
+    <!-- Registered Patients Table -->
+    <table class="table table-striped" id="registeredPatientsTable">
+        <thead>
+            <tr>
+                <th>Personal Number</th>
+                <th>Full Name</th>
+                <th>Date of Birth</th>
+                <th>Mobile Phone</th>
+                <th>Partner Contact</th>
+                <th>Actions</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="patientsTableBody">
+            <!-- Patient rows will be populated dynamically by JavaScript -->
+        </tbody>
+    </table>
 
-        /* Form Container */
-        .form-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-            max-width: 600px;
-            width: 100%;
-            text-align: left;
-        }
-
-        /* Form Title */
-        .form-container h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        /* Form Rows */
-        .form-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            flex: 1;
-        }
-
-        /* Input Fields */
-        .form-label {
-            font-size: 14px;
-            color: #333;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            font-size: 16px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            outline: none;
-        }
-
-        .form-control::placeholder {
-            color: #bbb;
-        }
-
-        /* Register Button */
-        .register-button {
-            display: block;
-            width: 100%;
-            padding: 12px 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            text-align: center;
-        }
-
-        .register-button:hover {
-            background: linear-gradient(to right, #2575fc, #6a11cb);
-        }
-
-        /* Additional Button Styling */
-        .button-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-            transition: background 0.3s ease;
-            flex: 1;
-        }
-
-        .custom-save {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-        }
-
-        .custom-edit {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-        }
-
-        .custom-delete {
-            background: linear-gradient(to right, #f44336, #d32f2f);
-        }
-
-        .custom-save:hover {
-            background: linear-gradient(to right, #2575fc, #6a11cb);
-        }
-
-        .custom-edit:hover {
-            background: linear-gradient(to right, #ff5722, #ff9800);
-        }
-
-        .custom-delete:hover {
-            background: linear-gradient(to right, #d32f2f, #f44336);
-        }
-    </style>
-
-    <div class="form-container">
+    <!-- Patient Registration Form (hidden by default) -->
+    <div id="patientRegistration" style="display: none; margin-top: 20px;">
         <h3>Register a New Patient</h3>
+        
+        <!-- Registration Form -->
         <form id="patientRegistrationForm">
-            <div class="form-row">
+            <!-- Admission Type Selection -->
+            <div class="form-group">
+                <label for="admissionType" class="form-label">Type of Admission</label>
+                <div class="custom-dropdown">
+                    <select id="admissionType" class="form-control with-icon" required>
+                        <option value="scheduled">
+                            &#xf073; Scheduled Admission
+                        </option>
+                        <option value="early-labor">
+                            &#xf486; Early Labor Admission
+                        </option>
+                        <option value="emergency">
+                            &#xf0f9; Emergency Admission
+                        </option>
+                        <option value="direct-delivery">
+                            &#xf7ec; Direct-to-Delivery
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Personal Information Section -->
+            <div class="form-grid">
+                <!-- Personal Number -->
                 <div class="form-group">
                     <label for="personalNumber" class="form-label">Personal Number</label>
                     <input type="text" class="form-control" id="personalNumber" placeholder="Enter personal number" required>
                 </div>
+
+                <!-- Full Name -->
                 <div class="form-group">
                     <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
                 </div>
-            </div>
 
-            <div class="form-row">
+                <!-- Date of Birth -->
                 <div class="form-group">
                     <label for="birthDate" class="form-label">Date of Birth</label>
                     <input type="date" class="form-control" id="birthDate" required>
                 </div>
+
+                <!-- Mobile Phone -->
                 <div class="form-group">
                     <label for="mobilePhone" class="form-label">Mobile Phone</label>
                     <input type="tel" class="form-control" id="mobilePhone" placeholder="Enter phone number" required>
                 </div>
-            </div>
 
-            <div class="form-row">
+                <!-- Partner Contact -->
                 <div class="form-group">
                     <label for="emergencyContact" class="form-label">Partner Contact</label>
                     <input type="tel" class="form-control" id="emergencyContact" placeholder="Enter partner contact" required>
                 </div>
-            </div>
 
-            <!-- Midwife Notes Section -->
-            <div class="mb-3">
-                <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
-                <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter any notes from the midwife" rows="4"></textarea>
+                <!-- Midwife Notes -->
+                <div class="form-group">
+                    <label for="midwifeNotes" class="form-label">Midwife Notes</label>
+                    <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter any notes from the midwife" rows="4"></textarea>
+                </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="button-row">
-                <button type="button" class="btn custom-save">Save</button>
-                <button type="button" class="btn custom-edit">Edit</button>
-                <button type="button" class="btn custom-delete">Delete</button>
+                <button type="button" class="btn btn-success" onclick="registerPatient()">Register Patient</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelRegistration()">Cancel</button>
             </div>
         </form>
     </div>
 </div>
 
+
+<style>
+   
+/* Form Container */
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Form Title */
+.form-container h3 {
+    text-align: center;
+    color: #2d2f3a;
+}
+
+/* Form Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Form Labels */
+.form-label {
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Form Controls */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+}
+
+/* Button Row */
+.button-row {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-row .btn {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Custom Button Colors */
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+</style>
+    
 
    <!-- Social, Living Conditions, and Lifestyle Habits Section -->
 <div id="socialLivingConditionsAndLifestyleHabits" class="tab-pane active">
@@ -1244,114 +985,112 @@ function toggleSupportDetails() {
 </script>
 
 
-
-<!-- Combined Mental Health, Support, and Risk Factors Section -->
-<div id="mentalHealthSupportRiskFactors" class="tab-pane hide">
-    
-    <form id="mentalHealthSupportRiskFactorsForm" novalidate>
+<!-- Combined Mental Health, Support, Risk Factors, and Treatment Section -->
+<div id="mentalHealthSupportRiskFactors" class="tab-pane active">
+    <form id="mentalHealthSupportRiskFactorsForm" novalidate class="three-column-grid">
         
-        <!-- Mental Health and Support -->
-        <div class="mb-3">
-            <label class="form-label">Anxiety or Depression</label>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="previousEpisodes" name="mentalHealth" value="previous">
-                <label class="form-check-label" for="previousEpisodes">Previous Episodes</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="currentEpisodes" name="mentalHealth" value="current">
-                <label class="form-check-label" for="currentEpisodes">Current Episodes</label>
-            </div>
+        <!-- Anxiety or Depression -->
+        <h5 class="header-row">Anxiety or Depression</h5>
+        <div class="form-group">
+            <label class="form-label">Previous Episodes</label>
+            <input type="text" class="form-control" id="previousEpisodes" placeholder="e.g., Yes/No">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Current Episodes</label>
+            <input type="text" class="form-control" id="currentEpisodes" placeholder="e.g., Yes/No">
         </div>
 
         <!-- Stress Levels -->
-        <div class="mb-3">
-            <label for="stressLevelBefore" class="form-label">Stress Level Before Pregnancy</label>
-            <input type="text" class="form-control" id="stressLevelBefore" placeholder="e.g., low, moderate, high" required>
-            <div class="invalid-feedback">Please enter the stress level before pregnancy.</div>
+        <h5 class="header-row">Stress Levels</h5>
+        <div class="form-group">
+            <label for="stressLevelBefore" class="form-label">Before Pregnancy</label>
+            <input type="text" class="form-control" id="stressLevelBefore" placeholder="e.g., low, moderate, high">
         </div>
-
-        <div class="mb-3">
+        <div class="form-group">
             <label for="currentStressLevel" class="form-label">Current Stress Level</label>
-            <input type="text" class="form-control" id="currentStressLevel" placeholder="e.g., low, moderate, high" required>
-            <div class="invalid-feedback">Please enter the current stress level.</div>
+            <input type="text" class="form-control" id="currentStressLevel" placeholder="e.g., low, moderate, high">
         </div>
 
         <!-- Support from Relatives -->
-        <h5>Support from Relatives</h5>
-        <div class="mb-3">
-            <label for="supportAvailable" class="form-label">Is Support Available?</label>
+        <h5 class="header-row">Support from Relatives</h5>
+        <div class="form-group">
+            <label class="form-label">Support Available?</label>
             <div>
-                <input type="checkbox" id="supportAvailableYes" name="supportAvailable" value="true"> Yes
-                <input type="checkbox" id="supportAvailableNo" name="supportAvailable" value="false"> No
+                <input type="radio" id="supportYes" name="supportAvailable" value="yes"> Yes
+                <input type="radio" id="supportNo" name="supportAvailable" value="no"> No
             </div>
         </div>
-
-        <div class="mb-3">
-            <label for="livingSituationSupport" class="form-label">Living Situation</label>
-            <input type="text" class="form-control" id="livingSituationSupport" placeholder="e.g., living with relatives, alone" required>
-            <div class="invalid-feedback">Please enter the living situation.</div>
+        <div class="form-group">
+            <label for="livingSituation" class="form-label">Living Situation</label>
+            <input type="text" class="form-control" id="livingSituation" placeholder="e.g., with relatives, alone">
         </div>
 
         <!-- Risk Factors -->
-        <h5>Risk Factors</h5>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="smoking" class="form-label">Smoking</label>
+        <h5 class="header-row">Risk Factors</h5>
+        <div class="form-group">
+            <label class="form-label">Smoking</label>
             <div>
-                <input type="checkbox" id="smokingYes" name="smoking" value="true"> Yes
-                <input type="checkbox" id="smokingNo" name="smoking" value="false"> No
+                <input type="radio" id="smokingYes" name="smoking" value="yes"> Yes
+                <input type="radio" id="smokingNo" name="smoking" value="no"> No
             </div>
         </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="alcoholUse" class="form-label">Alcohol Use</label>
+        <div class="form-group">
+            <label class="form-label">Alcohol Use</label>
             <div>
-                <input type="checkbox" id="alcoholUseYes" name="alcoholUse" value="true"> Yes
-                <input type="checkbox" id="alcoholUseNo" name="alcoholUse" value="false"> No
+                <input type="radio" id="alcoholYes" name="alcoholUse" value="yes"> Yes
+                <input type="radio" id="alcoholNo" name="alcoholUse" value="no"> No
             </div>
         </div>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="drugUse" class="form-label">Drug Use</label>
+        <div class="form-group">
+            <label class="form-label">Drug Use</label>
             <div>
-                <input type="checkbox" id="drugUseYes" name="drugUse" value="true"> Yes
-                <input type="checkbox" id="drugUseNo" name="drugUse" value="false"> No
+                <input type="radio" id="drugYes" name="drugUse" value="yes"> Yes
+                <input type="radio" id="drugNo" name="drugUse" value="no"> No
             </div>
         </div>
 
         <!-- Ongoing Treatment Table -->
-        <h5>Ongoing Treatment</h5>
-        <div class="mb-3">
+        <h5 class="header-row">Ongoing Treatment</h5>
+        <div class="table-wrapper">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Treatment Name</th>
-                        <th scope="col">Dosage</th>
-                        <th scope="col">Frequency</th>
-                        <th scope="col">Duration</th>
+                        <th>Treatment Name</th>
+                        <th>Dosage</th>
+                        <th>Frequency</th>
+                        <th>Duration</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" class="form-control" placeholder="Enter treatment name"></td>
-                        <td><input type="text" class="form-control" placeholder="Enter dosage"></td>
-                        <td><input type="text" class="form-control" placeholder="Enter frequency"></td>
-                        <td><input type="text" class="form-control" placeholder="Enter duration"></td>
+                        <td><input type="text" class="form-control" placeholder="Treatment name"></td>
+                        <td><input type="text" class="form-control" placeholder="Dosage"></td>
+                        <td><input type="text" class="form-control" placeholder="Frequency"></td>
+                        <td><input type="text" class="form-control" placeholder="Duration"></td>
                     </tr>
-                    <!-- Add more rows as necessary -->
                 </tbody>
             </table>
         </div>
 
         <!-- Allergies -->
-        <h5>Allergies</h5>
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <label for="medicationAllergies" class="form-label">Medication Allergies</label>
+        <h5 class="header-row">Allergies</h5>
+        <div class="form-group">
+            <label class="form-label">Medication Allergies</label>
             <div>
-                <input type="checkbox" id="medicationAllergiesYes" name="medicationAllergies" value="true"> Yes
-                <input type="checkbox" id="medicationAllergiesNo" name="medicationAllergies" value="false"> No
+                <input type="radio" id="medAllergiesYes" name="medAllergies" value="yes"> Yes
+                <input type="radio" id="medAllergiesNo" name="medAllergies" value="no"> No
             </div>
         </div>
-        <div class="mb-3">
+        <div class="form-group">
             <label for="otherAllergies" class="form-label">Other Allergies</label>
-            <textarea class="form-control" id="otherAllergies" placeholder="Specify other allergies" rows="3" required></textarea>
+            <textarea class="form-control" id="otherAllergies" placeholder="Specify other allergies" rows="2"></textarea>
+        </div>
+
+        <!-- Ongoing Diagnoses -->
+        <h5 class="header-row">Ongoing Diagnoses</h5>
+        <div class="form-group">
+            <label for="ongoingDiagnoses" class="form-label">Details</label>
+            <textarea class="form-control" id="ongoingDiagnoses" placeholder="Enter ongoing diagnoses" rows="2"></textarea>
         </div>
 
         <!-- Save/Edit/Delete Buttons -->
@@ -1360,172 +1099,92 @@ function toggleSupportDetails() {
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-
     </form>
 </div>
-
-<!-- Combined Mental Health and Treatment Section -->
-<div id="mentalHealthTreatment" class="tab-pane hide">
-    <h3>Mental Health and Treatment</h3>
-    <form id="mentalHealthTreatmentForm" class="form-grid" novalidate>
-
-        <!-- Ongoing Treatment -->
-        <div class="mb-3">
-            <label for="ongoingTreatment" class="form-label">Ongoing Treatment</label>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Treatment Name</th>
-                        <th scope="col">Dosage</th>
-                        <th scope="col">Frequency</th>
-                        <th scope="col">Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="Enter treatment name"></td>
-                        <td><input type="text" class="form-control" placeholder="Enter dosage"></td>
-                        <td><input type="text" class="form-control" placeholder="Enter frequency"></td>
-                        <td><input type="text" class="form-control" placeholder="Enter duration"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Previous Ongoing Anxieties or Depression -->
-        <div class="mb-3">
-            <label for="previousAnxietyOrDepression" class="form-label">Previous Ongoing Anxieties or Depression</label>
-            <div>
-                <input type="radio" id="previousAnxietyOrDepressionYes" name="previousAnxietyOrDepression" value="true"> Yes
-                <input type="radio" id="previousAnxietyOrDepressionNo" name="previousAnxietyOrDepression" value="false"> No
-            </div>
-            <div id="previousAnxietyOrDepressionDetails" class="mt-2" style="display:none;">
-                <label for="previousAnxietyOrDepressionInfo" class="form-label">Doctor's Notes on Previous Anxieties/Depression</label>
-                <textarea class="form-control" id="previousAnxietyOrDepressionInfo" placeholder="Enter details of previous anxieties or depression"></textarea>
-            </div>
-        </div>
-
-        <!-- Ongoing Diagnoses -->
-        <div class="mb-3">
-            <label for="ongoingDiagnoses" class="form-label">Ongoing Diagnoses</label>
-            <textarea class="form-control" id="ongoingDiagnoses" placeholder="Enter current ongoing diagnoses"></textarea>
-        </div>
-
-        <!-- Stress Level Before Pregnancy -->
-        <div class="mb-3">
-            <label for="stressLevelBefore" class="form-label">Stress Level Before Pregnancy</label>
-            <input type="text" class="form-control" id="stressLevelBefore" placeholder="e.g., low, moderate, high" required>
-            <div class="invalid-feedback">Please enter the stress level before pregnancy.</div>
-        </div>
-
-        <!-- Current Stress Level -->
-        <div class="mb-3">
-            <label for="currentStressLevel" class="form-label">Current Stress Level</label>
-            <input type="text" class="form-control" id="currentStressLevel" placeholder="e.g., low, moderate, high" required>
-            <div class="invalid-feedback">Please enter the current stress level.</div>
-        </div>
-
-        <!-- Anxiety or Depression -->
-        <div class="mb-3">
-            <label class="form-label">Anxiety or Depression</label>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="previousEpisodes" name="mentalHealth" value="previous">
-                <label class="form-check-label" for="previousEpisodes">Previous Episodes</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="currentEpisodes" name="mentalHealth" value="current">
-                <label class="form-check-label" for="currentEpisodes">Current Episodes</label>
-            </div>
-        </div>
-
-        <!-- Buttons -->
-        <div class="button-row">
-            <button type="button" class="btn custom-save">Save</button>
-            <button type="button" class="btn custom-edit">Edit</button>
-            <button type="button" class="btn custom-delete">Delete</button>
-        </div>
-    </form>
-</div>
-
 
 <style>
-    /* Layout for equal columns */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    max-width: 750px; /* Adjust width to keep form compact */
-    margin: 0 auto;
-}
-
-/* Header layout with contact info */
-.header-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-/* Styling for tables */
-.table-bordered {
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-}
-
-.form-label {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.form-control {
-    padding: 4px;
-    font-size: 13px;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
-}
-
-.form-check-label {
-    font-size: 13px;
-}
-
-/* Button Row */
-.button-row {
-    grid-column: span 2;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.custom-save,
-.custom-edit,
-.custom-delete {
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    color: #fff;
-}
-
-.custom-save {
-    background-color: #28a745;
-}
-.custom-edit {
-    background-color: #007bff;
-}
-.custom-delete {
-    background-color: #dc3545;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .form-grid {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
+    /* Three-column compact grid layout */
+    .three-column-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        border: 1px solid #28a745;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-}
 
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-row {
+        grid-column: span 3;
+        font-weight: bold;
+        font-size: 16px;
+        color: #343a40;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .form-label {
+        font-size: 13px;
+        margin-bottom: 4px;
+        font-weight: 600;
+    }
+
+    .form-control {
+        font-size: 13px;
+        padding: 6px;
+        border-radius: 4px;
+        border: 1px solid #ced4da;
+    }
+
+    .table-wrapper {
+        grid-column: span 3;
+    }
+
+    .table-bordered {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Button Styling */
+    .button-row {
+        grid-column: span 3;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .custom-save {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .custom-edit {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .custom-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .custom-save:hover,
+    .custom-edit:hover,
+    .custom-delete:hover {
+        opacity: 0.9;
+    }
 </style>
 
 <script>
@@ -3314,49 +2973,10 @@ function handleContactTypeChange() {
 </style>
 
 <script>
-    // Initial zoom level
-let zoomLevel = 1.0;
-
-// Function to zoom in
-function zoomIn() {
-    zoomLevel += 0.1;
-    updateZoom();
-}
-
-// Function to zoom out
-function zoomOut() {
-    if (zoomLevel > 0.2) { // Minimum zoom level to prevent excessive shrinking
-        zoomLevel -= 0.1;
-        updateZoom();
-    }
-}
-
-// Function to reset zoom to the original size
-function resetZoom() {
-    zoomLevel = 1.0;
-    updateZoom();
-}
-
-// Function to apply the zoom level to the image
-function updateZoom() {
-    const partographImage = document.getElementById("partographImage");
-    partographImage.style.transform = `scale(${zoomLevel})`;
-    partographImage.style.transformOrigin = "center center";
-}
-</script>
-
-    </div>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FontAwesome Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-    
-    <!-- JavaScript Functions -->
-    <script>
-        function showService(serviceId) {
-    hideAllSections();
-    document.getElementById(serviceId).classList.add('active'); // Show the selected service
+      // Function to show a specific service form and load patient data
+function showService(serviceId) { 
+    hideAllSections(); // Hide all other sections first
+    document.getElementById(serviceId).style.display = 'block'; // Display the selected service
 
     // Remove 'active' class from all links first
     const links = document.querySelectorAll('#otherServicesNav a');
@@ -3371,16 +2991,99 @@ function updateZoom() {
     }
 
     // Load the selected patient's data for this service
-    loadPatientData(serviceId, selectedPatientId);
+    loadPatientData(serviceId); // Call a function to load data, assuming `selectedPatientId` is set
+    document.getElementById('socialLivingConditionsAndLifestyleHabits').classList.add('active'); 
 }
-        function viewPatient(name, dob) {
-    // Show the patient info section
-    document.getElementById('patientInfoSection').style.display = 'block';
 
-    // Set patient name
+// Function to hide all sections (forms) within the patient services navigation
+function hideAllSections() {
+    const sections = document.querySelectorAll('.tab-pane');
+    sections.forEach(section => section.style.display = 'none'); // Hide all sections
+}
+
+// Array to hold registered patients
+let patients = [];
+
+// Function to toggle the registration form within the home section
+function toggleRegistrationForm() {
+    const registrationForm = document.getElementById('patientRegistration');
+    if (registrationForm.style.display === 'none' || registrationForm.style.display === '') {
+        registrationForm.style.display = 'block';
+    } else {
+        registrationForm.style.display = 'none';
+    }
+}
+
+// Function to register a new patient
+function registerPatient() {
+    const admissionType = document.getElementById('admissionType').value;
+    const personalNumber = document.getElementById('personalNumber').value;
+    const fullName = document.getElementById('fullName').value;
+    const birthDate = document.getElementById('birthDate').value;
+    const mobilePhone = document.getElementById('mobilePhone').value;
+    const emergencyContact = document.getElementById('emergencyContact').value;
+    const midwifeNotes = document.getElementById('midwifeNotes').value;
+
+    const newPatient = {
+        admissionType,
+        personalNumber,
+        fullName,
+        birthDate,
+        mobilePhone,
+        emergencyContact,
+        midwifeNotes
+    };
+
+    // Add the new patient to the array and update the display
+    patients.push(newPatient);
+
+    // Clear the form, hide it, and refresh the home view
+    document.getElementById('patientRegistrationForm').reset();
+    document.getElementById('patientRegistration').style.display = 'none';
+    displayPatients(patients);
+}
+
+// Function to display patients on the home page
+function displayPatients(patientList) {
+    const tbody = document.getElementById("patientsTableBody");
+    tbody.innerHTML = ""; // Clear existing rows
+
+    patientList.forEach(patient => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${patient.personalNumber}</td>
+            <td>${patient.fullName}</td>
+            <td>${patient.birthDate}</td>
+            <td>${patient.mobilePhone}</td>
+            <td>${patient.emergencyContact}</td>
+            <td>
+                <button class="btn btn-sm btn-warning" onclick="editPatient('${patient.personalNumber}')">Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="deletePatient('${patient.personalNumber}')">Delete</button>
+                <button class="btn btn-sm btn-info" onclick="viewPatient('${patient.fullName}', '${patient.birthDate}')">View Patient</button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Function to filter patients by admission type
+function filterPatientsByType() {
+    const filter = document.getElementById("admissionTypeFilter").value;
+    const filteredPatients = filter === "all" ? patients : patients.filter(patient => patient.admissionType === filter);
+    displayPatients(filteredPatients);
+}
+
+// Function to cancel registration and return to the home section
+function cancelRegistration() {
+    document.getElementById('patientRegistrationForm').reset();
+    document.getElementById('patientRegistration').style.display = 'none';
+}
+
+// Function to view patient details
+function viewPatient(name, dob) {
+    document.getElementById('patientInfoSection').style.display = 'block';
     document.getElementById('patientName').innerText = name;
 
-    // Calculate age from DOB
     const birthDate = new Date(dob);
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
@@ -3388,50 +3091,65 @@ function updateZoom() {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
-
-    // Set patient age
     document.getElementById('patientAge').innerText = age;
 
-    // Hide all sections and show patient services
-    hideAllSections(); // Ensure all sections are hidden first
-
-    // Show the "other services" navigation
+    hideAllSections();
     document.getElementById('otherServicesNav').style.display = 'block';
-
-    // Automatically show the first service after viewing patient details (Medical History)
-    document.getElementById('socialLivingConditionsAndLifestyleHabits').classList.add('active'); 
+    
 }
 
-function hideAllSections() {
-    const sections = document.querySelectorAll('.tab-pane');
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-}
-
+// Function to show home section and hide other sections
 function showHome() {
     hideAllSections();
-    document.getElementById('homeSection').classList.add('active');
+    document.getElementById('homeSection').style.display = 'block';
     document.getElementById('otherServicesNav').style.display = 'none';
-    document.getElementById('patientInfoSection').style.display = 'none';  // Hide patient info
+    document.getElementById('patientInfoSection').style.display = 'none';
 }
 
-function showRegisterPatient() {
-    hideAllSections();
-    document.getElementById('patientRegistration').classList.add('active');
-    document.getElementById('otherServicesNav').style.display = 'none';
-    document.getElementById('patientInfoSection').style.display = 'none';  // Hide patient info
-}
-
-// Adding the function to show journal reports
+// Function to show journal reports section
 function showJournalReports() {
     hideAllSections();
-    document.getElementById('journalReports').classList.add('active');
+    document.getElementById('journalReports').style.display = 'block';
 }
 
-// Document Ready Event to trigger home view
+// Function to hide all sections (to be used when switching views)
+function hideAllSections() {
+    const sections = document.querySelectorAll('.tab-pane');
+    sections.forEach(section => section.style.display = 'none');
+}
+
+// Function to toggle dropdown menus
+function toggleDropdown(dropdownId) {
+    const dropdown = document.getElementById(dropdownId);
+    if (dropdown.style.display === "none" || dropdown.style.display === "") {
+        dropdown.style.display = "block";
+    } else {
+        dropdown.style.display = "none";
+    }
+}
+
+// Placeholder function for showing different patient types
+function showCreatePatient(type) {
+    console.log(`Selected admission type: ${type}`);
+    toggleRegistrationForm(); // Show the patient registration form in the home section
+}
+
+// Function to edit patient (placeholder function)
+function editPatient(personalNumber) {
+    alert(`Edit patient with personal number: ${personalNumber}`);
+}
+
+// Function to delete patient
+function deletePatient(personalNumber) {
+    // Remove the patient from the array
+    patients = patients.filter(patient => patient.personalNumber !== personalNumber);
+    displayPatients(patients);
+}
+
+// Initialize the home page to display all patients on load
 document.addEventListener('DOMContentLoaded', () => {
     showHome();
+    displayPatients(patients); // Initialize with empty or preset data
 });
 
 
