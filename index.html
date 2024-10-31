@@ -17,22 +17,94 @@
 
     <link rel="stylesheet" href="style.css">
     <style>
-    /* Body Styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f7fa;
+ /* Form Grid Styling */
+ .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Further reduced min-width for smaller cards */
+    gap: 1px; /* Further reduced gap between cards */
+    padding: 1px; /* Further reduced padding */
+    box-sizing: border-box;
 }
+
+/* Form Group Styling */
+.form-group {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    padding: 1px; /* Further reduced padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Label Styling */
+.form-label {
+    font-size: 1px;
+    font-weight: bold;
+    margin-bottom: 1px;
+    display: block;
+}
+
+/* Details Box Styling */
+.details-box {
+    margin-top: 0px; /* Reduced margin */
+}
+
+/* Button Row Styling */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1px; /* Reduced margin */
+}
+
+/* Button Styling */
+.btn {
+    padding: 2px 4px; /* Further reduced padding */
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.custom-save {
+    background-color: #34C759;
+    color: white;
+}
+
+.custom-edit {
+    background-color: #007BFF;
+    color: white;
+}
+
+.custom-delete {
+    background-color: #FF3B30;
+    color: white;
+}
+
+/* Card Styling */
+.card {
+    margin-bottom: 1px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 1px;
+}
+
+.card-title {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
 
 /* Styling for Top Horizontal Navigation Bar */
 #otherServicesNav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 10px;
+    padding: 5px;
     background-color: #f4f4f4;
     border: 1px solid #28a745;
-    border-radius: 8px;
+    border-radius: 1px;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
@@ -47,7 +119,7 @@ body {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 5px;
     justify-content: center;
 }
 
@@ -62,7 +134,7 @@ body {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     font-weight: 500;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -77,7 +149,8 @@ body {
 /* Form Container Styling */
 .tab-pane {
     display: none;
-    max-width: 850px;
+    width: 100%; /* Use 100% width to ensure responsiveness */
+    max-width: 1200px; /* Set a max width for large screens */
     margin: 15px auto;
     padding: 20px;
     background-color: #ffffff;
@@ -85,33 +158,46 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #28a745;
     animation: fadeIn 0.3s ease-in-out;
+    z-index: 1000;
+    max-height: 100;
 }
 
+/* Active Tab Pane */
 .tab-pane.active {
     display: block;
 }
 
-/* Form Grid for Equal Columns */
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
+/* Form Grid for Uniform Columns */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-    gap: 15px;
+    gap: 1px; /* Reduced gap between items */
     width: 100%;
+}
+
+/* Set uniform width and height for all forms */
+.form {
+    width: 100%; /* Take full width of the grid column */
+    /* Height is half the width size */
+    max-height: 10px; /* Optional: Set a max height for better layout control */
     box-sizing: border-box;
 }
 
+/* Form Group Styling for Horizontal Label-Input Alignment */
 .form-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin-bottom: 1px; /* Small bottom margin for labels */
+}
+
+/* Label Styling */
+.form-group label {
+    font-weight: bold;
+    font-size: 12px; /* Uniform font size */
+    color: #343a40;
+    margin-right: 1px; /* Small gap between label and input */
 }
 
 /* Input Field Styling */
@@ -119,33 +205,26 @@ body {
     background-color: #ffffff;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    padding: 8px;
-    font-size: 14px;
-    width: 100%;
+    padding: 5px;
+    font-size: 14px; /* Uniform font size */
+    width: 100%; /* Full width of the parent */
     box-sizing: border-box;
     transition: border-color 0.3s ease-in-out;
 }
 
+/* Input Focus Styling */
 .form-control:focus {
     border-color: #28a745;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.25);
-}
-
-/* Label Styling */
-.form-label {
-    font-weight: bold;
-    color: #343a40;
-    font-size: 14px;
-    margin-bottom: 5px;
 }
 
 /* Button Row Styling */
 .button-row {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 /* Button Styling */
@@ -159,31 +238,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.custom-save {
-    background-color: #28a745;
-}
-
-.custom-edit {
-    background-color: #007bff;
-}
-
-.custom-delete {
-    background-color: #dc3545;
-}
-
-.custom-save:hover {
-    background-color: #218838;
-}
-
-.custom-edit:hover {
-    background-color: #0056b3;
-}
-
-.custom-delete:hover {
-    background-color: #c82333;
-}
-
-/* Responsive Design */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .form-grid {
         grid-template-columns: 1fr; /* Single column on smaller screens */
@@ -194,6 +249,7 @@ body {
         padding: 6px 10px;
     }
 }
+
 
 /* Animation for Fade In Effect */
 @keyframes fadeIn {
@@ -210,14 +266,14 @@ body {
 /* Table Styling */
 .table {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border-collapse: collapse;
 }
 
 .table th, 
 .table td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 5px;
     text-align: center;
 }
 
@@ -227,8 +283,8 @@ body {
 }
 
 .table td button {
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 10px;
+    padding: 2px 4px;
 }
 
 /* Patient Info Section Styling */
@@ -237,24 +293,25 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #343a40;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1px;
+    border-radius: 1px;
     color: #ffffff;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-family: Arial, sans-serif;
 }
 
 #patientInfoSection h3 {
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bold;
     color: #34C759;
-    margin: 0 15px 0 0;
+    margin: 0 5px 0 0;
 }
 
 #patientInfoSection p {
-    font-size: 14px;
+    font-size: 12px;
     color: #c0c0c0;
 }
+
 
     </style>
 </head>
@@ -284,7 +341,7 @@ body {
             <ul class="dropdown-menu" id="patientsDropdown" style="display: none;">
                 <!-- Types of Patients Dropdown -->
                 <li class="dropdown">
-                    <a href="#" onclick="toggleDropdown('typesDropdown')"><i class="fas fa-hospital"></i> Types of Admissions</a>
+                    <a href="#" onclick="toggleDropdown('typesDropdown')"><i class="fas fa-hospital"></i> Types Of Registration</a>
                     <ul class="dropdown-submenu" id="typesDropdown" style="display: none;">
                         <li><a href="#" onclick="showCreatePatient('scheduled')"><i class="fas fa-calendar-check"></i> Scheduled Admission</a></li>
                         <li><a href="#" onclick="showCreatePatient('early-labor')"><i class="fas fa-heartbeat"></i> Early Labor Admission</a></li>
@@ -328,6 +385,33 @@ body {
     <h3>Patient: <span id="patientName"></span></h3>
     <p>Age: <span id="patientAge"></span></p>
 </div>
+<style>
+    #patientInfoSection {
+    background-color: #e6f7ff; /* Light hospital blue background */
+    padding: 0px;
+    border-radius: 0px;
+    border: 0px solid #ccc;
+    margin-bottom: 0px;
+}
+
+#patientInfoSection h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 1px;
+}
+
+#patientInfoSection p {
+    font-size: 1em;
+    color: #555;
+    margin: 0;
+}
+
+#patientInfoSection span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+</style>
         <!-- Patient Services Navigation (Initially Hidden) -->
 <div id="otherServicesNav">
     <ul class="services-list">
@@ -341,6 +425,7 @@ body {
         <li><a href="#" onclick="showService('carePlan')">Care Plan</a></li>
         <li><a href="#" onclick="showService('midwifeNotes')">Midwife Notes</a></li>
         <li><a href="#" onclick="showService('laborDelivery')">LaborDelivery</a></li>
+        <li><a href="#" onclick="showService('postpartumCondition')">Postpartum</a></li>
         <li><a href="#" onclick="showService('partograph')">Partograph</a></li>
     </ul>
 </div>
@@ -394,178 +479,197 @@ body {
     </table>
 
     <!-- Patient Registration Form (hidden by default) -->
-    <div id="patientRegistration" style="display: none; margin-top: 20px;">
-        <h3>Register a New Patient</h3>
-        
-        <!-- Registration Form -->
-        <form id="patientRegistrationForm">
-            <!-- Admission Type Selection -->
+<div id="patientRegistration" style="display: none; margin-top: 20px;">
+    <h3>Register a New Patient</h3>
+    
+    <!-- Registration Form -->
+    <form id="patientRegistrationForm">
+        <!-- Admission Type Selection -->
+        <div class="form-group">
+            <label for="admissionType" class="form-label">Type of Admission</label>
+            <div class="custom-dropdown">
+                <select id="admissionType" class="form-control with-icon" required>
+                    <option value="scheduled"> Scheduled Admission</option>
+                    <option value="early-labor"> Early Labor Admission</option>
+                    <option value="emergency"> Emergency Admission</option>
+                    <option value="direct-delivery"> Direct-to-Delivery</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Personal Information Section -->
+        <div class="form-grid">
+            <!-- Personal Number -->
             <div class="form-group">
-                <label for="admissionType" class="form-label">Type of Admission</label>
-                <div class="custom-dropdown">
-                    <select id="admissionType" class="form-control with-icon" required>
-                        <option value="scheduled">
-                            &#xf073; Scheduled Admission
-                        </option>
-                        <option value="early-labor">
-                            &#xf486; Early Labor Admission
-                        </option>
-                        <option value="emergency">
-                            &#xf0f9; Emergency Admission
-                        </option>
-                        <option value="direct-delivery">
-                            &#xf7ec; Direct-to-Delivery
-                        </option>
-                    </select>
-                </div>
+                <label for="personalNumber" class="form-label">Personal Number</label>
+                <input type="text" class="form-control" id="personalNumber" placeholder="Enter personal number" required>
             </div>
 
-            <!-- Personal Information Section -->
-            <div class="form-grid">
-                <!-- Personal Number -->
-                <div class="form-group">
-                    <label for="personalNumber" class="form-label">Personal Number</label>
-                    <input type="text" class="form-control" id="personalNumber" placeholder="Enter personal number" required>
-                </div>
-
-                <!-- Full Name -->
-                <div class="form-group">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
-                </div>
-
-                <!-- Date of Birth -->
-                <div class="form-group">
-                    <label for="birthDate" class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control" id="birthDate" required>
-                </div>
-
-                <!-- Mobile Phone -->
-                <div class="form-group">
-                    <label for="mobilePhone" class="form-label">Mobile Phone</label>
-                    <input type="tel" class="form-control" id="mobilePhone" placeholder="Enter phone number" required>
-                </div>
-
-                <!-- Partner Contact -->
-                <div class="form-group">
-                    <label for="emergencyContact" class="form-label">Partner Contact</label>
-                    <input type="tel" class="form-control" id="emergencyContact" placeholder="Enter partner contact" required>
-                </div>
-
-                <!-- Midwife Notes -->
-                <div class="form-group">
-                    <label for="midwifeNotes" class="form-label">Midwife Notes</label>
-                    <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter any notes from the midwife" rows="4"></textarea>
-                </div>
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="button-row">
-                <button type="button" class="btn btn-success" onclick="registerPatient()">Register Patient</button>
-                <button type="button" class="btn btn-secondary" onclick="cancelRegistration()">Cancel</button>
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label for="birthDate" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="birthDate" required>
             </div>
-        </form>
-    </div>
-</div>
 
+            <!-- Mobile Phone -->
+            <div class="form-group">
+                <label for="mobilePhone" class="form-label">Mobile Phone</label>
+                <input type="tel" class="form-control" id="mobilePhone" placeholder="Enter phone number" required>
+            </div>
 
-<style>
-   
-/* Form Container */
-.form-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: auto;
-}
+            <!-- Partner Contact -->
+            <div class="form-group">
+                <label for="emergencyContact" class="form-label">Partner Contact</label>
+                <input type="tel" class="form-control" id="emergencyContact" placeholder="Enter partner contact" required>
+            </div>
 
-/* Form Title */
-.form-container h3 {
-    text-align: center;
-    color: #2d2f3a;
-}
+            <!-- Midwife Notes -->
+            <div class="form-group">
+                <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
+                <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter any notes from the midwife" rows="4"></textarea>
+            </div>
+        </div>
 
-/* Form Grid Layout */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-/* Form Labels */
-.form-label {
-    font-size: 14px;
-    color: #495057;
-}
-
-/* Form Controls */
-.form-control {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
+        <!-- Action Buttons -->
+        <div class="button-row">
+            <button type="button" class="btn btn-success" onclick="registerPatient()">Register Patient</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelRegistration()">Cancel</button>
+        </div>
+    </form>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-/* Button Row */
-.button-row {
-    text-align: center;
-    margin-top: 20px;
+.tab-pane {
+    padding: 20px;
 }
 
-.button-row .btn {
-    margin: 5px;
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-row h3 {
+    margin: 0;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.contact-info label {
+    margin-bottom: 5px;
+}
+
+.contact-info select,
+.contact-info input {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group .invalid-feedback {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+h5 {
+    grid-column: span 5;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.button-row {
+    grid-column: span 5;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
     padding: 10px 20px;
     font-size: 14px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-/* Custom Button Colors */
 .btn-success {
     background-color: #28a745;
-    color: #fff;
+    color: white;
 }
 
 .btn-secondary {
     background-color: #6c757d;
-    color: #fff;
+    color: white;
 }
 
-.btn-success:hover {
-    background-color: #218838;
-}
+    </style>
+</div>
 
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
-</style>
-    
+</div>
 
-   <!-- Social, Living Conditions, and Lifestyle Habits Section -->
+
+<!-- Social, Living Conditions, and Lifestyle Habits Section -->
 <div id="socialLivingConditionsAndLifestyleHabits" class="tab-pane active">
     <h3 class="form-title">Social, Living Conditions, and Lifestyle Habits</h3>
     <form id="socialLivingConditionsAndLifestyleHabitsForm" class="form-grid">
 
         <!-- Social and Living Conditions -->
-        <h5>Social and Living Conditions</h5>
+    
 
         <!-- Family Situation -->
         <div class="form-group">
             <label for="familySituation" class="form-label">Family Situation</label>
-            <select class="form-control" id="familySituation" required>
-                <option value="">Select</option>
-                <option value="married">Married</option>
-                <option value="single">Single</option>
-                <option value="divorced">Divorced</option>
-                <option value="widowed">Widowed</option>
-                <option value="singleParent">Single Parent</option>
-            </select>
+            <div class="custom-dropdown">
+                <select class="form-control" id="familySituation" required>
+                    <option value="">Select</option>
+                    <option value="married">Married</option>
+                    <option value="single">Single</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                    <option value="singleParent">Single Parent</option>
+                </select>
+            </div>
         </div>
 
         <!-- Support from Relatives -->
@@ -586,71 +690,79 @@ body {
         <!-- Living Situation -->
         <div class="form-group">
             <label for="livingSituation" class="form-label">Living Situation</label>
-            <select class="form-control" id="livingSituation" required>
-                <option value="">Select</option>
-                <option value="alone">Alone</option>
-                <option value="withFamily">With Family</option>
-                <option value="withRoommate">With Roommate</option>
-                <option value="institutionalized">Institutionalized</option>
-                <option value="other">Other</option>
-            </select>
+            <div class="custom-dropdown">
+                <select class="form-control" id="livingSituation" required>
+                    <option value="">Select</option>
+                    <option value="alone">Alone</option>
+                    <option value="withFamily">With Family</option>
+                    <option value="withRoommate">With Roommate</option>
+                    <option value="institutionalized">Institutionalized</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
         </div>
 
         <!-- Profession -->
         <div class="form-group">
             <label for="profession" class="form-label">Profession</label>
-            <select class="form-control" id="profession" required>
-                <option value="">Select</option>
-                <option value="doctor">Doctor</option>
-                <option value="nurse">Nurse</option>
-                <option value="teacher">Teacher</option>
-                <option value="engineer">Engineer</option>
-                <option value="lawyer">Lawyer</option>
-                <option value="student">Student</option>
-                <option value="unemployed">Unemployed</option>
-                <option value="other">Other</option>
-            </select>
+            <div class="custom-dropdown">
+                <select class="form-control" id="profession" required>
+                    <option value="">Select</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="nurse">Nurse</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="engineer">Engineer</option>
+                    <option value="lawyer">Lawyer</option>
+                    <option value="student">Student</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
         </div>
 
         <!-- Working Type -->
         <div class="form-group">
             <label for="workingType" class="form-label">Working Type</label>
-            <select class="form-control" id="workingType" required>
-                <option value="">Select</option>
-                <option value="fullTime">Full-time</option>
-                <option value="partTime">Part-time</option>
-                <option value="selfEmployed">Self-employed</option>
-                <option value="freelancer">Freelancer</option>
-                <option value="notWorking">Not Working</option>
-            </select>
+            <div class="custom-dropdown">
+                <select class="form-control" id="workingType" required>
+                    <option value="">Select</option>
+                    <option value="fullTime">Full-time</option>
+                    <option value="partTime">Part-time</option>
+                    <option value="selfEmployed">Self-employed</option>
+                    <option value="freelancer">Freelancer</option>
+                    <option value="notWorking">Not Working</option>
+                </select>
+            </div>
         </div>
 
         <!-- Mode of Transport -->
         <div class="form-group">
             <label for="modeOfTransport" class="form-label">Transport</label>
-            <select class="form-control" id="modeOfTransport" required>
-                <option value="">Select</option>
-                <option value="car">Car</option>
-                <option value="publicTransport">Public Transport</option>
-                <option value="bicycle">Bicycle</option>
-                <option value="motorbike">Motorbike</option>
-                <option value="walking">Walking</option>
-                <option value="other">Other</option>
-            </select>
+            <div class="custom-dropdown">
+                <select class="form-control" id="modeOfTransport" required>
+                    <option value="">Select</option>
+                    <option value="car">Car</option>
+                    <option value="publicTransport">Public Transport</option>
+                    <option value="bicycle">Bicycle</option>
+                    <option value="walking">Walking</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
         </div>
 
         <!-- Lifestyle and Habits -->
-        <h5>Lifestyle and Habits</h5>
 
         <!-- Smoking Status -->
         <div class="form-group">
             <label for="smoking" class="form-label">Smoking</label>
-            <select class="form-control" id="smoking" required>
-                <option value="">Select</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="quit">Quit</option>
-            </select>
+            <div class="custom-dropdown">
+                <select class="form-control" id="smoking" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="quit">Quit</option>
+                </select>
+            </div>
         </div>
 
         <!-- Alcohol Use Before Pregnancy -->
@@ -676,14 +788,34 @@ body {
 
         <!-- Physical Activity Before Pregnancy -->
         <div class="form-group">
-            <label for="physicalActivityBeforePregnancy" class="form-label">Physical Activity Before</label>
-            <input type="number" class="form-control" id="physicalActivityBeforePregnancy" placeholder="e.g., 150">
+            <label for="physicalActivityBeforePregnancy" class="form-label">Physical Activity Before Pregnancy</label>
+            <div class="custom-dropdown">
+                <select class="form-control" id="physicalActivityBeforePregnancy" required>
+                    <option value="">Select Duration</option>
+                    <option value="0 minutes">0 minutes</option>
+                    <option value="1-2 minutes">1-2 minutes</option>
+                    <option value="3-5 minutes">3-5 minutes</option>
+                    <option value="daily">Daily</option>
+                    <option value="over1Hour">More than 1 hour</option>
+                    <option value="over5Kilometers">More than 5 kilometers</option>
+                </select>
+            </div>
         </div>
 
         <!-- Physical Activity During Pregnancy -->
         <div class="form-group">
-            <label for="physicalActivityDuringPregnancy" class="form-label">Physical Activity During</label>
-            <input type="number" class="form-control" id="physicalActivityDuringPregnancy" placeholder="e.g., 30">
+            <label for="physicalActivityDuringPregnancy" class="form-label">Physical Activity During Pregnancy</label>
+            <div class="custom-dropdown">
+                <select class="form-control" id="physicalActivityDuringPregnancy" required>
+                    <option value="">Select Duration</option>
+                    <option value="0 minutes">0 minutes</option>
+                    <option value="1-2 minutes">1-2 minutes</option>
+                    <option value="3-5 minutes">3-5 minutes</option>
+                    <option value="daily">Daily</option>
+                    <option value="over1Hour">More than 1 hour</option>
+                    <option value="over5Kilometers">More than 5 kilometers</option>
+                </select>
+            </div>
         </div>
 
         <!-- Save/Edit/Delete Buttons -->
@@ -695,81 +827,10 @@ body {
     </form>
 </div>
 
+
 <!-- CSS Styling -->
 <style>
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.25rem;
-        background-color: #ffffff;
-        padding: 8px;
-        border-radius: 4px;
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
-        margin: 10px auto;
-    }
-
-    /* Title and Header Styling */
-    .form-title {
-        text-align: center;
-        font-size: 1.1rem;
-        color: #333;
-        grid-column: span 3;
-        margin: 0;
-    }
-
-    h5 {
-        grid-column: span 3;
-        font-weight: bold;
-        font-size: 0.9rem;
-        color: #333;
-        margin: 0.5rem 0 0.25rem;
-    }
-
-    /* Labels */
-    .form-label {
-        font-size: 11px;
-        color: #333;
-        font-weight: bold;
-        margin: 0 0 2px;
-    }
-
-    /* Input Fields */
-    .form-control {
-        padding: 4px;
-        font-size: 11px;
-        border-radius: 3px;
-        border: 1px solid #ced4da;
-    }
-
-    /* Button Row */
-    .button-row {
-        grid-column: span 3;
-        display: flex;
-        justify-content: center;
-        gap: 4px;
-        margin-top: 0.5rem;
-    }
-
-    /* Buttons */
-    .custom-save, .custom-edit, .custom-delete {
-        padding: 4px 8px;
-        font-size: 11px;
-        border-radius: 3px;
-        cursor: pointer;
-        border: none;
-        color: white;
-    }
-
-    .custom-save { background-color: #28a745; }
-    .custom-edit { background-color: #007bff; }
-    .custom-delete { background-color: #dc3545; }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .form-grid { grid-template-columns: 1fr; }
-        .form-label, .form-control, .custom-save, .custom-edit, .custom-delete { font-size: 10px; }
-    }
+  
 </style>
 
 
@@ -839,55 +900,120 @@ function toggleSupportDetails() {
             </div>
         </div>
 
-        <!-- Heart Disease -->
+        <!-- Hypertension (High Blood Pressure) -->
         <div class="form-group">
-            <label for="heartDisease" class="form-label">Heart Disease</label>
+            <label for="hypertension" class="form-label">Hypertension (High Blood Pressure)</label>
             <div>
-                <input type="radio" name="heartDisease" value="true" onclick="toggleDetails('heartDiseaseDetails', true)"> Yes
-                <input type="radio" name="heartDisease" value="false" onclick="toggleDetails('heartDiseaseDetails', false)"> No
+                <input type="radio" name="hypertension" value="true" onclick="toggleDetails('hypertensionDetails', true)"> Yes
+                <input type="radio" name="hypertension" value="false" onclick="toggleDetails('hypertensionDetails', false)"> No
             </div>
-            <div id="heartDiseaseDetails" class="details-box">
-                <label for="heartDiseaseInfo" class="form-label">Details of Heart Disease</label>
-                <textarea class="form-control" id="heartDiseaseInfo" placeholder="Enter details"></textarea>
-            </div>
-        </div>
-
-        <!-- Diabetes -->
-        <div class="form-group">
-            <label for="diabetes" class="form-label">Diabetes</label>
-            <div>
-                <input type="radio" name="diabetes" value="true" onclick="toggleDetails('diabetesDetails', true)"> Yes
-                <input type="radio" name="diabetes" value="false" onclick="toggleDetails('diabetesDetails', false)"> No
-            </div>
-            <div id="diabetesDetails" class="details-box">
-                <label for="diabetesInfo" class="form-label">Details of Diabetes</label>
-                <textarea class="form-control" id="diabetesInfo" placeholder="Enter details"></textarea>
-            </div>
-        </div>
-
-        <!-- High Blood Pressure -->
-        <div class="form-group">
-            <label for="highBloodPressure" class="form-label">High Blood Pressure</label>
-            <div>
-                <input type="radio" name="highBloodPressure" value="true" onclick="toggleDetails('highBloodPressureDetails', true)"> Yes
-                <input type="radio" name="highBloodPressure" value="false" onclick="toggleDetails('highBloodPressureDetails', false)"> No
-            </div>
-            <div id="highBloodPressureDetails" class="details-box">
-                <label for="highBloodPressureInfo" class="form-label">Details of High Blood Pressure</label>
-                <textarea class="form-control" id="highBloodPressureInfo" placeholder="Enter details"></textarea>
+            <div id="hypertensionDetails" class="details-box">
+                <label for="hypertensionInfo" class="form-label">Details of Hypertension</label>
+                <textarea class="form-control" id="hypertensionInfo" placeholder="Enter details"></textarea>
             </div>
         </div>
 
         <!-- Pre-eclampsia -->
         <div class="form-group">
-            <label for="preEclampsia" class="form-label">Pre-eclampsia</label>
+            <label for="preEclampsia" class="form-label">Previous Pre-eclampsia</label>
             <div>
                 <input type="radio" name="preEclampsia" value="true" onclick="toggleDetails('preEclampsiaDetails', true)"> Yes
                 <input type="radio" name="preEclampsia" value="false" onclick="toggleDetails('preEclampsiaDetails', false)"> No
             </div>
             <div id="preEclampsiaDetails" class="details-box">
-                <label for="preEclampsiaInfo" class="form-label">Details of Pre-eclampsia</label>
+                <label for="preEclampsiaInfo" class="form-label">Details of Previous Pre-eclampsia</label>
                 <textarea class="form-control" id="preEclampsiaInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Epilepsy -->
+        <div class="form-group">
+            <label for="epilepsy" class="form-label">Epilepsy</label>
+            <div>
+                <input type="radio" name="epilepsy" value="true" onclick="toggleDetails('epilepsyDetails', true)"> Yes
+                <input type="radio" name="epilepsy" value="false" onclick="toggleDetails('epilepsyDetails', false)"> No
+            </div>
+            <div id="epilepsyDetails" class="details-box">
+                <label for="epilepsyInfo" class="form-label">Details of Epilepsy</label>
+                <textarea class="form-control" id="epilepsyInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Previous DVT/Pulmonary Embolism -->
+        <div class="form-group">
+            <label for="dvtPe" class="form-label">Previous DVT/Pulmonary Embolism (PE)</label>
+            <div>
+                <input type="radio" name="dvtPe" value="true" onclick="toggleDetails('dvtPeDetails', true)"> Yes
+                <input type="radio" name="dvtPe" value="false" onclick="toggleDetails('dvtPeDetails', false)"> No
+            </div>
+            <div id="dvtPeDetails" class="details-box">
+                <label for="dvtPeInfo" class="form-label">Details of DVT/PE</label>
+                <textarea class="form-control" id="dvtPeInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Major Depression/Anxiety -->
+        <div class="form-group">
+            <label for="majorDepressionAnxiety" class="form-label">Major Depression/Anxiety</label>
+            <div>
+                <input type="radio" name="majorDepressionAnxiety" value="true" onclick="toggleDetails('majorDepressionAnxietyDetails', true)"> Yes
+                <input type="radio" name="majorDepressionAnxiety" value="false" onclick="toggleDetails('majorDepressionAnxietyDetails', false)"> No
+            </div>
+            <div id="majorDepressionAnxietyDetails" class="details-box">
+                <label for="majorDepressionAnxietyInfo" class="form-label">Details of Major Depression/Anxiety</label>
+                <textarea class="form-control" id="majorDepressionAnxietyInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Bipolar Disorder -->
+        <div class="form-group">
+            <label for="bipolarDisorder" class="form-label">Bipolar Disorder</label>
+            <div>
+                <input type="radio" name="bipolarDisorder" value="true" onclick="toggleDetails('bipolarDisorderDetails', true)"> Yes
+                <input type="radio" name="bipolarDisorder" value="false" onclick="toggleDetails('bipolarDisorderDetails', false)"> No
+            </div>
+            <div id="bipolarDisorderDetails" class="details-box">
+                <label for="bipolarDisorderInfo" class="form-label">Details of Bipolar Disorder</label>
+                <textarea class="form-control" id="bipolarDisorderInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Psychotic Disorders -->
+        <div class="form-group">
+            <label for="psychoticDisorders" class="form-label">Psychotic Disorders</label>
+            <div>
+                <input type="radio" name="psychoticDisorders" value="true" onclick="toggleDetails('psychoticDisordersDetails', true)"> Yes
+                <input type="radio" name="psychoticDisorders" value="false" onclick="toggleDetails('psychoticDisordersDetails', false)"> No
+            </div>
+            <div id="psychoticDisordersDetails" class="details-box">
+                <label for="psychoticDisordersInfo" class="form-label">Details of Psychotic Disorders</label>
+                <textarea class="form-control" id="psychoticDisordersInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Asthma -->
+        <div class="form-group">
+            <label for="asthma" class="form-label">Asthma</label>
+            <div>
+                <input type="radio" name="asthma" value="true" onclick="toggleDetails('asthmaDetails', true)"> Yes
+                <input type="radio" name="asthma" value="false" onclick="toggleDetails('asthmaDetails', false)"> No
+            </div>
+            <div id="asthmaDetails" class="details-box">
+                <label for="asthmaInfo" class="form-label">Details of Asthma</label>
+                <textarea class="form-control" id="asthmaInfo" placeholder="Enter details"></textarea>
+            </div>
+        </div>
+
+        <!-- Bleeding Disorders -->
+        <div class="form-group">
+            <label for="bleedingDisorders" class="form-label">Bleeding Disorders</label>
+            <div>
+                <input type="radio" name="bleedingDisorders" value="true" onclick="toggleDetails('bleedingDisordersDetails', true)"> Yes
+                <input type="radio" name="bleedingDisorders" value="false" onclick="toggleDetails('bleedingDisordersDetails', false)"> No
+            </div>
+            <div id="bleedingDisordersDetails" class="details-box">
+                <label for="bleedingDisordersInfo" class="form-label">Details of Bleeding Disorders</label>
+                <textarea class="form-control" id="bleedingDisordersInfo" placeholder="Enter details"></textarea>
             </div>
         </div>
 
@@ -984,207 +1110,261 @@ function toggleSupportDetails() {
     }
 </script>
 
-
 <!-- Combined Mental Health, Support, Risk Factors, and Treatment Section -->
 <div id="mentalHealthSupportRiskFactors" class="tab-pane active">
-    <form id="mentalHealthSupportRiskFactorsForm" novalidate class="three-column-grid">
+    <h3 class="form-title">Patient Info</h3>
+
+    <!-- Row for Cards - Five Columns -->
+    <div class="row">
+        <!-- Patient Info Card -->
+        <div class="col-md-2">
+            <div class="card patient-info-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-user"></i> Patient Information</h5>
+                    <p><strong>Name:</strong> <input type="text" class="form-control" id="patientName"></p>
+                    <p><strong>Age:</strong> <input type="number" class="form-control" id="patientAge"></p>
+                    <p><strong>Gender:</strong> <input type="text" class="form-control" id="patientGender"></p>
+                    <p><strong>Condition:</strong> <input type="text" class="form-control" id="patientCondition"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brief Summary Card -->
+        <div class="col-md-2">
+            <div class="card brief-summary-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-info-circle"></i> Brief Summary</h5>
+                    <p><strong>Height:</strong> <input type="text" class="form-control" id="patientHeight"></p>
+                    <p><strong>Weight:</strong> <input type="text" class="form-control" id="patientWeight"></p>
+                    <p><strong>BMI:</strong> <input type="text" class="form-control" id="patientBMI"></p>
+                </div>
+            </div>
+        </div>
+
         
-        <!-- Anxiety or Depression -->
-        <h5 class="header-row">Anxiety or Depression</h5>
-        <div class="form-group">
-            <label class="form-label">Previous Episodes</label>
-            <input type="text" class="form-control" id="previousEpisodes" placeholder="e.g., Yes/No">
-        </div>
-        <div class="form-group">
-            <label class="form-label">Current Episodes</label>
-            <input type="text" class="form-control" id="currentEpisodes" placeholder="e.g., Yes/No">
-        </div>
 
-        <!-- Stress Levels -->
-        <h5 class="header-row">Stress Levels</h5>
-        <div class="form-group">
-            <label for="stressLevelBefore" class="form-label">Before Pregnancy</label>
-            <input type="text" class="form-control" id="stressLevelBefore" placeholder="e.g., low, moderate, high">
-        </div>
-        <div class="form-group">
-            <label for="currentStressLevel" class="form-label">Current Stress Level</label>
-            <input type="text" class="form-control" id="currentStressLevel" placeholder="e.g., low, moderate, high">
-        </div>
-
-        <!-- Support from Relatives -->
-        <h5 class="header-row">Support from Relatives</h5>
-        <div class="form-group">
-            <label class="form-label">Support Available?</label>
-            <div>
-                <input type="radio" id="supportYes" name="supportAvailable" value="yes"> Yes
-                <input type="radio" id="supportNo" name="supportAvailable" value="no"> No
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="livingSituation" class="form-label">Living Situation</label>
-            <input type="text" class="form-control" id="livingSituation" placeholder="e.g., with relatives, alone">
-        </div>
-
-        <!-- Risk Factors -->
-        <h5 class="header-row">Risk Factors</h5>
-        <div class="form-group">
-            <label class="form-label">Smoking</label>
-            <div>
-                <input type="radio" id="smokingYes" name="smoking" value="yes"> Yes
-                <input type="radio" id="smokingNo" name="smoking" value="no"> No
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-label">Alcohol Use</label>
-            <div>
-                <input type="radio" id="alcoholYes" name="alcoholUse" value="yes"> Yes
-                <input type="radio" id="alcoholNo" name="alcoholUse" value="no"> No
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-label">Drug Use</label>
-            <div>
-                <input type="radio" id="drugYes" name="drugUse" value="yes"> Yes
-                <input type="radio" id="drugNo" name="drugUse" value="no"> No
+        <!-- Contact Information Card -->
+        <div class="col-md-2">
+            <div class="card contact-info-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-phone"></i> Contact Information</h5>
+                    <p><strong>Phone:</strong> <input type="tel" class="form-control" id="patientPhone"></p>
+                    <p><strong>Email:</strong> <input type="email" class="form-control" id="patientEmail"></p>
+                    <p><strong>Address:</strong> <input type="text" class="form-control" id="patientAddress"></p>
+                </div>
             </div>
         </div>
 
-        <!-- Ongoing Treatment Table -->
-        <h5 class="header-row">Ongoing Treatment</h5>
-        <div class="table-wrapper">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Treatment Name</th>
-                        <th>Dosage</th>
-                        <th>Frequency</th>
-                        <th>Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="Treatment name"></td>
-                        <td><input type="text" class="form-control" placeholder="Dosage"></td>
-                        <td><input type="text" class="form-control" placeholder="Frequency"></td>
-                        <td><input type="text" class="form-control" placeholder="Duration"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Allergies -->
-        <h5 class="header-row">Allergies</h5>
-        <div class="form-group">
-            <label class="form-label">Medication Allergies</label>
-            <div>
-                <input type="radio" id="medAllergiesYes" name="medAllergies" value="yes"> Yes
-                <input type="radio" id="medAllergiesNo" name="medAllergies" value="no"> No
+        <!-- Department Information Card -->
+        <div class="col-md-2">
+            <div class="card department-info-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-hospital"></i> Department Information</h5>
+                    <p><strong>Primary Department:</strong> <input type="text" class="form-control" id="primaryDepartment"></p>
+                    <p><strong>Consulting Doctor:</strong> <input type="text" class="form-control" id="consultingDoctor"></p>
+                    <p><strong>Last Visit:</strong> <input type="date" class="form-control" id="lastVisit"></p>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="otherAllergies" class="form-label">Other Allergies</label>
-            <textarea class="form-control" id="otherAllergies" placeholder="Specify other allergies" rows="2"></textarea>
+    </div>
+
+    <!-- Third Row for Mental Health, Support, and Risk Factors -->
+    <div class="row">
+        <!-- Mental Health and Support Card -->
+        <div class="col-md-2">
+            <div class="card mental-health-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-brain"></i> Mental Health and Support</h5>
+                    <p><strong>Previous Episodes:</strong> <input type="text" class="form-control" id="previousEpisodes"></p>
+                    <p><strong>Current Episodes:</strong> <input type="text" class="form-control" id="currentEpisodes"></p>
+                    <p><strong>Stress Levels Before:</strong> <input type="text" class="form-control" id="stressLevelsBefore"></p>
+                    <p><strong>Current Stress Level:</strong> <input type="text" class="form-control" id="currentStressLevel"></p>
+                    <p><strong>Support from Relatives:</strong> <input type="text" class="form-control" id="supportFromRelatives"></p>
+                    <p><strong>Living Situation:</strong> <input type="text" class="form-control" id="livingSituation"></p>
+                </div>
+            </div>
         </div>
 
-        <!-- Ongoing Diagnoses -->
-        <h5 class="header-row">Ongoing Diagnoses</h5>
-        <div class="form-group">
-            <label for="ongoingDiagnoses" class="form-label">Details</label>
-            <textarea class="form-control" id="ongoingDiagnoses" placeholder="Enter ongoing diagnoses" rows="2"></textarea>
+        <!-- Risk Factors Card -->
+        <div class="col-md-2">
+            <div class="card risk-factors-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-exclamation-triangle"></i> Risk Factors</h5>
+                    <p><strong>Smoking:</strong> <input type="text" class="form-control" id="smoking"></p>
+                    <p><strong>Alcohol Use:</strong> <input type="text" class="form-control" id="alcoholUse"></p>
+                    <p><strong>Drug Use:</strong> <input type="text" class="form-control" id="drugUse"></p>
+                </div>
+            </div>
         </div>
 
-        <!-- Save/Edit/Delete Buttons -->
-        <div class="button-row">
-            <button type="button" class="btn custom-save">Save</button>
-            <button type="button" class="btn custom-edit">Edit</button>
-            <button type="button" class="btn custom-delete">Delete</button>
+        <!-- Allergies Card -->
+        <div class="col-md-2">
+            <div class="card allergies-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-allergies"></i> Allergies</h5>
+                    <p><strong>Medication Allergies:</strong> <input type="text" class="form-control" id="medicationAllergies"></p>
+                    <p><strong>Other Allergies:</strong> <input type="text" class="form-control" id="otherAllergies"></p>
+                </div>
+            </div>
         </div>
-    </form>
+
+        <!-- Ongoing Diagnoses Card -->
+        <div class="col-md-2">
+            <div class="card diagnoses-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-notes-medical"></i> Ongoing Diagnoses</h5>
+                    <p><strong>Diagnosis Details:</strong> <input type="text" class="form-control" id="diagnosisDetails"></p>
+                    <p><strong>Management Plan:</strong> <input type="text" class="form-control" id="managementPlan"></p>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Additional Support Card -->
+        <div class="col-md-2">
+            <div class="card additional-support-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-hands-helping"></i> Additional Support</h5>
+                    <p><strong>Community Support:</strong> <input type="text" class="form-control" id="communitySupport"></p>
+                    <p><strong>Financial Aid:</strong> <input type="text" class="form-control" id="financialAid"></p>
+                    <p><strong>Special Requirements:</strong> <input type="text" class="form-control" id="specialRequirements"></p>
+                </div>
+            </div>
+        </div>
+        <!-- Ongoing Treatment Card -->
+        <div class="col-md-2">
+            <div class="card ongoing-treatment-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-pills"></i> Ongoing Treatment</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Dosage</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control" id="medication1"></td>
+                                <td><input type="text" class="form-control" id="dosage1"></td>
+                                <td><input type="text" class="form-control" id="status1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control" id="medication2"></td>
+                                <td><input type="text" class="form-control" id="dosage2"></td>
+                                <td><input type="text" class="form-control" id="status2"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control" id="medication3"></td>
+                                <td><input type="text" class="form-control" id="dosage3"></td>
+                                <td><input type="text" class="form-control" id="status3"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save/Edit/Delete Buttons -->
+    <div class="button-row text-center mt-4">
+        <button type="button" class="btn custom-save"><i class="fas fa-save"></i> Save</button>
+        <button type="button" class="btn custom-edit"><i class="fas fa-edit"></i> Edit</button>
+        <button type="button" class="btn custom-delete"><i class="fas fa-trash-alt"></i> Delete</button>
+    </div>
 </div>
-
 <style>
-    /* Three-column compact grid layout */
-    .three-column-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        max-width: 850px;
-        margin: 0 auto;
-        padding: 10px;
-        background-color: #fff;
-        border-radius: 10px;
-        border: 1px solid #28a745;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+   /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.tab-pane {
+    padding: 20px;
+}
 
-    .header-row {
-        grid-column: span 3;
-        font-weight: bold;
-        font-size: 16px;
-        color: #343a40;
-        margin-bottom: 10px;
-        text-align: center;
-    }
+.form-title {
+    margin-bottom: 20px;
+}
 
-    .form-label {
-        font-size: 13px;
-        margin-bottom: 4px;
-        font-weight: 600;
-    }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
 
-    .form-control {
-        font-size: 13px;
-        padding: 6px;
-        border-radius: 4px;
-        border: 1px solid #ced4da;
-    }
+.col-md-2 {
+    padding: 0 10px;
+    margin-bottom: 20px;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
 
-    .table-wrapper {
-        grid-column: span 3;
-    }
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    .table-bordered {
-        width: 100%;
-        text-align: center;
-        font-size: 12px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+.card-body {
+    padding: 20px;
+}
 
-    /* Button Styling */
-    .button-row {
-        grid-column: span 3;
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-    }
+.card-title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-    .custom-save {
-        background-color: #28a745;
-        color: white;
-    }
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
 
-    .custom-edit {
-        background-color: #007bff;
-        color: white;
-    }
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
 
-    .custom-delete {
-        background-color: #dc3545;
-        color: white;
-    }
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
 
-    .custom-save:hover,
-    .custom-edit:hover,
-    .custom-delete:hover {
-        opacity: 0.9;
-    }
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-save {
+    background-color: #28a745;
+    color: white;
+}
+
+.custom-edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.custom-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
 </style>
 
 <script>
@@ -1200,9 +1380,8 @@ function toggleSupportDetails() {
         });
     });
 </script>
-
 <!-- Current Pregnancy Details Section -->
-<div id="currentPregnancyDetails" class="tab-pane hide">
+<div id="currentPregnancyDetails" class="tab-pane active">
     <div class="header-row">
         <h3>Current Pregnancy Details</h3>
 
@@ -1252,7 +1431,7 @@ function toggleSupportDetails() {
             <div class="mb-3">
                 <label for="stoppedContraceptive" class="form-label">Stopped Contraceptive</label>
                 <div>
-                    <input type="checkbox" id="stoppedContraceptiveYes" name="stoppedContraceptive" value="true"> Yes
+                    <input type="checkbox" id="stoppedContraceptiveYes" name="stoppedContraceptive" value="true" onchange="toggleIUD()"> Yes
                     <input type="checkbox" id="stoppedContraceptiveNo" name="stoppedContraceptive" value="false"> No
                 </div>
             </div>
@@ -1260,7 +1439,7 @@ function toggleSupportDetails() {
             <div class="mb-3">
                 <label for="iudRemoved" class="form-label">IUD Removed</label>
                 <div>
-                    <input type="checkbox" id="iudRemovedYes" name="iudRemoved" value="true"> Yes
+                    <input type="checkbox" id="iudRemovedYes" name="iudRemoved" value="true" onchange="toggleStoppedContraceptive()"> Yes
                     <input type="checkbox" id="iudRemovedNo" name="iudRemoved" value="false"> No
                 </div>
             </div>
@@ -1281,19 +1460,34 @@ function toggleSupportDetails() {
             </div>
 
             <div class="mb-3">
-                <label for="weeksPregnant" class="form-label">Weeks Pregnant (Ultrasound)</label>
-                <input type="number" class="form-control" id="weeksPregnant" required>
-                <div class="invalid-feedback">Please enter the weeks based on ultrasound.</div>
+                <label for="numberOfFetuses" class="form-label">Number of Fetuses</label>
+                <input type="number" class="form-control" id="numberOfFetuses" required>
+                <div class="invalid-feedback">Please enter the number of fetuses.</div>
             </div>
 
             <div class="mb-3">
-                <label for="ultrasoundScheduled" class="form-label">Ultrasound Scheduled</label>
+                <label for="complications" class="form-label">Complications</label>
+                <input type="text" class="form-control" id="complications" required>
+                <div class="invalid-feedback">Please enter any complications.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="ultrasoundScheduled" class="form-label">Next Ultrasound Scheduled</label>
                 <div>
-                    <input type="checkbox" id="ultrasoundScheduledYes" name="ultrasoundScheduled" value="true"> Yes
-                    <input type="checkbox" id="ultrasoundScheduledNo" name="ultrasoundScheduled" value="false"> No
+                    <input type="checkbox" id="ultrasoundScheduledYes" name="ultrasoundScheduled" value="true" onchange="toggleUltrasoundDate()"> Yes
+                    <input type="checkbox" id="ultrasoundScheduledNo" name="ultrasoundScheduled" value="false" onchange="toggleUltrasoundDate()"> No
                 </div>
             </div>
 
+            <!-- Date picker for Next Ultrasound if scheduled -->
+            <div class="mb-3" id="ultrasoundDateField" style="display: none;">
+                <label for="ultrasoundDate" class="form-label">Date of Next Ultrasound</label>
+                <input type="date" class="form-control" id="ultrasoundDate">
+            </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
             <div class="mb-3">
                 <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
                 <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter midwife notes" rows="2"></textarea>
@@ -1305,135 +1499,62 @@ function toggleSupportDetails() {
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-
     </form>
 </div>
 
-<style>
-/* Layout for the header with contact information */
-.header-row {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Balanced two-column grid layout */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    max-width: 700px; /* Constrained width */
-    max-height: 500px; /* Constrained height */
-    margin: 10px auto;
-}
-
-/* Form field styling */
-.form-label {
-    font-size: 12px;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 3px;
-}
-
-.form-control {
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
-}
-
-/* Button Row - centered alignment */
-.button-row {
-    grid-column: span 2;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.custom-save, .custom-edit, .custom-delete {
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    border: none;
-    color: white;
-    width: 80px; /* Ensures equal button widths */
-}
-
-.custom-save { background-color: #28a745; }
-.custom-edit { background-color: #007bff; }
-.custom-delete { background-color: #dc3545; }
-
-/* Equal height for text areas */
-textarea.form-control {
-    height: 50px;
-}
-
-/* Constrained width and height for the entire form section */
-#currentPregnancyDetails {
-    width: 100%; /* Full width of container */
-    max-width: 700px; /* Equal width constraint */
-    max-height: 600px; /* Equal height constraint */
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    overflow-y: auto; /* Allows scrolling if content overflows */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form-grid { grid-template-columns: 1fr; }
-    #currentPregnancyDetails {
-        max-width: 100%;
-        max-height: none;
-        overflow: auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .form-control, .form-label {
-        font-size: 10px;
-    }
-    .custom-save, .custom-edit, .custom-delete {
-        padding: 5px;
-        font-size: 10px;
-    }
-}
-
-</style>
-
-
-<!-- JavaScript to Handle Contact Type Change -->
+<!-- JavaScript -->
 <script>
 function handleContactTypeChange() {
     var contactType = document.getElementById("typeOfContact").value;
     var contactLinkField = document.getElementById("contactLinkField");
     var contactLinkLabel = document.getElementById("contactLinkLabel");
 
-    if (contactType === "onlineVoiceCall") {
+    if (contactType === "onlineVoiceCall" || contactType === "onlineVideoCall") {
         contactLinkField.style.display = "block";
-        contactLinkLabel.innerHTML = "Online Voice Call Link";
-    } else if (contactType === "onlineVideoCall") {
-        contactLinkField.style.display = "block";
-        contactLinkLabel.innerHTML = "Online Video Call Link";
+        contactLinkLabel.innerHTML = contactType === "onlineVoiceCall" ? "Online Voice Call Link" : "Online Video Call Link";
     } else {
         contactLinkField.style.display = "none";
     }
 }
+
+// Ensure IUD Removed cannot be Yes if Stopped Contraceptive is Yes
+function toggleIUD() {
+    var stoppedContraceptiveYes = document.getElementById("stoppedContraceptiveYes");
+    var iudRemovedYes = document.getElementById("iudRemovedYes");
+
+    if (stoppedContraceptiveYes.checked) {
+        iudRemovedYes.checked = false;
+        iudRemovedYes.disabled = true;
+    } else {
+        iudRemovedYes.disabled = false;
+    }
+}
+
+// Ensure Stopped Contraceptive cannot be Yes if IUD Removed is Yes
+function toggleStoppedContraceptive() {
+    var iudRemovedYes = document.getElementById("iudRemovedYes");
+    var stoppedContraceptiveYes = document.getElementById("stoppedContraceptiveYes");
+
+    if (iudRemovedYes.checked) {
+        stoppedContraceptiveYes.checked = false;
+        stoppedContraceptiveYes.disabled = true;
+    } else {
+        stoppedContraceptiveYes.disabled = false;
+    }
+}
+
+// Toggle display of the ultrasound date field based on the scheduled checkbox
+function toggleUltrasoundDate() {
+    var ultrasoundScheduledYes = document.getElementById("ultrasoundScheduledYes");
+    var ultrasoundDateField = document.getElementById("ultrasoundDateField");
+
+    ultrasoundDateField.style.display = ultrasoundScheduledYes.checked ? "block" : "none";
+}
 </script>
 
-       
-  <!-- Health Examination Section -->
+
+ <!-- Health Examination Section -->
 <div id="healthExamination" class="tab-pane active">
     <div class="header-row">
         <h3>Health Examination</h3>
@@ -1469,16 +1590,18 @@ function handleContactTypeChange() {
 
         <!-- Height, Weight, and BMI Calculation Row -->
         <div class="form-group">
+            <label for="weightKg" class="form-label">Weight (kg)</label>
+            <input type="number" class="form-control" id="weightKg" placeholder="Enter weight in kg" required onchange="calculateBMI()">
+            <div class="invalid-feedback">Please enter weight in kg.</div>
+        </div>
+
+        <div class="form-group">
             <label for="heightCm" class="form-label">Height (cm)</label>
             <input type="number" class="form-control" id="heightCm" placeholder="Enter height in cm" required onchange="calculateBMI()">
             <div class="invalid-feedback">Please enter height in cm.</div>
         </div>
 
-        <div class="form-group">
-            <label for="weightKg" class="form-label">Weight (kg)</label>
-            <input type="number" class="form-control" id="weightKg" placeholder="Enter weight in kg" required onchange="calculateBMI()">
-            <div class="invalid-feedback">Please enter weight in kg.</div>
-        </div>
+        
 
         <div class="form-group">
             <label for="bmi" class="form-label">Body Mass Index (BMI)</label>
@@ -1557,12 +1680,24 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please enter the expected delivery type.</div>
         </div>
 
-        <!-- Progress Notes and Midwife Notes -->
+        <!-- Progress Type Selection and Corresponding Input -->
         <div class="form-group">
-            <label for="progressNotes" class="form-label">Progress Notes</label>
-            <textarea class="form-control" id="progressNotes" placeholder="Enter progress notes" rows="3" required></textarea>
+            <label for="progressType" class="form-label">Progress Type</label>
+            <select class="form-control" id="progressType" onchange="toggleProgressInput()">
+                <option value="">Select Progress Type</option>
+                <option value="normal">Normal Progress</option>
+                <option value="voiceText">Voice Text</option>
+            </select>
+            <div class="invalid-feedback">Please select a progress type.</div>
         </div>
-        
+
+        <!-- Progress Input Field - dynamically shown based on selection -->
+        <div class="form-group" id="progressInputSection" style="display: none;">
+            <label id="progressInputLabel" class="form-label">Progress Details</label>
+            <textarea class="form-control" id="progressInput" placeholder="Enter details based on selected progress type" rows="3"></textarea>
+        </div>
+
+        <!-- Midwife Notes -->
         <div class="form-group">
             <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
             <textarea class="form-control" id="mmidwifeNotes" placeholder="Enter midwife notes" rows="3"></textarea>
@@ -1579,100 +1714,83 @@ function handleContactTypeChange() {
 
 <!-- CSS Styling -->
 <style>
-    /* Layout for the header with contact information */
     .header-row {
         display: grid;
         grid-template-columns: 1fr auto auto;
         align-items: center;
-        gap: 3px; /* Further reduced gap */
-        margin-bottom: 3px; /* Further reduced margin */
+        gap: 3px;
+        margin-bottom: 3px;
     }
 
-    .contact-info {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 3px; /* Further reduced space between contact-info items */
+    .contact-info, .form-group {
+        margin-bottom: 10px;
     }
 
-    /* Condensed three-column layout for form fields */
     .form-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2px; /* Further reduced gap between fields */
-        max-width: 600px; /* Reduced max-width for narrower form */
-        margin: 3px auto; /* Further reduced margin */
+        gap: 10px;
+        max-width: 800px;
+        margin: 10px auto;
     }
 
     .form-label {
-        font-size: 10px; /* Smaller font size */
-        color: #333;
+        font-size: 12px;
         font-weight: bold;
-        margin-bottom: 1px; /* Reduced margin */
     }
 
     .form-control {
-        padding: 3px; /* Further reduced padding */
-        font-size: 10px; /* Smaller font size */
-        border-radius: 2px;
-        border: 1px solid #ced4da;
-        margin-bottom: 3px; /* Further reduced margin between fields */
+        font-size: 12px;
+        padding: 6px;
     }
 
-    /* Button Row */
     .button-row {
         grid-column: span 3;
         display: flex;
         justify-content: center;
-        gap: 3px; /* Reduced gap between buttons */
-        margin-top: 3px; /* Reduced margin above button row */
-    }
-
-    .custom-save, .custom-edit, .custom-delete {
-        padding: 3px 6px; /* Smaller padding */
-        font-size: 10px; /* Smaller font size */
-        border-radius: 2px;
-        cursor: pointer;
-        border: none;
-        color: white;
+        gap: 10px;
     }
 
     .custom-save { background-color: #28a745; }
     .custom-edit { background-color: #007bff; }
     .custom-delete { background-color: #dc3545; }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .form-grid { grid-template-columns: 1fr; }
-    }
 </style>
 
+<!-- JavaScript -->
 <script>
 function calculateBMI() {
-    const height = parseFloat(document.getElementById("heightCm").value) || 0;
-    const weight = parseFloat(document.getElementById("weightKg").value) || 0;
-    const bmi = weight + height; // Modified to sum height and weight
-    document.getElementById("bmi").value = bmi.toFixed(2);
+    const heightCm = parseFloat(document.getElementById("heightCm").value);
+    const weightKg = parseFloat(document.getElementById("weightKg").value);
+    
+    if (heightCm > 0) {
+        const heightSqrt = Math.sqrt(heightCm); // Taking square root of height in cm
+        const bmi = weightKg / heightSqrt;
+        document.getElementById("bmi").value = bmi.toFixed(2);
+    }
 }
 
-// Add event listeners to trigger calculation when either field changes
 document.getElementById("heightCm").addEventListener("input", calculateBMI);
 document.getElementById("weightKg").addEventListener("input", calculateBMI);
-document.getElementById('typeOfContact').addEventListener('change', function () {
-    const contactType = this.value;
-    const onlineCallLinkSection = document.getElementById('onlineCallLinkSection');
 
-    if (contactType === 'voiceOnlineCall' || contactType === 'videoOnlineCall') {
-        onlineCallLinkSection.style.display = 'block';
-        document.getElementById('onlineCallLink').required = true;
+function toggleProgressInput() {
+    const progressType = document.getElementById("progressType").value;
+    const progressInputSection = document.getElementById("progressInputSection");
+    const progressInputLabel = document.getElementById("progressInputLabel");
+
+    if (progressType === "voiceText") {
+        progressInputSection.style.display = "block";
+        progressInputLabel.innerText = "Voice Text Details";
+    } else if (progressType === "normal") {
+        progressInputSection.style.display = "block";
+        progressInputLabel.innerText = "Normal Progress Details";
     } else {
-        onlineCallLinkSection.style.display = 'none';
-        document.getElementById('onlineCallLink').required = false;
+        progressInputSection.style.display = "none";
     }
-});
+}
 </script>
 
   <!-- Previous Pregnancies Section -->
-  <div id="previousPregnancies" class="tab-pane active">
+<div id="previousPregnancies" class="tab-pane active">
     <h3>Previous Pregnancies</h3>
     <form id="previousPregnanciesForm" novalidate>
         <!-- Number of Pregnancies -->
@@ -1689,606 +1807,411 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
             <div class="invalid-feedback">Please enter the number of miscarriages.</div>
         </div>
 
-        <!-- Dynamic Form for Child Details -->
-        <div id="pregnancyForms"></div>
-
-        <!-- Button to Add Child Details -->
-        <div id="addChildSection" class="hidden">
-            <button type="button" id="addChildButton" onclick="addChild()">Add Child Details</button>
+        <!-- Number of Abortions -->
+        <div class="mb-3">
+            <label for="numberOfAbortions" class="form-label">Number of Abortions</label>
+            <input type="number" class="form-control" id="numberOfAbortions" placeholder="Enter the number of abortions" required>
+            <div class="invalid-feedback">Please enter the number of abortions.</div>
         </div>
 
-        <!-- Save and Edit Buttons -->
-        <div class="button-row d-flex justify-content-between mb-3">
-            <button type="button" class="btn custom-save" id="saveChildBtn" onclick="saveChildDetails()">Save Child</button>
-            <button type="button" class="btn custom-delete" onclick="deleteEntry()">Delete All</button>
+        <!-- Button to Add Child Details -->
+        <div class="button-row mt-3 mb-3">
+            <button type="button" class="btn custom-save" onclick="calculateAndRenderChildForms()">Add Child Details</button>
+        </div>
+
+        <!-- Dynamic Container for Child Details Forms -->
+        <div id="childDetailsContainer" class="d-flex flex-wrap mt-4"></div>
+        <!-- Save and Delete Buttons -->
+        <div class="button-row d-flex justify-content-between mt-4 mb-3">
+            <button type="button" class="btn custom-save" onclick="saveAllChildren()">Save All</button>
+            <button type="button" class="btn custom-delete" onclick="deleteAllEntries()">Delete All</button>
         </div>
     </form>
 </div>
+
+
 <style>
-    /* Previous Pregnancies Section Styling */
-#previousPregnanciesForm {
-    background-color: #e5ecee;
-    padding: 4px; /* Compact padding */
-    border-radius: 5px;
-    border: 2px solid #28a745;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three-column layout */
-    gap: 5px; /* Reduced gap for compact form layout */
-    max-width: 850px; /* Maximum form width */
-    margin: auto; /* Center the form */
-}
-
-.form-label {
-    font-size: 12px;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 3px; /* Compact margin */
-}
-
-.form-control {
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-    border: 1px solid #ced4da;
-}
-
-/* Button Row Styling */
-.button-row {
-    grid-column: span 3; /* Full width across 3 columns */
+    #previousPregnanciesForm .mb-3 {
     display: flex;
-    justify-content: space-between; /* Align buttons with space between */
-    gap: 5px;
-    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }
 
-.custom-save, .custom-delete {
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    border: none;
-    color: white;
+#previousPregnanciesForm .form-label {
+    flex: 1;
 }
 
-.custom-save { background-color: #28a745; }
-.custom-delete { background-color: #dc3545; }
+#previousPregnanciesForm .form-control {
+    flex: 2;
+}
 
-/* Template for Child Details Form Styling */
+#childDetailsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .pregnancy-form {
-    background-color: #f7f7f7;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    margin-top: 8px;
+    flex: 1 1 300px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.pregnancy-form h5 {
-    font-size: 13px;
-    color: #333;
-    margin-bottom: 5px;
-    font-weight: bold;
+.additional-fields .mb-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Specific Styling for Dynamic Form Elements */
-.pregnancy-form .form-select {
-    width: 100%;
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-    border: 1px solid #ced4da;
+.additional-fields .form-label {
+    flex: 1;
 }
 
-/* Responsive Design Adjustments */
-@media (max-width: 768px) {
-    #previousPregnanciesForm {
-        grid-template-columns: 1fr; /* Single column layout on smaller screens */
-    }
-    
-    .form-control, .form-label {
-        font-size: 10px; /* Adjust font size for mobile */
-    }
-    
-    .button-row {
-        flex-direction: column; /* Stack buttons on smaller screens */
-        gap: 4px;
-    }
-}
-
-@media (max-width: 576px) {
-    .form-label, .form-control {
-        font-size: 9px; /* Further reduced font size on extra small screens */
-    }
-    
-    .button-row button {
-        padding: 5px 10px;
-    }
+.additional-fields .form-control {
+    flex: 2;
 }
 
 </style>
-<!-- Template for Child Details Form -->
-<script id="pregnancyFormTemplate" type="text/template">
-    <div class="pregnancy-form" id="child_<%= index %>">
-        <h5>Child <%= index %> Details</h5>
 
-        <!-- Child's Gender -->
-        <div class="mb-3">
-            <label for="gender_<%= index %>" class="form-label">Child's Gender</label>
-            <select class="form-select" id="gender_<%= index %>" required>
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-
-        <!-- Delivery Type -->
-        <div class="mb-3">
-            <label for="deliveryType_<%= index %>" class="form-label">Delivery Type</label>
-            <select class="form-select" id="deliveryType_<%= index %>" required>
-                <option value="">Select Delivery Type</option>
-                <option value="vaginal">Vaginal</option>
-                <option value="c-section">C-section</option>
-                <option value="assisted">Assisted Delivery</option>
-                <option value="natural">Natural Delivery</option>
-                <option value="waterBirth">Water Birth</option>
-                <option value="forceps">Forceps Delivery</option>
-                <option value="vacuum">Vacuum Extraction</option>
-                <option value="breech">Breech Birth</option>
-            </select>
-        </div>
-
-        <!-- Child's Birth Status -->
-        <div class="mb-3">
-            <label for="alive_<%= index %>" class="form-label">Is the child alive?</label>
-            <select class="form-select" id="alive_<%= index %>" required>
-                <option value="">Select</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
-
-        <!-- Birth Weight -->
-        <div class="mb-3">
-            <label for="birthWeight_<%= index %>" class="form-label">Birth Weight (grams)</label>
-            <input type="number" class="form-control" id="birthWeight_<%= index %>" placeholder="Enter birth weight" required>
-        </div>
-
-        <!-- Year of Delivery -->
-        <div class="mb-3">
-            <label for="deliveryYear_<%= index %>" class="form-label">Year of Delivery</label>
-            <input type="date" class="form-control" id="deliveryYear_<%= index %>" required>
-        </div>
-    </div>
-</script>
-
-<!-- JavaScript to Handle Dynamic Form Generation -->
 <script>
-    let currentChild = 0; // Track current child being added
-    let numberOfChildDetailsForms = 0; // Total number of children to add
+   function calculateAndRenderChildForms() {
+    // Clear existing child detail forms
+    document.getElementById('childDetailsContainer').innerHTML = '';
 
-    document.getElementById('numberOfPregnancies').addEventListener('input', generateChildDetailsLogic);
-    document.getElementById('numberOfMiscarriages').addEventListener('input', generateChildDetailsLogic);
+    // Get the values entered
+    const numPregnancies = parseInt(document.getElementById('numberOfPregnancies').value) || 0;
+    const numMiscarriages = parseInt(document.getElementById('numberOfMiscarriages').value) || 0;
+    const numAbortions = parseInt(document.getElementById('numberOfAbortions').value) || 0;
 
-    function generateChildDetailsLogic() {
-        const numberOfPregnancies = parseInt(document.getElementById('numberOfPregnancies').value) || 0;
-        const numberOfMiscarriages = parseInt(document.getElementById('numberOfMiscarriages').value) || 0;
-        const addChildSection = document.getElementById('addChildSection');
-        const pregnancyFormsDiv = document.getElementById('pregnancyForms');
+    // Calculate the total number of child cards to generate
+    const numChildren = numPregnancies - (numMiscarriages + numAbortions);
 
-        // Clear previous child forms
-        pregnancyFormsDiv.innerHTML = '';
-        currentChild = 0; // Reset current child
+    // Loop to create each child detail form card
+    for (let i = 1; i <= numChildren; i++) {
+        const formHTML = `
+            <div class="pregnancy-form" id="child_${i}">
+                <h5>Child ${i} Details</h5>
+                <!-- Child's Gender -->
+                <div class="mb-3">
+                    <label for="gender_${i}" class="form-label">Child's Gender</label>
+                    <select class="form-select" id="gender_${i}" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
 
-        if (numberOfPregnancies <= numberOfMiscarriages) {
-            addChildSection.classList.add('hidden'); // Hide add child button if no children to add
-        } else {
-            numberOfChildDetailsForms = numberOfPregnancies - numberOfMiscarriages;
-            addChildSection.classList.remove('hidden'); // Show add child button
-        }
+                <!-- Delivery Type -->
+                <div class="mb-3">
+                    <label for="deliveryType_${i}" class="form-label">Delivery Type</label>
+                    <select class="form-select" id="deliveryType_${i}" required>
+                        <option value="">Select Delivery Type</option>
+                        <option value="vaginal">Vaginal</option>
+                        <option value="c-section">C-section</option>
+                        <option value="assisted">Assisted Delivery</option>
+                        <option value="natural">Natural Delivery</option>
+                        <option value="waterBirth">Water Birth</option>
+                        <option value="forceps">Forceps Delivery</option>
+                        <option value="vacuum">Vacuum Extraction</option>
+                        <option value="breech">Breech Birth</option>
+                    </select>
+                </div>
+
+                <!-- Child's Birth Status -->
+                <div class="mb-3">
+                    <label for="alive_${i}" class="form-label">Is the child alive?</label>
+                    <select class="form-select" id="alive_${i}" required>
+                        <option value="">Select Status</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <!-- Child's Weight -->
+                <div class="mb-3">
+                    <label for="weight_${i}" class="form-label">Child's Weight (grams)</label>
+                    <input type="number" class="form-control" id="weight_${i}" placeholder="Enter weight" required>
+                </div>
+
+                <!-- Child's Date of Birth -->
+                <div class="mb-3">
+                    <label for="dob_${i}" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob_${i}" required>
+                </div>
+            </div>
+        `;
+
+        // Append the new form to the container
+        document.getElementById('childDetailsContainer').insertAdjacentHTML('beforeend', formHTML);
     }
+}
 
-    function addChild() {
-        if (currentChild < numberOfChildDetailsForms) {
-            currentChild++;
-            const template = document.getElementById('pregnancyFormTemplate').innerHTML;
-            const rendered = template.replace(/<%= index %>/g, currentChild);
-            document.getElementById('pregnancyForms').innerHTML = rendered; // Replace existing form with new one
+function saveAllChildren() {
+    // Implement save functionality as needed
+    alert('Save functionality to be implemented');
+}
 
-            if (currentChild === numberOfChildDetailsForms) {
-                document.getElementById('addChildButton').disabled = true; // Disable button after all children are added
-            }
-        }
-    }
+function deleteAllEntries() {
+    // Clear all child detail forms
+    document.getElementById('childDetailsContainer').innerHTML = '';
+}
 
-    function saveChildDetails() {
-        alert('Child details saved!');
-        document.getElementById('pregnancyForms').innerHTML = ''; // Clear the form for the next child
-        document.getElementById('addChildButton').disabled = false; // Enable add button after saving a child
-    }
-
-    function deleteEntry() {
-        if (confirm('Are you sure you want to delete all entries?')) {
-            document.getElementById('pregnancyForms').innerHTML = '';
-            document.getElementById('addChildButton').disabled = false;
-            currentChild = 0; // Reset the child count
-        }
-    }
 </script>
+
 <!-- Laboratory Results Section -->
 <div id="laboratoryResults" class="tab-pane active">
     <h3>Laboratory Results</h3>
 
-    <!-- Cumulative Results Link Positioned at the Top -->
-    <div class="cumulative-section text-center mb-4">
+    <!-- Cumulative Results Link Positioned at the Top Center -->
+    <div class="text-center mb-4">
         <a href="#cumulativeResultsModal" data-bs-toggle="modal" class="form-label">
             <i class="fas fa-list-alt"></i> View Cumulative Results
         </a>
     </div>
-
+    <!-- Date Input on the Top Left -->
+    <div class="mb-3" style="position: relative;">
+        <label for="labResultDate" class="form-label">Date of Lab Result</label>
+        <input type="date" class="form-control" id="labResultDate" required style="width: 180px;">
+        <div class="invalid-feedback">Please enter the date of the lab result.</div>
+    </div>
 
     <form id="laboratoryResultsForm" novalidate>
-        <div class="row lab-grid">
-            <!-- Chemistry Section -->
-            <div class="col-md-6 chemistry-section">
-                <h5>Chemistry</h5>
-                
-                <div class="mb-3">
-                    <label for="hemoglobin" class="form-label">Hemoglobin (g/dL)</label>
-                    <input type="number" step="0.1" class="form-control" id="hemoglobin" placeholder="e.g., 13.5" required>
-                    <div class="invalid-feedback">Please enter the hemoglobin level.</div>
+        <!-- Chemistry Section -->
+        <div class="section-container card p-2 mt-5" style="max-width: 500px; margin: auto;">
+            <h5 class="section-title text-center mb-2">Chemistry</h5>
+            <div class="horizontal-layout d-flex flex-wrap gap-2">
+                <div class="input-group">
+                    <label for="hemoglobin" class="form-label me-1">Hemoglobin</label>
+                    <input type="number" step="0.1" class="form-control" id="hemoglobin" placeholder="g/dL" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="bloodType" class="form-label">Blood Type</label>
-                    <input type="text" class="form-control" id="bloodType" placeholder="e.g., O+" required>
-                    <div class="invalid-feedback">Please enter the blood type.</div>
+                <div class="input-group">
+                    <label for="bloodType" class="form-label me-1">Blood Type</label>
+                    <input type="text" class="form-control" id="bloodType" placeholder="e.g., O+" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="rhFactor" class="form-label">RH Factor</label>
-                    <input type="text" class="form-control" id="rhFactor" placeholder="e.g., Positive" required>
-                    <div class="invalid-feedback">Please enter the RH factor.</div>
+                <div class="input-group">
+                    <label for="rhFactor" class="form-label me-1">RH Factor</label>
+                    <input type="text" class="form-control" id="rhFactor" placeholder="e.g., +ve" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="ferritin" class="form-label">Ferritin (µg/L)</label>
-                    <input type="number" step="0.1" class="form-control" id="ferritin" placeholder="e.g., 50" required>
-                    <div class="invalid-feedback">Please enter the ferritin level.</div>
+                <div class="input-group">
+                    <label for="ferritin" class="form-label me-1">Ferritin</label>
+                    <input type="number" step="0.1" class="form-control" id="ferritin" placeholder="µg/L" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="bloodGlucose" class="form-label">Blood Glucose (mmol/L)</label>
-                    <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="e.g., 5.5" required>
-                    <div class="invalid-feedback">Please enter the blood glucose level.</div>
+                <div class="input-group">
+                    <label for="bloodGlucose" class="form-label me-1">Blood Glucose</label>
+                    <input type="number" step="0.01" class="form-control" id="bloodGlucose" placeholder="mmol/L" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="folicAcid" class="form-label">Folic Acid (E12)</label>
-                    <input type="number" step="0.1" class="form-control" id="folicAcid" placeholder="e.g., 10.2" required>
-                    <div class="invalid-feedback">Please enter the folic acid level.</div>
+                <div class="input-group">
+                    <label for="folicAcid" class="form-label me-1">Folic Acid</label>
+                    <input type="number" step="0.1" class="form-control" id="folicAcid" placeholder="E12" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="tsh" class="form-label">TSH</label>
-                    <input type="number" step="0.1" class="form-control" id="tsh" placeholder="e.g., 1.2" required>
-                    <div class="invalid-feedback">Please enter the TSH level.</div>
+                <div class="input-group">
+                    <label for="tsh" class="form-label me-1">TSH</label>
+                    <input type="number" step="0.1" class="form-control" id="tsh" placeholder="µIU/mL" required style="width: 100px;">
                 </div>
-                <div class="mb-3">
-                    <label for="pT4" class="form-label">P-T4</label>
-                    <input type="number" step="0.1" class="form-control" id="pT4" placeholder="e.g., 12.0" required>
-                    <div class="invalid-feedback">Please enter the P-T4 level.</div>
-                </div>
-            </div>
-
-            <!-- Microbiology Section -->
-            <div class="col-md-6 microbiology-section">
-                <h5>Microbiology</h5>
-
-                <div class="mb-3">
-                    <label for="hivStatus" class="form-label">HIV Status</label>
-                    <input type="text" class="form-control" id="hivStatus" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the HIV status.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="hepatitisBStatus" class="form-label">Hepatitis B Status</label>
-                    <input type="text" class="form-control" id="hepatitisBStatus" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the Hepatitis B status.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="hepatitisCStatus" class="form-label">Hepatitis C Status</label>
-                    <input type="text" class="form-control" id="hepatitisCStatus" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the Hepatitis C status.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="syphilisStatus" class="form-label">Syphilis Status</label>
-                    <input type="text" class="form-control" id="syphilisStatus" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the syphilis status.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="gonorrheaStatus" class="form-label">Gonorrhea Status</label>
-                    <input type="text" class="form-control" id="gonorrheaStatus" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the gonorrhea status.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="rubella" class="form-label">Rubella</label>
-                    <input type="text" class="form-control" id="rubella" placeholder="e.g., Immune" required>
-                    <div class="invalid-feedback">Please enter the rubella status.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="malariaTest" class="form-label">Malaria Test</label>
-                    <input type="text" class="form-control" id="malariaTest" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the malaria test result.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="mycoplasmaTest" class="form-label">Mycoplasma Test</label>
-                    <input type="text" class="form-control" id="mycoplasmaTest" placeholder="e.g., Negative" required>
-                    <div class="invalid-feedback">Please enter the mycoplasma test result.</div>
+                <div class="input-group">
+                    <label for="pT4" class="form-label me-1">P-T4</label>
+                    <input type="number" step="0.1" class="form-control" id="pT4" placeholder="ng/dL" required style="width: 100px;">
                 </div>
             </div>
         </div>
 
-        <!-- Save and Edit Buttons -->
-        <div class="button-row d-flex justify-content-between mt-3">
-            <button type="button" class="btn custom-save">Save</button>
-            <button type="button" class="btn custom-edit">Edit</button>
-            <button type="button" class="btn custom-delete">Delete</button>
+        <!-- Microbiology Section -->
+        <div class="section-container card p-2 mt-4" style="max-width: 500px; margin: auto;">
+            <h5 class="section-title text-center mb-2">Microbiology</h5>
+            <div class="horizontal-layout d-flex flex-wrap gap-2">
+                <div class="input-group">
+                    <label for="hivStatus" class="form-label me-1">HIV Status</label>
+                    <input type="text" class="form-control" id="hivStatus" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="hepatitisBStatus" class="form-label me-1">Hepatitis B Status</label>
+                    <input type="text" class="form-control" id="hepatitisBStatus" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="hepatitisCStatus" class="form-label me-1">Hepatitis C Status</label>
+                    <input type="text" class="form-control" id="hepatitisCStatus" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="syphilisStatus" class="form-label me-1">Syphilis Status</label>
+                    <input type="text" class="form-control" id="syphilisStatus" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="gonorrheaStatus" class="form-label me-1">Gonorrhea Status</label>
+                    <input type="text" class="form-control" id="gonorrheaStatus" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="rubella" class="form-label me-1">Rubella</label>
+                    <input type="text" class="form-control" id="rubella" placeholder="e.g., Immune" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="malariaTest" class="form-label me-1">Malaria Test</label>
+                    <input type="text" class="form-control" id="malariaTest" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+                <div class="input-group">
+                    <label for="mycoplasmaTest" class="form-label me-1">Mycoplasma Test</label>
+                    <input type="text" class="form-control" id="mycoplasmaTest" placeholder="e.g., Negative" required style="width: 100px;">
+                </div>
+            </div>
         </div>
     </form>
+    <!-- Submit Button -->
+    <div class="text-center mt-4">
+        <button type="button" class="btn btn-primary" onclick="saveLabResults()">Save Results</button>
+    </div>
+    <style></style>
 </div>
 
-
+<!-- CSS for better spacing and alignment -->
 <style>
-    /* Center the Request Lab Tests Link */
+    .form-label {
+        font-weight: bold;
+        margin-right: 6px; /* Reduced margin for tighter spacing */
+        font-size: 0.9em;   /* Slightly smaller font size */
+    }
+    .horizontal-layout .input-group {
+        display: flex;
+        align-items: center;
+    }
+    .horizontal-layout .form-control {
+        min-width: 100px; /* Set a consistent minimum width for input fields */
+        margin-bottom: 8px; /* Reduced margin between input groups */
+        padding: 5px; /* Reduced padding for input fields */
+        font-size: 0.9em; /* Slightly smaller font size for inputs */
+    }
+    .section-container.card {
+        padding: 10px; /* Reduced padding for cards */
+        border-radius: 8px; /* Slightly rounded corners */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow for card */
+    }
+</style>
+
+<!-- Cumulative Results Modal -->
+<div id="cumulativeResultsModal" class="modal fade" tabindex="-1" aria-labelledby="cumulativeResultsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cumulativeResultsLabel">Cumulative Laboratory Results</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered" id="cumulativeTable">
+                    <thead>
+                        <tr>
+                            <th>Test Name</th>
+                            <th>Date</th>
+                            <th>Result</th>
+                            <th>Reference Range</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cumulativeResultsBody">
+                        <!-- Cumulative results will populate here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Function to save lab results and update cumulative results
+    function saveLabResults() {
+        const labDate = document.getElementById("labResultDate").value;
+        const hemoglobin = document.getElementById("hemoglobin").value;
+        const bloodType = document.getElementById("bloodType").value;
+        const rhFactor = document.getElementById("rhFactor").value;
+        const ferritin = document.getElementById("ferritin").value;
+        const bloodGlucose = document.getElementById("bloodGlucose").value;
+        const folicAcid = document.getElementById("folicAcid").value;
+        const tsh = document.getElementById("tsh").value;
+        const pT4 = document.getElementById("pT4").value;
+        const hivStatus = document.getElementById("hivStatus").value;
+        const hepatitisBStatus = document.getElementById("hepatitisBStatus").value;
+        const hepatitisCStatus = document.getElementById("hepatitisCStatus").value;
+        const syphilisStatus = document.getElementById("syphilisStatus").value;
+        const gonorrheaStatus = document.getElementById("gonorrheaStatus").value;
+        const rubella = document.getElementById("rubella").value;
+        const malariaTest = document.getElementById("malariaTest").value;
+        const mycoplasmaTest = document.getElementById("mycoplasmaTest").value;
+
+        if (labDate) {
+            const cumulativeBody = document.getElementById("cumulativeResultsBody");
+            // Clear previous cumulative results for the same date
+            cumulativeBody.innerHTML = '';
+
+            // Chemistry Results
+            addCumulativeResult("Hemoglobin (g/dL)", labDate, hemoglobin, "12.0 - 16.0 g/dL");
+            addCumulativeResult("Blood Type", labDate, bloodType, "-");
+            addCumulativeResult("RH Factor", labDate, rhFactor, "-");
+            addCumulativeResult("Ferritin (µg/L)", labDate, ferritin, "30 - 400 µg/L");
+            addCumulativeResult("Blood Glucose (mmol/L)", labDate, bloodGlucose, "4.0 - 6.0 mmol/L");
+            addCumulativeResult("Folic Acid (E12)", labDate, folicAcid, "-");
+            addCumulativeResult("TSH", labDate, tsh, "-");
+            addCumulativeResult("P-T4", labDate, pT4, "-");
+
+            // Microbiology Results
+            addCumulativeResult("HIV Status", labDate, hivStatus, "Negative");
+            addCumulativeResult("Hepatitis B Status", labDate, hepatitisBStatus, "Negative");
+            addCumulativeResult("Hepatitis C Status", labDate, hepatitisCStatus, "Negative");
+            addCumulativeResult("Syphilis Status", labDate, syphilisStatus, "Negative");
+            addCumulativeResult("Gonorrhea Status", labDate, gonorrheaStatus, "Negative");
+            addCumulativeResult("Rubella", labDate, rubella, "-");
+            addCumulativeResult("Malaria Test", labDate, malariaTest, "-");
+            addCumulativeResult("Mycoplasma Test", labDate, mycoplasmaTest, "-");
+
+            // Close modal after saving results
+            const cumulativeModal = bootstrap.Modal.getInstance(document.getElementById('cumulativeResultsModal'));
+            cumulativeModal.hide();
+        } else {
+            alert("Please enter the date of the lab result.");
+        }
+    }
+
+    // Function to add a cumulative result row
+    function addCumulativeResult(testName, date, result, referenceRange) {
+        const cumulativeBody = document.getElementById("cumulativeResultsBody");
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${testName}</td>
+            <td>${date}</td>
+            <td>${result}</td>
+            <td>${referenceRange}</td>
+        `;
+        cumulativeBody.appendChild(row);
+    }
+</script>
+
+<!-- CSS Styling -->
+<style>
     .cumulative-section {
         grid-column: span 3;
         text-align: center;
         margin-bottom: 5px;
     }
-
-    /* Three-Column Layout */
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
-        max-width: 750px;
-        margin: 0 auto;
-    }
-
-    /* Section Styling */
     .chemistry-section, .microbiology-section {
         background-color: #f9f9f9;
         padding: 10px;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-
-    /* Label and Input Styling */
-    .form-label {
-        font-weight: bold;
-        font-size: 11px;
-        margin-bottom: 2px;
-    }
-
-    .form-control {
-        padding: 4px;
-        font-size: 11px;
-        border-radius: 3px;
-        border: 1px solid #ced4da;
-    }
-
-    /* Button Row Styling */
     .button-row {
-        grid-column: span 3;
         display: flex;
         justify-content: center;
         gap: 5px;
-        margin-top: 5px;
+        margin-top: 10px;
     }
-
-    .custom-save, .custom-edit, .custom-delete {
-        padding: 4px 10px;
-        font-size: 11px;
-        border-radius: 3px;
-        cursor: pointer;
-        border: none;
-        color: white;
-    }
-
-    .custom-save { background-color: #28a745; }
-    .custom-edit { background-color: #007bff; }
-    .custom-delete { background-color: #dc3545; }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .form-grid { grid-template-columns: 1fr; }
-    }
+    .custom-save { background-color: #28a745; color: white; }
+    .custom-edit { background-color: #007bff; color: white; }
+    .custom-delete { background-color: #dc3545; color: white; }
 </style>
 
-<!-- Cumulative Results Section -->
-<div id="cumulativeResultsModal" class="modal fade" tabindex="-1" aria-labelledby="cumulativeResultsLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="cumulativeResultsLabel">Cumulative Laboratory Results</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-  
-          <!-- Chemistry Section -->
-          <h5>Chemistry</h5>
-          <table class="table table-bordered" id="chemistryTable">
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Date 1</th>
-                <th>Date 2</th>
-                <th>Date 3</th>
-                <th>Date 4</th>
-                <th>Date 5</th>
-                <th>Date 6</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Hemoglobin (g/dL)</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>12.0 - 16.0 g/dL</td>
-              </tr>
-              <tr>
-                <td>Blood Type</td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>Ferritin (µg/L)</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>30 - 400 µg/L</td>
-              </tr>
-              <tr>
-                <td>Blood Glucose (mmol/L)</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>4.0 - 6.0 mmol/L</td>
-              </tr>
-              <tr>
-                <td>Rubella</td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>Rh Factor</td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td>-</td>
-              </tr>
-            </tbody>
-          </table>
-  
-          <!-- Microbiology Section -->
-          <h5>Microbiology</h5>
-          <table class="table table-bordered" id="microbiologyTable">
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Date 1</th>
-                <th>Date 2</th>
-                <th>Date 3</th>
-                <th>Date 4</th>
-                <th>Date 5</th>
-                <th>Date 6</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>HIV Status</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Hepatitis B Status</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Hepatitis C Status</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Syphilis Status</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Gonorrhea Status</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Malaria Test</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Mycoplasma Test</td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td>Negative</td>
-              </tr>
-            </tbody>
-          </table>
-  
-        </div>
-        <div class="button-row">
-          <button type="button" class="btn custom-save">Save</button>
-          <button type="button" class="btn custom-edit">Edit</button>
-          <button type="button" class="btn custom-delete">Delete</button>
-        </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
   
 
 <!-- Care Plan Section -->
@@ -2325,7 +2248,6 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
         </div>
 
         <!-- Upcoming Appointments -->
-        <h5 class="col-span-3">Upcoming Appointments</h5>
         <div class="form-group">
             <label for="appointmentDate" class="form-label">Appointment Date</label>
             <input type="date" class="form-control" id="appointmentDate" required>
@@ -2343,9 +2265,13 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
         </div>
 
         <!-- Fetal Movements and Well-Being -->
-        <h5 class="col-span-3">Fetal Movements and Well-Being</h5>
         <div class="form-group">
-            <label for="fetalWellBeing" class="form-label">Fetal Movements</label>
+            <label for="fetalMovements" class="form-label">Fetal Movements (in minutes)</label>
+            <input type="number" class="form-control" id="fetalMovements" placeholder="Enter duration in minutes" required>
+            <div class="invalid-feedback">Please enter the duration of fetal movements in minutes.</div>
+        </div>
+        <div class="form-group">
+            <label for="fetalWellBeing" class="form-label">Fetal Well-Being Observations</label>
             <textarea class="form-control" id="fetalWellBeing" rows="2" placeholder="e.g., Observations of fetal movements and well-being" required></textarea>
             <div class="invalid-feedback">Please enter details about fetal well-being.</div>
         </div>
@@ -2361,7 +2287,6 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
         </div>
 
         <!-- Plan Section -->
-        <h5 class="col-span-3">Plan</h5>
         <div class="form-group">
             <label for="medicationsGiven" class="form-label">Medications</label>
             <input type="text" class="form-control" id="medicationsGiven" placeholder="e.g., Oxytocin, Antibiotics" required>
@@ -2387,6 +2312,22 @@ document.getElementById('typeOfContact').addEventListener('change', function () 
     </form>
 </div>
 
+<!-- CSS for uniform layout and extensibility -->
+<style>
+    .compact-form .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .col-span-3 {
+        grid-column: span 3;
+    }
+    .button-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+</style>
 
 <style>
     /* Layout for the header with contact information */
@@ -2500,17 +2441,67 @@ function handleContactTypeChange() {
     </div>
 
     <form id="midwifeNotesForm" class="form-grid" novalidate>
-
-        <!-- Column 1 -->
+        <!-- Reason for Contact and Journal Well-Being Section -->
         <div class="form-group">
-            <label for="noteDate" class="form-label">Date</label>
-            <input type="date" class="form-control" id="noteDate" required>
-            <div class="invalid-feedback">Please select the date.</div>
+            <label for="contactReason" class="form-label">Reason for Contact</label>
+            <select class="form-control" id="contactReason" required>
+                <option value="" disabled selected>Select reason for contact</option>
+                <option value="routineCheckup">Routine Check-up</option>
+                <option value="emergency">Emergency</option>
+                <option value="consultation">Consultation</option>
+            </select>
+            <div class="invalid-feedback">Please select the reason for contact.</div>
         </div>
         <div class="form-group">
-            <label for="generalWellbeing" class="form-label">General Wellbeing</label>
+            <label for="generalWellbeing" class="form-label">General Well-Being of the Mother</label>
             <input type="text" class="form-control" id="generalWellbeing" placeholder="e.g., Stable, Good" required>
-            <div class="invalid-feedback">Please enter the general wellbeing.</div>
+            <div class="invalid-feedback">Please enter the general well-being of the mother.</div>
+        </div>
+        <div class="form-group">
+            <label for="pregnancyProgress" class="form-label">Progress of the Pregnancy</label>
+            <input type="text" class="form-control" id="pregnancyProgress" placeholder="e.g., Normal, Concerned" required>
+            <div class="invalid-feedback">Please enter the progress of the pregnancy.</div>
+        </div>
+        <div class="form-group">
+            <label for="concernDetails" class="form-label">Any Particular Concern of the Mother</label>
+            <textarea class="form-control" id="concernDetails" rows="2" placeholder="e.g., Back pain, Fatigue" required></textarea>
+            <div class="invalid-feedback">Please enter any particular concern of the mother.</div>
+        </div>
+
+        <!-- Additional Measurements -->
+        
+        <div class="form-group">
+            <label for="weight" class="form-label">Weight of the Mother (kg)</label>
+            <input type="number" class="form-control" id="weight" placeholder="e.g., 70" required>
+            <div class="invalid-feedback">Please enter the weight of the mother.</div>
+        </div>
+        <div class="form-group">
+            <label for="height" class="form-label">Height (cm)</label>
+            <input type="number" class="form-control" id="height" placeholder="e.g., 160" required>
+            <div class="invalid-feedback">Please enter the height.</div>
+        </div>
+        <div class="form-group">
+            <label for="bloodPressure" class="form-label">Blood Pressure</label>
+            <input type="text" class="form-control" id="bloodPressure" placeholder="e.g., 120/80" required>
+            <div class="invalid-feedback">Please enter the blood pressure.</div>
+        </div>
+        <div class="form-group">
+            <label for="pulseRate" class="form-label">Pulse Rate (bpm)</label>
+            <input type="number" class="form-control" id="pulseRate" placeholder="e.g., 75" required>
+            <div class="invalid-feedback">Please enter the pulse rate.</div>
+        </div>
+
+        <!-- Leg Status and Movement -->
+        
+        <div class="form-group">
+            <label for="legsStatus" class="form-label">Legs Status</label>
+            <select class="form-control" id="legsStatus" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="normal">Normal</option>
+                <option value="swollen">Swollen</option>
+                <option value="painful">Painful</option>
+            </select>
+            <div class="invalid-feedback">Please select the leg status.</div>
         </div>
         <div class="form-group">
             <label for="movementsFrequency" class="form-label">Movements Frequency</label>
@@ -2518,16 +2509,12 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please enter the fetal movements frequency.</div>
         </div>
 
-        <!-- Column 2 -->
+        <!-- Fetal Status -->
+        
         <div class="form-group">
-            <label for="noteTime" class="form-label">Time</label>
-            <input type="time" class="form-control" id="noteTime" required>
-            <div class="invalid-feedback">Please select the time.</div>
-        </div>
-        <div class="form-group">
-            <label for="bloodPressureStatus" class="form-label">Blood Pressure Status</label>
-            <input type="text" class="form-control" id="bloodPressureStatus" placeholder="e.g., Normal, High" required>
-            <div class="invalid-feedback">Please enter the blood pressure status.</div>
+            <label for="contractionsStatus" class="form-label">Contractions</label>
+            <input type="text" class="form-control" id="contractionsStatus" placeholder="e.g., Mild, Frequent" required>
+            <div class="invalid-feedback">Please enter contraction details.</div>
         </div>
         <div class="form-group">
             <label for="fetalPosition" class="form-label">Fetal Position</label>
@@ -2535,27 +2522,15 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please enter the fetal position.</div>
         </div>
 
-        <!-- Column 3 -->
-        <div class="form-group">
-            <label for="noteType" class="form-label">Note Type</label>
-            <input type="text" class="form-control" id="noteType" placeholder="e.g., Routine Check-up, Emergency" required>
-            <div class="invalid-feedback">Please enter the note type.</div>
-        </div>
-        <div class="form-group">
-            <label for="contractionDetails" class="form-label">Contractions</label>
-            <input type="text" class="form-control" id="contractionDetails" placeholder="e.g., Mild, Frequent" required>
-            <div class="invalid-feedback">Please enter contraction details.</div>
-        </div>
+        <!-- Midwife Notes and Progress Notes -->
         <div class="form-group">
             <label for="progressNotes" class="form-label">Progress Notes</label>
             <textarea class="form-control" id="progressNotes" rows="2" placeholder="Enter progress notes" required></textarea>
             <div class="invalid-feedback">Please enter the progress notes.</div>
         </div>
-
-        <!-- Additional Fields -->
         <div class="form-group">
-            <label for="mmidwifeNotes" class="form-label">Midwife Notes</label>
-            <textarea class="form-control" id="mmidwifeNotes" rows="2" placeholder="Enter midwife notes" required></textarea>
+            <label for="midwifeNotes" class="form-label">Midwife Notes</label>
+            <textarea class="form-control" id="midwifeNotes" rows="2" placeholder="Enter midwife notes" required></textarea>
             <div class="invalid-feedback">Please enter midwife notes.</div>
         </div>
 
@@ -2565,11 +2540,27 @@ function handleContactTypeChange() {
             <button type="button" class="btn custom-edit">Edit</button>
             <button type="button" class="btn custom-delete">Delete</button>
         </div>
-
     </form>
 </div>
 
-
+<!-- CSS for Uniform Layout and Spacing -->
+<style>
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 800px;
+        margin: auto;
+    }
+    .col-span-3 {
+        grid-column: span 2;
+    }
+    .button-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+</style>
 
 <!-- CSS Styling -->
 <style>
@@ -2673,38 +2664,203 @@ function handleContactTypeChange() {
     <h3>Labor and Delivery</h3>
     <form id="laborDeliveryForm" class="form-grid" novalidate>
 
-        <!-- Column 1 -->
+        <!-- Labour Information -->
         <div class="form-group">
-            <label for="deliveryDate" class="form-label">Delivery Date</label>
-            <input type="date" class="form-control" id="deliveryDate" required>
-            <div class="invalid-feedback">Please enter the delivery date.</div>
+            <label for="labourDate" class="form-label">Date</label>
+            <input type="date" class="form-control" id="labourDate" required>
+            <div class="invalid-feedback">Please enter the date.</div>
         </div>
         <div class="form-group">
-            <label for="deliveryType" class="form-label">Delivery Type</label>
-            <input type="text" class="form-control" id="deliveryType" placeholder="e.g., Vaginal, C-section" required>
-            <div class="invalid-feedback">Please enter the delivery type.</div>
+            <label for="gestationAge" class="form-label">Gestation Age (weeks)</label>
+            <input type="number" class="form-control" id="gestationAge" required>
+            <div class="invalid-feedback">Please enter the gestation age in weeks.</div>
         </div>
         <div class="form-group">
-            <label for="babySex" class="form-label">Sex of Baby</label>
-            <input type="text" class="form-control" id="babySex" placeholder="e.g., Male, Female" required>
-            <div class="invalid-feedback">Please enter the sex of the baby.</div>
+            <label for="expectedDeliveryType" class="form-label">Expected Delivery Type</label>
+            <select class="form-control" id="expectedDeliveryType" required>
+                <option value="" disabled selected>Select delivery type</option>
+                <option value="vaginal">Vaginal</option>
+                <option value="c-section">C-section</option>
+            </select>
+            <div class="invalid-feedback">Please select the expected delivery type.</div>
+        </div>
+
+        <!-- Maternal Conditions -->
+        
+        <div class="form-group">
+            <label for="membraneElapsedTime" class="form-label">Time in Continuous Elapse of Membrane</label>
+            <input type="time" class="form-control" id="membraneElapsedTime" required>
+            <div class="invalid-feedback">Please enter the membrane elapse time.</div>
+        </div>
+        <div class="form-group">
+            <label for="contractionsOnset" class="form-label">Time Onset of Contractions</label>
+            <select class="form-control" id="contractionsOnset" required>
+                <option value="" disabled selected>Yes or No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select if contractions have started.</div>
+        </div>
+        <div class="form-group">
+            <label for="contractionsPerHour" class="form-label">Number of Contractions per Hour</label>
+            <input type="number" class="form-control" id="contractionsPerHour" required>
+            <div class="invalid-feedback">Please enter the number of contractions per hour.</div>
+        </div>
+        <div class="form-group">
+            <label for="cervicalDilation" class="form-label">Cervical Dilation</label>
+            <select class="form-control" id="cervicalDilation" required>
+                <option value="" disabled selected>Yes or No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select if cervical dilation is present.</div>
+        </div>
+        <div class="form-group">
+            <label for="dilationCm" class="form-label">Dilation in Centimeters</label>
+            <input type="number" class="form-control" id="dilationCm" required>
+            <div class="invalid-feedback">Please enter the dilation in centimeters.</div>
+        </div>
+        <div class="form-group">
+            <label for="bloodPressure" class="form-label">Blood Pressure</label>
+            <input type="text" class="form-control" id="bloodPressure" placeholder="e.g., 120/80" required>
+            <div class="invalid-feedback">Please enter the blood pressure.</div>
+        </div>
+        <div class="form-group">
+            <label for="pulseRate" class="form-label">Pulse Rate (bpm)</label>
+            <input type="number" class="form-control" id="pulseRate" required>
+            <div class="invalid-feedback">Please enter the pulse rate.</div>
+        </div>
+        <div class="form-group">
+            <label for="temperature" class="form-label">Temperature (°C)</label>
+            <input type="number" step="0.1" class="form-control" id="temperature" required>
+            <div class="invalid-feedback">Please enter the temperature.</div>
+        </div>
+        <div class="form-group">
+            <label for="urineOutput" class="form-label">Urine Output</label>
+            <select class="form-control" id="urineOutput" required>
+                <option value="" disabled selected>Yes or No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select urine output status.</div>
+        </div>
+        <div class="form-group">
+            <label for="urineVolume" class="form-label">Urine Output Volume (mL)</label>
+            <input type="number" class="form-control" id="urineVolume">
+            <div class="invalid-feedback">Please enter the urine output volume.</div>
+        </div>
+        <div class="form-group">
+            <label for="faces" class="form-label">Faces</label>
+            <select class="form-control" id="faces" required>
+                <option value="" disabled selected>Yes or No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select the faces status.</div>
+        </div>
+
+        <!-- Fetal Conditions -->
+        <div class="form-group">
+            <label for="fetalDeliveryDate" class="form-label">Delivery Date</label>
+            <input type="date" class="form-control" id="fetalDeliveryDate" required>
+            <div class="invalid-feedback">Please enter the fetal delivery date.</div>
+        </div>
+        <div class="form-group">
+            <label for="fetalDeliveryType" class="form-label">Delivery Type</label>
+            <select class="form-control" id="fetalDeliveryType" required>
+                <option value="" disabled selected>Select delivery type</option>
+                <option value="vaginal">Vaginal</option>
+                <option value="c-section">C-section</option>
+            </select>
+            <div class="invalid-feedback">Please select the delivery type.</div>
+        </div>
+        <div class="form-group">
+            <label for="babyGestationalAge" class="form-label">Gestation Age of the Baby (weeks)</label>
+            <input type="number" class="form-control" id="babyGestationalAge" required>
+            <div class="invalid-feedback">Please enter the gestational age of the baby.</div>
+        </div>
+        <div class="form-group">
+            <label for="babyGender" class="form-label">Gender of the Baby</label>
+            <input type="text" class="form-control" id="babyGender" required>
+            <div class="invalid-feedback">Please enter the baby's gender.</div>
+        </div>
+        <div class="form-group">
+            <label for="fetalHeartRate" class="form-label">Fetal Heart Rate (bpm)</label>
+            <input type="number" class="form-control" id="fetalHeartRate" required>
+            <div class="invalid-feedback">Please enter the fetal heart rate.</div>
+        </div>
+        <div class="form-group">
+            <label for="amnioticFluidColor" class="form-label">Amniotic Fluid Color</label>
+            <select class="form-control" id="amnioticFluidColor" required>
+                <option value="" disabled selected>Select fluid color</option>
+                <option value="clear">Clear</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+            </select>
+            <div class="invalid-feedback">Please select the amniotic fluid color.</div>
+        </div>
+        <div class="form-group">
+            <label for="amnioticFluidOdor" class="form-label">Amniotic Fluid Odor</label>
+            <input type="text" class="form-control" id="amnioticFluidOdor" required>
+            <div class="invalid-feedback">Please enter the amniotic fluid odor.</div>
+        </div>
+        <div class="form-group">
+            <label for="amnioticFluidQuantity" class="form-label">Amniotic Fluid Quantity</label>
+            <input type="text" class="form-control" id="amnioticFluidQuantity" required>
+            <div class="invalid-feedback">Please enter the amniotic fluid quantity.</div>
+        </div>
+        <div class="form-group">
+            <label for="fetalHeadDescent" class="form-label">Descent of Fetal Head</label>
+            <select class="form-control" id="fetalHeadDescent" required>
+                <option value="" disabled selected>Yes or No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select the fetal head descent status.</div>
+        </div>
+        <div class="form-group">
+            <label for="fetalHeadDescentCm" class="form-label">Descent of Fetal Head (cm)</label>
+            <input type="number" class="form-control" id="fetalHeadDescentCm">
+            <div class="invalid-feedback">Please enter the descent of fetal head in centimeters.</div>
+        </div>
+        <div class="form-group">
+            <label for="fetalHeadMolding" class="form-label">Molding of Fetal Head</label>
+            <select class="form-control" id="fetalHeadMolding" required>
+                <option value="" disabled selected>Yes or No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select the fetal head molding status.</div>
+        </div>
+        <div class="form-group">
+            <label for="moldingDetails" class="form-label">Molding Details</label>
+            <input type="text" class="form-control" id="moldingDetails">
+            <div class="invalid-feedback">Please provide details of molding.</div>
+        </div>
+        <div class="form-group">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required>
+            <div class="invalid-feedback">Please enter the date of birth.</div>
+        </div>
+        <div class="form-group">
+            <label for="apgar1min" class="form-label">Apgar Score - 1 Minute</label>
+            <input type="number" class="form-control" id="apgar1min" required>
+            <div class="invalid-feedback">Please enter the Apgar score at 1 minute.</div>
+        </div>
+        <div class="form-group">
+            <label for="apgar5min" class="form-label">Apgar Score - 5 Minutes</label>
+            <input type="number" class="form-control" id="apgar5min" required>
+            <div class="invalid-feedback">Please enter the Apgar score at 5 minutes.</div>
+        </div>
+        <div class="form-group">
+            <label for="apgar10min" class="form-label">Apgar Score - 10 Minutes</label>
+            <input type="number" class="form-control" id="apgar10min" required>
+            <div class="invalid-feedback">Please enter the Apgar score at 10 minutes.</div>
         </div>
         <div class="form-group">
             <label for="birthWeight" class="form-label">Birth Weight (grams)</label>
             <input type="number" class="form-control" id="birthWeight" required>
             <div class="invalid-feedback">Please enter the birth weight.</div>
-        </div>
-
-        <!-- Column 2 -->
-        <div class="form-group">
-            <label for="gestationalAge" class="form-label">Gestational Age</label>
-            <input type="text" class="form-control" id="gestationalAge" placeholder="e.g., 39 weeks" required>
-            <div class="invalid-feedback">Please enter the gestational age.</div>
-        </div>
-        <div class="form-group">
-            <label for="birthLength" class="form-label">Birth Length (cm)</label>
-            <input type="number" class="form-control" id="birthLength" required>
-            <div class="invalid-feedback">Please enter the birth length.</div>
         </div>
         <div class="form-group">
             <label for="headCircumference" class="form-label">Head Circumference (cm)</label>
@@ -2712,30 +2868,22 @@ function handleContactTypeChange() {
             <div class="invalid-feedback">Please enter the head circumference.</div>
         </div>
         <div class="form-group">
-            <label for="babyStatus" class="form-label">Baby Status</label>
-            <input type="text" class="form-control" id="babyStatus" placeholder="e.g., Healthy, Distressed" required>
-            <div class="invalid-feedback">Please enter the baby's status.</div>
+            <label for="umbilicalCondition" class="form-label">Condition of Umbilical Cord</label>
+            <input type="text" class="form-control" id="umbilicalCondition" required>
+            <div class="invalid-feedback">Please enter the condition of the umbilical cord.</div>
+        </div>
+        <div class="form-group">
+            <label for="deformity" class="form-label">Any Deformity</label>
+            <input type="text" class="form-control" id="deformity">
+            <div class="invalid-feedback">Please enter any noted deformity.</div>
         </div>
 
-        <!-- Column 3 (Apgar Score) -->
-        <h5 class="col-span-3">Apgar Score</h5>
-        <div class="form-group">
-            <label for="apgar1min" class="form-label">1 Minute</label>
-            <input type="number" class="form-control" id="apgar1min" required>
-            <div class="invalid-feedback">Please enter the 1-minute Apgar score.</div>
-        </div>
-        <div class="form-group">
-            <label for="apgar5min" class="form-label">5 Minutes</label>
-            <input type="number" class="form-control" id="apgar5min" required>
-            <div class="invalid-feedback">Please enter the 5-minute Apgar score.</div>
-        </div>
-        <div class="form-group">
-            <label for="apgar10min" class="form-label">10 Minutes</label>
-            <input type="number" class="form-control" id="apgar10min" required>
-            <div class="invalid-feedback">Please enter the 10-minute Apgar score.</div>
+        <!-- Add Child Button for Twins/Triplets -->
+        <div class="button-row">
+            <button type="button" class="btn btn-primary">Add New Child</button>
         </div>
 
-        <!-- Buttons -->
+        <!-- Save, Edit, and Delete Buttons -->
         <div class="button-row">
             <button type="button" class="btn custom-save">Save</button>
             <button type="button" class="btn custom-edit">Edit</button>
@@ -2744,6 +2892,7 @@ function handleContactTypeChange() {
 
     </form>
 </div>
+
 <style>
     /* Layout for the header with contact information */
     .header-row {
@@ -2818,8 +2967,227 @@ function handleContactTypeChange() {
     }
 </style>
 
+<!-- Postpartum Condition Section -->
+<div id="postpartumCondition" class="tab-pane active">
+    <h3>Postpartum Condition of the Mother</h3>
 
- <!-- Partograph Section -->
+    <div class="form-grid">
+        <!-- Column 1 -->
+        <div class="form-group">
+            <label for="timestamp" class="form-label">Timestamp</label>
+            <input type="datetime-local" class="form-control" id="timestamp" required>
+            <div class="invalid-feedback">Please enter the timestamp.</div>
+        </div>
+        <div class="form-group">
+            <label for="pulseRate" class="form-label">Pulse Rate</label>
+            <input type="number" class="form-control" id="pulseRate" placeholder="Enter pulse rate (bpm)" required>
+            <div class="invalid-feedback">Please enter the pulse rate.</div>
+        </div>
+        <div class="form-group">
+            <label for="bloodPressure" class="form-label">Blood Pressure</label>
+            <input type="text" class="form-control" id="bloodPressure" placeholder="Enter blood pressure (e.g., 120/80)" required>
+            <div class="invalid-feedback">Please enter the blood pressure.</div>
+        </div>
+        <div class="form-group">
+            <label for="temperature" class="form-label">Temperature</label>
+            <input type="number" class="form-control" id="temperature" placeholder="Enter temperature (°C)" required>
+            <div class="invalid-feedback">Please enter the temperature.</div>
+        </div>
+        <div class="form-group">
+            <label for="breathingRate" class="form-label">Breathing Rate</label>
+            <input type="number" class="form-control" id="breathingRate" placeholder="Enter breathing rate (breaths/min)" required>
+            <div class="invalid-feedback">Please enter the breathing rate.</div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="form-group">
+            <label for="uterineInvolution" class="form-label">Uterine Involution</label>
+            <select class="form-control" id="uterineInvolution" required>
+                <option value="" disabled selected>Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <div class="invalid-feedback">Please select the uterine involution status.</div>
+        </div>
+        <div class="form-group">
+            <label for="uterineSign" class="form-label">Uterine Sign</label>
+            <input type="text" class="form-control" id="uterineSign" placeholder="Describe uterine sign" required>
+            <div class="invalid-feedback">Please enter the uterine sign.</div>
+        </div>
+        <div class="form-group">
+            <label for="episiotomy" class="form-label">Episiotomy</label>
+            <input type="text" class="form-control" id="episiotomy" placeholder="Describe episiotomy status" required>
+            <div class="invalid-feedback">Please enter the episiotomy status.</div>
+        </div>
+        <div class="form-group">
+            <label for="wombShusha" class="form-label">Womb Shusha</label>
+            <input type="text" class="form-control" id="wombShusha" placeholder="Describe womb shusha" required>
+            <div class="invalid-feedback">Please enter the womb shusha status.</div>
+        </div>
+        <div class="form-group">
+            <label for="tails" class="form-label">Tails</label>
+            <input type="text" class="form-control" id="tails" placeholder="Describe tails" required>
+            <div class="invalid-feedback">Please enter the tails status.</div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="form-group">
+            <label for="lochiaColor" class="form-label">Lochia Color</label>
+            <input type="text" class="form-control" id="lochiaColor" placeholder="Describe lochia color" required>
+            <div class="invalid-feedback">Please enter the lochia color.</div>
+        </div>
+        <div class="form-group">
+            <label for="lochiaRatio" class="form-label">Lochia Ratio</label>
+            <input type="text" class="form-control" id="lochiaRatio" placeholder="Describe lochia ratio" required>
+            <div class="invalid-feedback">Please enter the lochia ratio.</div>
+        </div>
+        <div class="form-group">
+            <label for="vulvarFunction" class="form-label">Vulvar Function</label>
+            <select class="form-control" id="vulvarFunction" required>
+                <option value="" disabled selected>Select function</option>
+                <option value="low">Low</option>
+                <option value="nostor">Nostor</option>
+                <option value="normal">Normal</option>
+                <option value="constipation">Constipation</option>
+            </select>
+            <div class="invalid-feedback">Please select the vulvar function.</div>
+        </div>
+        <div class="form-group">
+            <label for="urinaryBloodFunction" class="form-label">Urinary Blood Function</label>
+            <select class="form-control" id="urinaryBloodFunction" required>
+                <option value="" disabled selected>Select function</option>
+                <option value="normal urine">Normal Urine</option>
+                <option value="urine leakage">Urine Leakage</option>
+                <option value="festuria">Festuria</option>
+            </select>
+            <div class="invalid-feedback">Please select the urinary blood function.</div>
+        </div>
+        <div class="form-group">
+            <label for="breastFunction" class="form-label">Breast Function</label>
+            <select class="form-control" id="breastFunction" required>
+                <option value="" disabled selected>Select function</option>
+                <option value="breast feeding">Breast Feeding</option>
+                <option value="pumping breast">Pumping Breast</option>
+                <option value="swollen breast">Swollen Breast</option>
+            </select>
+            <div class="invalid-feedback">Please select the breast function.</div>
+        </div>
+        <div class="form-group">
+            <label for="limbsStatus" class="form-label">Limbs Status</label>
+            <select class="form-control" id="limbsStatus" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="walking normally">Walking Normally</option>
+                <option value="walking in pain">Walking in Pain</option>
+                <option value="foot drop">Foot Drop</option>
+            </select>
+            <div class="invalid-feedback">Please select the limbs status.</div>
+        </div>
+        <div class="form-group">
+            <label for="painLevel" class="form-label">Pain Level</label>
+            <select class="form-control" id="painLevel" required>
+                <option value="" disabled selected>Select pain level</option>
+                <option value="tired">Tired</option>
+                <option value="no pain">No Pain</option>
+                <option value="mild pain">Mild Pain</option>
+                <option value="in pain">In Pain (0-10)</option>
+            </select>
+            <div class="invalid-feedback">Please select the pain level.</div>
+        </div>
+        <div class="form-group">
+            <label for="sciaticaAssessment" class="form-label">Sciatica Assessment</label>
+            <select class="form-control" id="sciaticaAssessment" required>
+                <option value="" disabled selected>Select assessment</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="not assessed">Not Assessed</option>
+            </select>
+            <div class="invalid-feedback">Please select the sciatica assessment.</div>
+        </div>
+        <div class="form-group">
+            <label for="contraceptionInfo" class="form-label">Contraception Information</label>
+            <select class="form-control" id="contraceptionInfo" required>
+                <option value="" disabled selected>Select information status</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="not given">Not Given</option>
+            </select>
+            <div class="invalid-feedback">Please select contraception information status.</div>
+        </div>
+    </div>
+
+    <!-- Save, Edit, and Delete Buttons -->
+    <div class="button-row">
+        <button type="button" class="btn custom-save">Save</button>
+        <button type="button" class="btn custom-edit">Edit</button>
+        <button type="button" class="btn custom-delete">Delete</button>
+    </div>
+</div>
+
+<style>
+    /* Container grid styling for three columns */
+    #postpartumCondition .form-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    /* General form styling */
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+        font-size: 14px;
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ced4da;
+    }
+
+    /* Section Headings Styling */
+    h4 {
+        grid-column: span 3;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        color: #333;
+    }
+
+    /* Button Row Styling */
+    .button-row {
+        grid-column: span 3;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .custom-save { background-color: #28a745; color: white; }
+    .custom-edit { background-color: #007bff; color: white; }
+    .custom-delete { background-color: #dc3545; color: white; }
+
+    /* Responsive Design for Smaller Screens */
+    @media (max-width: 768px) {
+        #postpartumCondition .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<!-- Partograph Section -->
 <div id="partograph" class="tab-pane hide">
     <h3>Partograph Chart</h3>
 
@@ -2938,19 +3306,13 @@ function handleContactTypeChange() {
         </div>
     </form>
 
-    <!-- Cumulative Results Link -->
-    <div class="form-section text-center">
-        <a href="#cumulativeResultsModal" data-bs-toggle="modal" class="btn btn-outline-info mt-3">
-            <i class="fas fa-list-alt"></i> View Cumulative Results
-        </a>
-    </div>
-
     <!-- Button Row for Navigation -->
     <div class="button-row d-flex justify-content-between mt-4">
         <button id="backButton" type="button" class="btn btn-secondary">Back</button>
         <button id="saveContinueButton" type="button" class="btn btn-primary">Save & Continue</button>
     </div>
 </div>
+
 
 <style>
   .form-grid {
